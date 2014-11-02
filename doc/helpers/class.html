@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="en"><head><title>helpers/class</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="helpers/class"><meta name="groc-project-path" content="app/helpers/class.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">app/helpers/class.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper">Ember.Handlebars.helper(<span class="hljs-string">'class'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(class_id)</span> {</span>
+  <span class="hljs-keyword">var</span> classes = {
+    <span class="hljs-number">1</span>: <span class="hljs-string">'Warrior'</span>,
+    <span class="hljs-number">2</span>: <span class="hljs-string">'Paladin'</span>,
+    <span class="hljs-number">3</span>: <span class="hljs-string">'Hunter'</span>,
+    <span class="hljs-number">4</span>: <span class="hljs-string">'Rogue'</span>,
+    <span class="hljs-number">5</span>: <span class="hljs-string">'Priest'</span>,
+    <span class="hljs-number">6</span>: <span class="hljs-string">'Death Knight'</span>,
+    <span class="hljs-number">7</span>: <span class="hljs-string">'Shaman'</span>,
+    <span class="hljs-number">8</span>: <span class="hljs-string">'Mage'</span>,
+    <span class="hljs-number">9</span>: <span class="hljs-string">'Warlock'</span>,
+    <span class="hljs-number">10</span>: <span class="hljs-string">'Monk'</span>,
+    <span class="hljs-number">11</span>: <span class="hljs-string">'Druid'</span>
+  };
+
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Ember.Handlebars.SafeString(<span class="hljs-string">'&lt;span class="class-'</span> + class_id + <span class="hljs-string">'"&gt;'</span> + classes[class_id] + <span class="hljs-string">'&lt;/span&gt;'</span>);
+});</div></div></div></div></body></html>
