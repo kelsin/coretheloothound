@@ -3,4 +3,13 @@
   LOG_TRANSITIONS: <span class="hljs-literal">true</span>,
   LOG_TRANSITIONS_INTERNAL: <span class="hljs-literal">true</span>,
   LOG_ACTIVE_GENERATION: <span class="hljs-literal">true</span>
+});
+
+Ember.Application.initializer({
+  name: <span class="hljs-string">'storage'</span>,
+  initialize: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(container, application)</span>{</span>
+    application.register(<span class="hljs-string">'service:storage'</span>, window.App.Storage);
+    application.inject(<span class="hljs-string">'route'</span>, <span class="hljs-string">'storage'</span>, <span class="hljs-string">'service:storage'</span>);
+    application.inject(<span class="hljs-string">'controller'</span>, <span class="hljs-string">'storage'</span>, <span class="hljs-string">'service:storage'</span>);
+  }
 });</div></div></div></div></body></html>

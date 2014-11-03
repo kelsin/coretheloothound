@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><title>local</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="local"><meta name="groc-project-path" content="app/local.js"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">app/local.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> LocalAdapter = DS.Adapter.extend({
+  base: <span class="hljs-string">'coretheloothound'</span>,
+
+  getKey: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(type, id)</span> {</span>
+    <span class="hljs-keyword">return</span> [<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'base'</span>), id].join(<span class="hljs-string">'_'</span>);
+  },
+
+  find: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(store, type, id)</span> {</span>
+    <span class="hljs-keyword">var</span> key = <span class="hljs-keyword">this</span>.getKey(type, id);
+    <span class="hljs-keyword">var</span> data;
+
+    <span class="hljs-keyword">if</span> (Modernizr.localstorage) {
+      data = window.localStorage.getItem(key);
+    } <span class="hljs-keyword">else</span> {
+      data = Ember.$.cookie(key);
+    }
+
+    <span class="hljs-keyword">return</span> Ember.run(<span class="hljs-literal">null</span>, Ember.RSVP.resolve, {
+      id: id,
+      key: id,
+      value: data
+    });
+  },
+
+  findAll: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> Ember.RSVP.reject(<span class="hljs-string">'Local Storage can not findAll()'</span>);
+  },
+
+  findQuery: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> Ember.RSVP.reject(<span class="hljs-string">'Local Storage can not findQuery()'</span>);
+  },
+
+  createRecord: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(store, type, record)</span> {</span>
+    <span class="hljs-keyword">var</span> key = <span class="hljs-keyword">this</span>.getKey(type, record.get(<span class="hljs-string">'key'</span>));
+    <span class="hljs-keyword">var</span> value = record.get(<span class="hljs-string">'value'</span>);
+    <span class="hljs-keyword">var</span> data;
+
+    <span class="hljs-keyword">if</span> (Modernizr.localstorage) {
+      data = window.localStorage.setItem(key, value);
+    } <span class="hljs-keyword">else</span> {
+      data = Ember.$.cookie(key, value);
+    }
+
+    <span class="hljs-keyword">return</span> Ember.run(<span class="hljs-literal">null</span>, Ember.RSVP.resolve, record);
+  },
+
+  updateRecord: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(store, type, record)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.createRecord(store, type, record);
+  },
+
+  deleteRecord: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(store, type, record)</span> {</span>
+    <span class="hljs-keyword">var</span> key = <span class="hljs-keyword">this</span>.getKey(type, record.get(<span class="hljs-string">'key'</span>));
+    <span class="hljs-keyword">var</span> data;
+
+    <span class="hljs-keyword">if</span> (Modernizr.localstorage) {
+      data = window.localStorage.removeItem(key);
+    } <span class="hljs-keyword">else</span> {
+      data = Ember.$.removeCookie(key);
+    }
+
+    <span class="hljs-keyword">return</span> Ember.run(<span class="hljs-literal">null</span>, Ember.RSVP.resolve, record);
+  }
+});
+
+window.App.Local = DS.Model.extend({
+  key: DS.attr(<span class="hljs-string">'string'</span>),
+  value: DS.attr(<span class="hljs-string">'string'</span>)
+});
+
+window.App.LocalAdapter = LocalAdapter;</div></div></div></div></body></html>

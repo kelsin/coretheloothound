@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head><title>models/Storage</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="models/Storage"><meta name="groc-project-path" content="app/models/Storage.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">app/models/Storage.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-pi">'use strict'</span>;
+
+window.App.Storage = Ember.Object.extend({
+  base: <span class="hljs-string">'coretheloothound_'</span>,
+  getValue: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(key)</span> {</span>
+    <span class="hljs-keyword">if</span> (Modernizr.localstorage) {
+      <span class="hljs-keyword">return</span> window.localStorage.getItem(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'base'</span>) + key);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> Ember.$.cookie(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'base'</span>) + key);
+    }
+  },
+  setValue: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(key, value)</span> {</span>
+    <span class="hljs-keyword">if</span> (Modernizr.localstorage) {
+      window.localStorage.setItem(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'base'</span>) + key, value);
+    } <span class="hljs-keyword">else</span> {
+      Ember.$.cookie(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'base'</span>) + key, value);
+    }
+  },
+  removeValue: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(key)</span> {</span>
+    <span class="hljs-keyword">if</span> (Modernizr.localstorage) {
+      window.localStorage.removeItem(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'base'</span>) + key);
+    } <span class="hljs-keyword">else</span> {
+      Ember.$.removeCookie(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'base'</span>) + key);
+    }
+  }
+});</div></div></div></div></body></html>

@@ -71,6 +71,26 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/controllers/ApplicationController.js",
+            "projectPath": "app/controllers/ApplicationController.js",
+            "targetPath": "controllers/ApplicationController",
+            "pageTitle": "controllers/ApplicationController",
+            "title": "ApplicationController"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
             "sourcePath": "/Users/kelsin/src/coretheloothound/app/controllers/AuthController.js",
             "projectPath": "app/controllers/AuthController.js",
             "targetPath": "controllers/AuthController",
@@ -286,6 +306,26 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "targetPath": "models/Session",
             "pageTitle": "models/Session",
             "title": "Session"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/models/Storage.js",
+            "projectPath": "app/models/Storage.js",
+            "targetPath": "models/Storage",
+            "pageTitle": "models/Storage",
+            "title": "Storage"
           },
           "depth": 2,
           "outline": []
