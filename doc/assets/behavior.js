@@ -431,26 +431,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/Users/kelsin/src/coretheloothound/app/routes/AccountRoute.js",
-            "projectPath": "app/routes/AccountRoute.js",
-            "targetPath": "routes/AccountRoute",
-            "pageTitle": "routes/AccountRoute",
-            "title": "AccountRoute"
-          },
-          "depth": 2,
-          "outline": []
-        }, {
-          "type": "file",
-          "data": {
-            "language": {
-              "nameMatchers": [".js"],
-              "pygmentsLexer": "javascript",
-              "multiLineComment": ["/*", "*", "*/"],
-              "singleLineComment": ["//"],
-              "ignorePrefix": "}",
-              "foldPrefix": "^",
-              "name": "JavaScript"
-            },
             "sourcePath": "/Users/kelsin/src/coretheloothound/app/routes/ApikeyRoute.js",
             "projectPath": "app/routes/ApikeyRoute.js",
             "targetPath": "routes/ApikeyRoute",
