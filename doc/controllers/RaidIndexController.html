@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><title>controllers/RaidIndexController</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="controllers/RaidIndexController"><meta name="groc-project-path" content="app/controllers/RaidIndexController.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">app/controllers/RaidIndexController.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper">window.App.RaidIndexController = Ember.ObjectController.extend({
+  battle_tag_name: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> battle_tag = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'creator.battle_tag'</span>);
+    <span class="hljs-keyword">return</span> battle_tag.substring(<span class="hljs-number">0</span>, battle_tag.indexOf(<span class="hljs-string">'#'</span>));
+  }.property(<span class="hljs-string">'creator'</span>),
+
+  guild_armory_url: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'http://us.battle.net/wow/guild/'</span> +
+      <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'guild.realm'</span>) + <span class="hljs-string">'/'</span> +
+      <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'guild.name'</span>) + <span class="hljs-string">'/'</span>;
+  }.property(<span class="hljs-string">'guild'</span>),
+
+  dateAgo: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> moment(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'date'</span>)).fromNow();
+  }.property(<span class="hljs-string">'date'</span>),
+
+  dateCalendar: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> moment(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'date'</span>)).calendar();
+  }.property(<span class="hljs-string">'date'</span>),
+
+  allTags: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'tags'</span>).join(<span class="hljs-string">', '</span>);
+  }.property(<span class="hljs-string">'tags'</span>),
+
+  roster: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> groups = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'groups'</span>);
+    <span class="hljs-keyword">var</span> signups = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'signups'</span>);
+    <span class="hljs-keyword">var</span> result = [];
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt;= groups.number; i++) {
+      <span class="hljs-keyword">var</span> slot = <span class="hljs-number">1</span>;
+
+      <span class="hljs-keyword">var</span> group = {
+        number: i,
+        size: groups.size,
+        roles: {
+          tank: groups.roles.tank,
+          healing: groups.roles.healing,
+          dps: groups.roles.dps,
+          any: (groups.size - groups.roles.tank - groups.roles.healing - groups.roles.dps)
+        },
+        slots: []
+      };
+
+      <span class="hljs-keyword">var</span> needed_roles = {
+        tank: groups.roles.tank,
+        healing: groups.roles.healing,
+        dps: groups.roles.dps
+      };
+
+      _.each([<span class="hljs-string">'tank'</span>, <span class="hljs-string">'healing'</span>, <span class="hljs-string">'dps'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(role)</span> {</span>
+        <span class="hljs-keyword">var</span> filled = _.filter(signups, { role: role.toUpperCase() });
+        _.each(filled, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(signup)</span> {</span>
+          group.slots.push({
+            number: slot++,
+            role: role.toUpperCase(),
+            signup: signup
+          });
+
+          needed_roles[role]--;
+        });
+
+        <span class="hljs-keyword">if</span>(needed_roles[role] &gt; <span class="hljs-number">0</span>) {
+          _.times(needed_roles[role], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            group.slots.push({
+              number: slot++,
+              role: role.toUpperCase()
+            });
+          });
+        };
+      });</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Now fill out with ANY&#39;s</p></div></div><div class="code"><div class="wrapper">      _.times(groups.size - group.slots.length, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+        group.slots.push({
+          number: slot++,
+          role: <span class="hljs-string">'ANY'</span>
+        });
+      });
+
+      result.push(group);
+    }
+
+    <span class="hljs-keyword">return</span> result;
+  }.property(<span class="hljs-string">'groups'</span>, <span class="hljs-string">'signups'</span>)
+});</div></div></div></div></body></html>

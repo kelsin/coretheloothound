@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><title>templates/raid/index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="templates/raid/index"><meta name="groc-project-path" content="app/templates/raid/index.hbs"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">app/templates/raid/index.hbs</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">title</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">dl</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">dt</span>&gt;</span>Finalized<span class="hljs-tag">&lt;/<span class="hljs-title">dt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">dd</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> finalized</span>}}</span><span class="xml">Yes</span><span class="hljs-expression">{{<span class="hljs-variable"><span class="hljs-keyword">else</span></span>}}</span><span class="xml">No</span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">dd</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">dt</span>&gt;</span>Created By<span class="hljs-tag">&lt;/<span class="hljs-title">dt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">dd</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">battle</span>_<span class="hljs-variable">tag</span>_<span class="hljs-variable">name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">dd</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">dt</span>&gt;</span>Date<span class="hljs-tag">&lt;/<span class="hljs-title">dt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">dd</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">dateCalendar</span>}}</span><span class="xml"> <span class="hljs-tag">&lt;<span class="hljs-title">small</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">dateAgo</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">small</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">dd</span>&gt;</span>
+  </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> guild</span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">dt</span>&gt;</span>Guild<span class="hljs-tag">&lt;/<span class="hljs-title">dt</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">dd</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> </span></span><span class="hljs-expression">{{<span class="hljs-variable">bind-attr</span> <span class="hljs-variable">href</span>=<span class="hljs-variable">guild</span>_<span class="hljs-variable">armory</span>_<span class="hljs-variable">url</span>}}</span><span class="xml"><span class="hljs-tag">&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">guild.name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">dd</span>&gt;</span>
+  </span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-title">dt</span>&gt;</span>Tags<span class="hljs-tag">&lt;/<span class="hljs-title">dt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">dd</span>&gt;</span>
+    </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> tags</span>}}</span><span class="xml">
+      <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"label label-primary"</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">this</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+    </span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-title">dd</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">dl</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Groups<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+</span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> roster</span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Group </span><span class="hljs-expression">{{<span class="hljs-variable">number</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"slots"</span>&gt;</span>
+      </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> slots</span>}}</span><span class="xml">
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"slot"</span>&gt;</span>
+          </span><span class="hljs-expression">{{<span class="hljs-variable">number</span>}}</span><span class="xml">: </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> signup</span>}}</span><span class="xml"></span><span class="hljs-expression">{{<span class="hljs-variable">signup.user</span>}}</span><span class="xml"></span><span class="hljs-expression">{{<span class="hljs-variable"><span class="hljs-keyword">else</span></span>}}</span><span class="xml"></span><span class="hljs-expression">{{<span class="hljs-variable">role</span>}}</span><span class="xml"></span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml">
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      </span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+
+<span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Signups<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">table</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"table"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Approved<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Seated<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Role<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>User<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Character<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Tags<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tbody</span>&gt;</span>
+    </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> signups</span>}}</span><span class="xml">
+      <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> approved</span>}}</span><span class="xml">Yes</span><span class="hljs-expression">{{<span class="hljs-variable"><span class="hljs-keyword">else</span></span>}}</span><span class="xml">No</span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> seated</span>}}</span><span class="xml">Yes</span><span class="hljs-expression">{{<span class="hljs-variable"><span class="hljs-keyword">else</span></span>}}</span><span class="xml">No</span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">role</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">user</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">character.name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+    </span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">table</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Log<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">table</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"table"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>User<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Character<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Message<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Date<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tbody</span>&gt;</span>
+    </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> logs</span>}}</span><span class="xml">
+      <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">user.battle</span>_<span class="hljs-variable">tag</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">character.name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">message</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">date</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+    </span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">table</span>&gt;</span>
+</span></div></div></div></div></body></html>

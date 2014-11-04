@@ -18,5 +18,20 @@ Ember.Application.initializer({
     application.register(<span class="hljs-string">'service:storage'</span>, window.App.Storage);
     application.inject(<span class="hljs-string">'route'</span>, <span class="hljs-string">'storage'</span>, <span class="hljs-string">'service:storage'</span>);
     application.inject(<span class="hljs-string">'controller'</span>, <span class="hljs-string">'storage'</span>, <span class="hljs-string">'service:storage'</span>);
+    application.inject(<span class="hljs-string">'adapter'</span>, <span class="hljs-string">'storage'</span>, <span class="hljs-string">'service:storage'</span>);
   }
+});
+
+window.App.ApplicationSerializer = DS.ActiveModelSerializer.extend({
+  primaryKey: <span class="hljs-string">'_id'</span>
+});
+
+window.App.ApplicationAdapter = DS.ActiveModelAdapter.extend({
+  host: <span class="hljs-string">'https://api.byfirebepurged.com'</span>,
+
+  headers: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-string">"Authorization"</span>: <span class="hljs-string">'apikey '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'storage'</span>).getValue(<span class="hljs-string">'apikey'</span>)
+    };
+  }.property().volatile()
 });</div></div></div></div></body></html>

@@ -162,11 +162,51 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/controllers/RaidIndexController.js",
+            "projectPath": "app/controllers/RaidIndexController.js",
+            "targetPath": "controllers/RaidIndexController",
+            "pageTitle": "controllers/RaidIndexController",
+            "title": "RaidIndexController"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
             "sourcePath": "/Users/kelsin/src/coretheloothound/app/controllers/RaidsIndexController.js",
             "projectPath": "app/controllers/RaidsIndexController.js",
             "targetPath": "controllers/RaidsIndexController",
             "pageTitle": "controllers/RaidsIndexController",
             "title": "RaidsIndexController"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/controllers/RaidsNewController.js",
+            "projectPath": "app/controllers/RaidsNewController.js",
+            "targetPath": "controllers/RaidsNewController",
+            "pageTitle": "controllers/RaidsNewController",
+            "title": "RaidsNewController"
           },
           "depth": 2,
           "outline": []
@@ -312,11 +352,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/Users/kelsin/src/coretheloothound/app/models/Apikey.js",
-            "projectPath": "app/models/Apikey.js",
-            "targetPath": "models/Apikey",
-            "pageTitle": "models/Apikey",
-            "title": "Apikey"
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/models/Raid.js",
+            "projectPath": "app/models/Raid.js",
+            "targetPath": "models/Raid",
+            "pageTitle": "models/Raid",
+            "title": "Raid"
           },
           "depth": 2,
           "outline": []
@@ -491,11 +531,51 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/routes/RaidIndexRoute.js",
+            "projectPath": "app/routes/RaidIndexRoute.js",
+            "targetPath": "routes/RaidIndexRoute",
+            "pageTitle": "routes/RaidIndexRoute",
+            "title": "RaidIndexRoute"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
             "sourcePath": "/Users/kelsin/src/coretheloothound/app/routes/RaidsIndexRoute.js",
             "projectPath": "app/routes/RaidsIndexRoute.js",
             "targetPath": "routes/RaidsIndexRoute",
             "pageTitle": "routes/RaidsIndexRoute",
             "title": "RaidsIndexRoute"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/routes/RaidsNewRoute.js",
+            "projectPath": "app/routes/RaidsNewRoute.js",
+            "targetPath": "routes/RaidsNewRoute",
+            "pageTitle": "routes/RaidsNewRoute",
+            "title": "RaidsNewRoute"
           },
           "depth": 2,
           "outline": []
@@ -618,6 +698,103 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             }
           ]
         }, {
+          "type": "folder",
+          "data": {
+            "path": "templates/raid",
+            "title": "raid"
+          },
+          "depth": 2,
+          "children": [
+            {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".handlebars", ".hbs"],
+                  "pygmentsLexer": "html",
+                  "highlightJS": "handlebars",
+                  "multiLineComment": ["<!--", "", "-->", "{{!", "", "}}"],
+                  "strictMultiLineEnd": true,
+                  "ignorePrefix": "#",
+                  "foldPrefix": "^",
+                  "name": "Handlebars"
+                },
+                "sourcePath": "/Users/kelsin/src/coretheloothound/app/templates/raid/index.hbs",
+                "projectPath": "app/templates/raid/index.hbs",
+                "targetPath": "templates/raid/index",
+                "pageTitle": "templates/raid/index",
+                "title": "index"
+              },
+              "depth": 3,
+              "outline": []
+            }
+          ]
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".handlebars", ".hbs"],
+              "pygmentsLexer": "html",
+              "highlightJS": "handlebars",
+              "multiLineComment": ["<!--", "", "-->", "{{!", "", "}}"],
+              "strictMultiLineEnd": true,
+              "ignorePrefix": "#",
+              "foldPrefix": "^",
+              "name": "Handlebars"
+            },
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/templates/raids.hbs",
+            "projectPath": "app/templates/raids.hbs",
+            "targetPath": "templates/raids",
+            "pageTitle": "templates/raids",
+            "title": "raids"
+          },
+          "depth": 2,
+          "outline": [],
+          "children": [
+            {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".handlebars", ".hbs"],
+                  "pygmentsLexer": "html",
+                  "highlightJS": "handlebars",
+                  "multiLineComment": ["<!--", "", "-->", "{{!", "", "}}"],
+                  "strictMultiLineEnd": true,
+                  "ignorePrefix": "#",
+                  "foldPrefix": "^",
+                  "name": "Handlebars"
+                },
+                "sourcePath": "/Users/kelsin/src/coretheloothound/app/templates/raids/index.hbs",
+                "projectPath": "app/templates/raids/index.hbs",
+                "targetPath": "templates/raids/index",
+                "pageTitle": "templates/raids/index",
+                "title": "index"
+              },
+              "depth": 3,
+              "outline": []
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".handlebars", ".hbs"],
+                  "pygmentsLexer": "html",
+                  "highlightJS": "handlebars",
+                  "multiLineComment": ["<!--", "", "-->", "{{!", "", "}}"],
+                  "strictMultiLineEnd": true,
+                  "ignorePrefix": "#",
+                  "foldPrefix": "^",
+                  "name": "Handlebars"
+                },
+                "sourcePath": "/Users/kelsin/src/coretheloothound/app/templates/raids/new.hbs",
+                "projectPath": "app/templates/raids/new.hbs",
+                "targetPath": "templates/raids/new",
+                "pageTitle": "templates/raids/new",
+                "title": "new"
+              },
+              "depth": 3,
+              "outline": []
+            }
+          ]
+        }, {
           "type": "file",
           "data": {
             "language": {
@@ -635,6 +812,36 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "targetPath": "templates/user",
             "pageTitle": "templates/user",
             "title": "user"
+          },
+          "depth": 2,
+          "outline": []
+        }
+      ]
+    }, {
+      "type": "folder",
+      "data": {
+        "path": "views",
+        "title": "views"
+      },
+      "depth": 1,
+      "children": [
+        {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
+            "sourcePath": "/Users/kelsin/src/coretheloothound/app/views/RaidsNewView.js",
+            "projectPath": "app/views/RaidsNewView.js",
+            "targetPath": "views/RaidsNewView",
+            "pageTitle": "views/RaidsNewView",
+            "title": "RaidsNewView"
           },
           "depth": 2,
           "outline": []
