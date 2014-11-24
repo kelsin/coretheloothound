@@ -5995,7 +5995,9 @@ button.close {
 .panel-body:before,
 .panel-body:after,
 .modal-footer:before,
-.modal-footer:after {
+.modal-footer:after,
+footer:before,
+footer:after {
   content: " ";
   display: table;
 }
@@ -6013,7 +6015,8 @@ button.close {
 .navbar-collapse:after,
 .pager:after,
 .panel-body:after,
-.modal-footer:after {
+.modal-footer:after,
+footer:after {
   clear: both;
 }
 .center-block {
@@ -6853,42 +6856,71 @@ button.close {
 footer {
   margin: 40px 0 20px;
   border-top: 1px solid #555555;
+  padding-top: 20px;
+  margin-left: -15px;
+  margin-right: -15px;
 }
-footer p {
-  margin: 20px 0;
+footer section.description {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  footer section.description {
+    float: left;
+    width: 66.66666667%;
+  }
+}
+footer section.copyright {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  footer section.copyright {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+@media (min-width: 992px) {
+  footer section.copyright {
+    text-align: right;
+  }
 }
 .class-1 {
-  color: #C79C6E;
+  color: #c79c6e;
 }
 .class-2 {
-  color: #F58CBA;
+  color: #f58cba;
 }
 .class-3 {
-  color: #ABD473;
+  color: #abd473;
 }
 .class-4 {
-  color: #FFF569;
+  color: #fff569;
 }
 .class-5 {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .class-6 {
-  color: #C41F3B;
+  color: #c41f3b;
 }
 .class-7 {
-  color: #0070DE;
+  color: #0070de;
 }
 .class-8 {
-  color: #69CCF0;
+  color: #69ccf0;
 }
 .class-9 {
-  color: #9482C9;
+  color: #9482c9;
 }
 .class-10 {
-  color: #00FF96;
+  color: #00ff96;
 }
 .class-11 {
-  color: #FF7D0A;
+  color: #ff7d0a;
 }
 .alliance {
   color: #247faa;
