@@ -1,0 +1,60 @@
+{{#link-to 'raids.new' class="btn btn-primary"}}<i class="fa fa-plus"></i> New Raid{{/link-to}}
+
+<h3>Created</h3>
+<table class="table">
+  <thead>
+    <tr><th>Title</th><th>Date</th><th>Guild</th><th>Signups</th></tr>
+  </thead>
+  <tbody>
+    {{#each created itemController="RaidIndex"}}
+      <tr>
+        <td>{{#link-to 'raid.index' this}}{{title}}{{/link-to}}</td>
+        <td><i class="fa fa-calendar"</i> {{dateCalendar}} <small>{{dateAgo}}</small></td>
+        <td>
+          {{#if guild}}<a {{bind-attr href=guild_armory_url}}>{{guild.name}}</a>{{/if}}
+        </td>
+        <td><i class="fa fa-user"></i> {{totalSignups}} / {{totalSlots}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<h3>Signed Up</h3>
+<table class="table">
+  <thead>
+    <tr><th>Title</th><th>Date</th><th>Guild</th><th>Signups</th><th>Creator</th></tr>
+  </thead>
+  <tbody>
+    {{#each signed_up itemController="RaidIndex"}}
+      <tr>
+        <td>{{#link-to 'raid.index' this}}{{title}}{{/link-to}}</td>
+        <td><i class="fa fa-calendar"</i> {{dateCalendar}} <small>{{dateAgo}}</small></td>
+        <td>
+          {{#if guild}}<a {{bind-attr href=guild_armory_url}}>{{guild.name}}</a>{{/if}}
+        </td>
+        <td><i class="fa fa-user"></i> {{totalSignups}} / {{totalSlots}}</td>
+        <td>{{creator.battle_tag}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<h3>Available</h3>
+<table class="table">
+  <thead>
+    <tr><th>Title</th><th>Date</th><th>Guild</th><th>Signups</th><th>Creator</th></tr>
+  </thead>
+  <tbody>
+    {{#each available itemController="RaidIndex"}}
+      <tr>
+        <td>{{#link-to 'raid.index' this}}{{title}}{{/link-to}}</td>
+        <td><i class="fa fa-calendar"</i> {{dateCalendar}} <small>{{dateAgo}}</small></td>
+        <td>
+          {{#if guild}}<a {{bind-attr href=guild_armory_url}}>{{guild.name}}</a>{{/if}}
+        </td>
+        <td><i class="fa fa-user"></i> {{totalSignups}} / {{totalSlots}}</td>
+        <td>{{creator.battle_tag}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

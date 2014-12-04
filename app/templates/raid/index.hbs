@@ -1,0 +1,154 @@
+<div class="raid">
+  <section class="title">
+    <h1>{{title}}</h1>
+  </section>
+
+  <section class="info">
+    <dl>
+      <dt>Finalized</dt>
+      <dd>{{#if finalized}}Yes{{else}}No{{/if}}</dd>
+      <dt>Created By</dt>
+      <dd>{{battle_tag_name}}</dd>
+      <dt>Date</dt>
+      <dd>{{dateCalendar}} <small>{{dateAgo}}</small></dd>
+      {{#if guild}}
+        <dt>Guild</dt>
+        <dd><a {{bind-attr href=guild_armory_url}}>{{guild.name}}</a></dd>
+      {{/if}}
+      <dt>Tags</dt>
+      <dd>
+        {{#each tags}}
+          <span class="label label-primary">{{this}}</span>
+        {{/each}}
+      </dd>
+    </dl>
+  </section>
+
+  <section class="groups">
+    <div class="roles">
+      {{#if groups.roles.dps}}
+        <div class="role dps">
+          <i class="fa fa-fw fa-crosshairs"></i>
+          {{open.dps}} / {{groups.roles.dps}} DPS
+        </div>
+      {{/if}}
+      {{#if groups.roles.healing}}
+        <div class="role dps">
+          <i class="fa fa-fw fa-plus"></i>
+          {{open.healing}} / {{groups.roles.healing}} Healing
+        </div>
+      {{/if}}
+      {{#if groups.roles.tank}}
+        <div class="role dps">
+          <i class="fa fa-fw fa-shield"></i>
+          {{open.tank}} / {{groups.roles.tank}} Tank
+        </div>
+      {{/if}}
+      {{#if any}}
+        <div class="role open">
+          <i class="fa fa-fw fa-question"></i>
+          {{open.any}} / {{any}} Open
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="groups">
+      {{log roster}}
+      {{#each roster}}
+        <div class="group">
+          <h4>Group {{number}}</h4>
+          {{#if slots.tank.length}}
+            <div class="role tank">
+              <div class="slots">
+                {{#each slots.tank}}
+                  <div class="slot">
+                    {{number}}: {{#if signup}}{{signup.user}}{{else}}{{role}}{{/if}}
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if slots.healing.length}}
+            <div class="role healing">
+              <div class="slots">
+                {{#each slots.healing}}
+                  <div class="slot">
+                    {{number}}: {{#if signup}}{{signup.user}}{{else}}{{role}}{{/if}}
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if slots.dps.length}}
+            <div class="role dps">
+              <div class="slots">
+                {{#each slots.dps}}
+                  <div class="slot">
+                    {{number}}: {{#if signup}}{{signup.user}}{{else}}{{role}}{{/if}}
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          {{/if}}
+          {{#if slots.any.length}}
+            <div class="role any">
+              <div class="slots">
+                {{#each slots.any}}
+                  <div class="slot">
+                    {{number}}: {{#if signup}}{{signup.user}}{{else}}{{role}}{{/if}}
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="signups">
+    <h3>Signups</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Approved</th>
+          <th>Seated</th>
+          <th>Role</th>
+          <th>User</th>
+          <th>Character</th>
+          <th>Tags</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each signups}}
+          <tr>
+            <td>{{#if approved}}Yes{{else}}No{{/if}}</td>
+              <td>{{#if seated}}Yes{{else}}No{{/if}}</td>
+                <td>{{role}}</td>
+                <td>{{user}}</td>
+                <td>{{character.name}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="log">
+    <h3>Log</h3>
+    <table class="table">
+      <thead>
+        <tr><th>User</th><th>Character</th><th>Message</th><th>Date</th></tr>
+      </thead>
+      <tbody>
+        {{#each logs}}
+          <tr>
+            <td>{{user.battle_tag}}</td>
+            <td>{{character.name}}</td>
+            <td>{{message}}</td>
+            <td>{{date}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </section>
+</div>

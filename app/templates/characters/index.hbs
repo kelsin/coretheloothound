@@ -1,0 +1,22 @@
+<div class="well form">
+  <div class="form-group">
+    <label for="realms">Realm</label>
+    {{view "select" id="realms" class="form-control" content=realms value=realm}}
+  </div>
+  <div class="checkbox">
+    <label>{{input type="checkbox" checked=onlyMax}} Only show level 90 characters</label>
+  </div>
+</div>
+<div class="characters-list">
+  {{#each filtered}}
+    <div class="character">
+      <h3>{{name}} <small>{{level}} {{realm}}</small></h3>
+      <img {{bind-attr src="image_url"}}/>
+      <p>{{class class}}</p>
+      <p>{{spec.name}}</p>
+      <p><span {{bind-attr class="faction race"}}>{{race race}}</span></p>
+    </div>
+  {{else}}
+    <div class="alert alert-info">No {{#if onlyMax}}Max Level {{/if}}Characters</div>
+  {{/each}}
+</div>

@@ -1,0 +1,125 @@
+// Footer
+footer {
+  margin: 40px 0 20px;
+  border-top: 1px solid @gray;
+  padding-top: 20px;
+  color: @text-muted;
+
+  div.wrapper {
+    .make-row();
+
+    section {
+      &.description {
+        .make-md-column(8);
+      }
+
+      &.copyright {
+        .make-md-column(4);
+
+        @media(min-width: @screen-md) {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+// WoW Class Colors
+.class-1 { color: @warrior; }
+.class-2 { color: @paladin; }
+.class-3 { color: @hunter; }
+.class-4 { color: @rogue; }
+.class-5 { color: @priest; }
+.class-6 { color: @death-knight; }
+.class-7 { color: @shaman; }
+.class-8 { color: @mage; }
+.class-9 { color: @warlock; }
+.class-10 { color: @monk; }
+.class-11 { color: @druid; }
+
+// Faction colors
+.alliance { color: @alliance; }
+.horde { color: @horde; }
+
+// Session View
+.auth {
+  padding: 10px 0;
+  text-align: right;
+  overflow: auto;
+
+  li {
+    display: inline-block;
+    padding-left: 20px;
+  }
+}
+
+// Character View
+.characters {
+  .well {
+    overflow: auto;
+  }
+
+  .characters-list {
+    .make-row();
+
+    .character {
+      overflow: auto;
+      margin-bottom: 20px;
+      .make-sm-column(6);
+      .make-md-column(4);
+      .make-lg-column(3);
+
+      img {
+        float: left;
+        padding: 0 10px 10px 0;
+      }
+
+      & > h3 {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+// Raids
+.raid {
+  .make-row();
+
+  section.title {
+    .make-md-column(12);
+  }
+
+  section.info {
+    .make-md-column(3);
+  }
+
+  section.groups {
+    .make-md-column(9);
+
+    .roles {
+      font-size: 2.2em;
+    }
+
+    .groups {
+      .group {
+        .make-row();
+
+        h4 {
+          .make-md-column(12);
+        }
+
+        .role {
+          .make-md-column(3);
+        }
+      }
+    }
+  }
+
+  section.signups {
+    .make-md-column(12);
+  }
+
+  section.log {
+    .make-md-column(12);
+  }
+}
