@@ -8,12 +8,16 @@
   </div>
 </div>
 <div class="characters-list">
-  {{#each filtered}}
+  {{#each character in filtered itemController="character"}}
     <div class="character">
-      <h3>{{name}} <small>{{level}} {{realm}}</small></h3>
-      <img {{bind-attr src="image_url"}}/>
-      <p>{{class_id}}</p>
-      <p><span {{bind-attr class="faction race"}}>{{race_id}}</span></p>
+      <h3>{{character.name}} <small>{{character.level}} {{character.realm}}</small></h3>
+      <img {{bind-attr src="character.image_url"}}/>
+      <p>{{character-race character.race_id}} {{character-class character.class_id}}</p>
+      <p>
+        <a {{bind-attr href="character.armoryUrl"}}><img height="32" src="http://hydra-media.cursecdn.com/wowpedia.org/d/d3/Wow-icon-scalable.svg"/></a>
+        <a {{bind-attr href="character.robotUrl"}}><img height="32" src="http://www.askmrrobot.com/content/images/ui/Favicon114.png"/></a>
+        <a {{bind-attr href="character.wowheadUrl"}}><img height="32" src="http://static.zealous-studios.co.uk/projects/wowwiki/images/Icon-wowhead-32x32.png"/></a>
+      </p>
     </div>
   {{else}}
     <div class="empty">

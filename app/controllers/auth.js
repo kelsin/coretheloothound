@@ -29,6 +29,8 @@ export default Ember.Controller.extend({
     },
 
     logout: function() {
+      var _this = this;
+
       Ember.$.ajax({
         type: 'GET',
         url: 'https://api.byfirebepurged.com/logout',
@@ -36,10 +38,10 @@ export default Ember.Controller.extend({
           Authorization: 'apikey ' + this.get('apikey')
         },
         success: function(data) {
-          this.get('storage').removeValue('apikey');
-          this.set('apikey', undefined);
-          this.set('account', undefined);
-          this.transitionToRoute('index');
+          _this.get('storage').removeValue('apikey');
+          _this.set('apikey', undefined);
+          _this.set('account', undefined);
+          _this.transitionToRoute('index');
         }
       });
     }

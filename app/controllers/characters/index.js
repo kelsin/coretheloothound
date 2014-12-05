@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
     this.set('realm', window.localStorage.getItem('coretheloothound_realm') || 'All');
 
     return ['All'].concat(_.uniq(_.map(this.get('model').toArray(), function(character) {
-      return character.realm;
+      return character.get('realm');
     })).sort());
   }.property('model.@each.realm'),
 
@@ -28,14 +28,14 @@ export default Ember.Controller.extend({
     var onlyMax = this.get('onlyMax');
 
     return this.get('sorted').filter(function(character, index, enumerable) {
-      if(onlyMax && character.level < 90) {
+      if(onlyMax && character.get('level') < 100) {
         return false;
       }
 
       if(!realm || realm === 'All') {
         return true;
       } else {
-        return realm === character.realm;
+        return realm === character.get('realm');
       }
     });
   }.property('sorted', 'onlyMax', 'realm')
