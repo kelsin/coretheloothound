@@ -8,7 +8,8 @@ module.exports = function(environment) {
     locationType: 'auto',
 
     contentSecurityPolicy: {
-      'connect-src': "'self' https://api.byfirebepurged.com ws://localhost:35729 ws://0.0.0.0:35729"
+      'connect-src': "'self' https://api.byfirebepurged.com ws://localhost:35729 ws://0.0.0.0:35729",
+      'img-src': "'self' http://us.battle.net https://us.battle.net"
     },
 
     EmberENV: {

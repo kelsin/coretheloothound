@@ -12,11 +12,12 @@
     <div class="character">
       <h3>{{name}} <small>{{level}} {{realm}}</small></h3>
       <img {{bind-attr src="image_url"}}/>
-      <p>{{class class}}</p>
-      <p>{{spec.name}}</p>
-      <p><span {{bind-attr class="faction race"}}>{{race race}}</span></p>
+      <p>{{class_id}}</p>
+      <p><span {{bind-attr class="faction race"}}>{{race_id}}</span></p>
     </div>
   {{else}}
-    <div class="alert alert-info">No {{#if onlyMax}}Max Level {{/if}}Characters</div>
+    <div class="empty">
+      <div class="alert alert-info">No {{#if onlyMax}}Max Level {{/if}}Characters</div>
+    </div>
   {{/each}}
 </div>

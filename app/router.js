@@ -20,6 +20,7 @@ Router.map(function() {
   this.resource('account', function() {
     this.resource('characters', function() {});
   });
+  this.route('CharactersIndex');
 });
 
 export default Router;

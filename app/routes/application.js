@@ -4,6 +4,7 @@ export default Ember.Route.extend({
   model: function() {
     var _this = this;
     var apikey = this.get('storage').getValue('apikey');
+
     if (apikey) {
       return new Ember.RSVP.Promise(function(resolve, reject) {
         Ember.$.ajax({
@@ -28,20 +29,26 @@ export default Ember.Route.extend({
               account: data.account
             });
           },
-          error: reject
+          error: function() {
+            // Bad API key
+            resolve({
+              apikey: undefined,
+              account: undefined
+            });
+          }
         });
       });
     } else {
-      return Ember.RSVP.resolve({
+      return {
         apikey: undefined,
-        user: undefined
-      });
+        account: undefined
+      };
     }
   },
 
   setupController: function(controller, model) {
     controller.set('apikey', model.apikey);
-    controller.set('user', model.user);
+    controller.set('account', model.account);
   },
 
   actions: {
