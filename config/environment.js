@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'coretheloothound',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
 
     contentSecurityPolicy: {
       'connect-src': "'self' https://api.byfirebepurged.com ws://localhost:35729 ws://0.0.0.0:35729",
@@ -26,10 +26,10 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
+    ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
