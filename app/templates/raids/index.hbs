@@ -7,7 +7,7 @@
   <tbody>
     {{#each}}
       <tr>
-        <td>{{#link-to 'raid.index' this data-title="Raid Note" data-content=note}}{{name}}{{/link-to}}{{log this}}</td>
+        <td>{{#link-to 'raid.index' this title="Raid Note" data-content=note data-toggle="popover"}}{{name}}{{/link-to}}</td>
         <td><i class="fa fa-calendar"</i> {{dateCalendar}} <small>{{dateAgo}}</small></td>
         <td><i class="fa fa-user"></i> {{totalSignups}} / {{totalSlots}}</td>
         <td></td>
