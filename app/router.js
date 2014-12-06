@@ -13,8 +13,7 @@ Router.map(function() {
   this.resource('raids', function() {
     this.route('new');
   });
-  this.resource('raid', { path: '/raid/:raid_id' }, function() {
-  });
+  this.resource('raid', { path: '/raid/:raid_id' });
 
   // User Preference Pages
   this.resource('account', function() {

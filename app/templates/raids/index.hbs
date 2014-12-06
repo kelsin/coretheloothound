@@ -2,15 +2,15 @@
 
 <table class="table">
   <thead>
-    <tr><th>Title</th><th>Date</th><th>Signups</th><th>Guilds</th></tr>
+    <tr><th>Title</th><th>Date</th><th>Signups</th><th>Creator</th></tr>
   </thead>
   <tbody>
     {{#each}}
       <tr>
-        <td>{{#link-to 'raid.index' this data-content=note data-toggle="popover"}}{{name}}{{/link-to}}</td>
+        <td>{{#link-to 'raid' id data-content=note data-toggle="popover"}}{{name}}{{/link-to}}</td>
         <td><i class="fa fa-calendar"</i> {{dateCalendar}} <small>{{dateAgo}}</small></td>
         <td><i class="fa fa-user"></i> {{totalSignups}} / {{totalSlots}}</td>
-        <td></td>
+        <td>{{account.battletag}}</td>
       </tr>
     {{/each}}
   </tbody>

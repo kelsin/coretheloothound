@@ -1,0 +1,20 @@
+<h1>{{name}} <small>{{account.battletag}}</small></h1>
+<p>{{dateCalendar}} <small>{{dateAgo}}</small></p>
+<p class="description">{{note}}</p>
+<p>{{groups.number}} Groups, {{groups.size}} Raiders, {{groups.tanks}} Tanks and {{groups.healers}} Healers required in each group.</p>
+<p>{{signups.length}} Signups, {{totalTanks}} Tanks and {{totalHealers}} Healers</p>
+<div class="waiting-list">
+  <ul>
+    {{#each waitingList itemController="signup"}}
+      <li><span {{bind-attr class=classes}}>{{character.name}}</span> <small>{{role}}</small></li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="signup">
+  <ul>
+    {{#each characters itemController="character"}}
+    <li>{{name}} <small>{{realm}}</small></li>
+    {{/each}}
+  </ul>
+</div>

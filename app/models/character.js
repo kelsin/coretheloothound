@@ -13,5 +13,6 @@ export default DS.Model.extend({
   image_url: DS.attr('string'),
 
   account: DS.belongsTo('account'),
-  guild: DS.belongsTo('guild')
+  guild: DS.belongsTo('guild'),
+  signups: DS.hasMany('signup')
 });
