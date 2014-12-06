@@ -1,8 +1,15 @@
-<form class="form-inline">
+<form class="form">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="raid-name">Name</label>
+        {{input type="text" id="raid-name" value=name class="form-control" placeholder="Name"}}
+      </div>
+    </div>
+  </div>
   <div class="form-group">
-    {{input type="text" id="raid-title" value=title class="form-control" placeholder="Raid Title"}}
-    {{input type="text" value=editDate class="datepicker form-control"}}
-    {{input type="text" value=editTime class="timepicker form-control"}}
+    <label for="raid-name">Date</label>
+    {{date-time date=date}}
   </div>
   <button class="btn btn-primary" {{action 'create'}}>Create</button>
 </form>

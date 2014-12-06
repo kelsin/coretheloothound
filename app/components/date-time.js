@@ -17,6 +17,10 @@ export default Ember.Component.extend({
     return moment(this.get('date')).format('D MMMM, YYYY');
   }.property('date', 'picktime'),
 
+  dateAgo: function() {
+    return moment(this.get('date')).fromNow();
+  }.property('date'),
+
   calendarDate: function() {
     return moment(this.get('date')).calendar();
   }.property('date'),
