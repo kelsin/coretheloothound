@@ -1,29 +1,3 @@
-// Footer
-footer {
-  margin: 40px 0 20px;
-  border-top: 1px solid @gray;
-  padding-top: 20px;
-  color: @text-muted;
-
-  div.wrapper {
-    .make-row();
-
-    section {
-      &.description {
-        .make-md-column(8);
-      }
-
-      &.copyright {
-        .make-md-column(4);
-
-        @media(min-width: @screen-md) {
-          text-align: right;
-        }
-      }
-    }
-  }
-}
-
 // WoW Class Colors
 .class-1 { color: @warrior; }
 .class-2 { color: @paladin; }
@@ -40,6 +14,30 @@ footer {
 // Faction colors
 .alliance { color: @alliance; }
 .horde { color: @horde; }
+
+// Popovers
+.popover {
+  background-color: @gray-dark;
+
+  .popover-title, .popover-content {
+    color: @text-color;
+    background-color: #000;
+    border-color: @gray-dark;
+  }
+
+  &.top > .arrow:after {
+    border-top-color: @gray-dark;
+  }
+  &.bottom > .arrow:after {
+    border-bottom-color: @gray-dark;
+  }
+  &.left > .arrow:after {
+    border-left-color: @gray-dark;
+  }
+  &.right > .arrow:after {
+    border-right-color: @gray-dark;
+  }
+}
 
 // Session View
 .auth {
@@ -131,5 +129,31 @@ footer {
 
   section.log {
     .make-md-column(12);
+  }
+}
+
+// Footer
+footer {
+  margin: 40px 0 20px;
+  border-top: 1px solid @gray;
+  padding-top: 20px;
+  color: @text-muted;
+
+  div.wrapper {
+    .make-row();
+
+    section {
+      &.description {
+        .make-md-column(8);
+      }
+
+      &.copyright {
+        .make-md-column(4);
+
+        @media(min-width: @screen-md) {
+          text-align: right;
+        }
+      }
+    }
   }
 }
