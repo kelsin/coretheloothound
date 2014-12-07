@@ -9,6 +9,18 @@ export default Ember.ObjectController.extend({
     return this.get('realm').dasherize();
   }.property('realm'),
 
+  label: function() {
+    return this.get('level') + ': ' + this.get('name') + ' - ' + this.get('realm');
+  }.property('name', 'realm'),
+
+  canHeal: function() {
+    return [2, 5, 7, 10, 11].contains(this.get('class_id'));
+  }.property('class_id'),
+
+  canTank: function() {
+    return [1, 2, 6, 10, 11].contains(this.get('class_id'));
+  }.property('class_id'),
+
   armoryUrl: function() {
     return 'http://us.battle.net/wow/character/' + this.get('dashedRealm') + '/' + this.get('dashedName') + '/simple';
   }.property('dashedName', 'dashedRealm'),

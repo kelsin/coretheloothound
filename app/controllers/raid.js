@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import CharacterController from './character';
 
 /* global moment */
 export default Ember.ObjectController.extend({
@@ -17,8 +18,20 @@ export default Ember.ObjectController.extend({
       .filter(function(character) {
         return !ids.contains(character.get('id'));
       })
-      .sortBy('level:desc', 'name');
-  }.property('account.characters'),
+      .map(function(character) {
+        return CharacterController.create({
+          model: character
+        });
+      })
+      .sort(function(a,b) {
+        var diff = b.get('level') - a.get('level');
+        if(diff) {
+          return diff;
+        } else {
+          return a.get('name').localeCompare(b.get('name'));
+        }
+      });
+  }.property('account.characters', 'signedUpCharacterIds'),
 
   dateAgo: function() {
     return moment(this.get('date')).fromNow();

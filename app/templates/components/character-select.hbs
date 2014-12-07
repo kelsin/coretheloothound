@@ -1,1 +1,24 @@
-{{yield}}
+<h3>New Signup</h3>
+<form class="form">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="character">Character</label>
+        {{view "select" id="character"
+                        class="form-control"
+                        content=characters
+                        value=character_id
+                        selection=character
+                        optionValuePath="content.id"
+                        optionLabelPath="content.label"}}
+
+        <label for="role">Role</label>
+        {{view "select" id="role"
+                        class="form-control"
+                        content=roles
+                        value=role}}
+      </div>
+      <button class="btn btn-primary" {{action 'signup'}}>Sign Up</button>
+    </div>
+  </div>
+</form>
