@@ -8,7 +8,7 @@ module.exports = function(environment) {
     locationType: 'hash',
 
     contentSecurityPolicy: {
-      'connect-src': "'self' https://api.byfirebepurged.com ws://localhost:35729 ws://0.0.0.0:35729",
+      'connect-src': "'self' https://staging.byfirebepurged.com https://api.byfirebepurged.com ws://localhost:35729 ws://0.0.0.0:35729",
       'img-src': "'self' https://us.battle.net",
       'style-src': "'self' 'unsafe-inline'"
     },
@@ -32,6 +32,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.api = 'https://staging.byfirebepurged.com';
   }
 
   if (environment === 'test') {
@@ -47,7 +48,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.api = 'https://api.byfirebepurged.com';
   }
 
   return ENV;

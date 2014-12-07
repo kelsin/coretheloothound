@@ -1,7 +1,8 @@
+import ENV from 'coretheloothound/config/environment';
 import DS from 'ember-data';
 
 export default DS.ActiveModelAdapter.extend({
-  host: 'https://api.byfirebepurged.com',
+  host: ENV.api,
 
   headers: function() {
     return {

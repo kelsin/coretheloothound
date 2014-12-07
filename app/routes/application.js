@@ -1,3 +1,4 @@
+import ENV from 'coretheloothound/config/environment';
 import Ember from 'ember';
 
 export default Ember.Route.extend({
@@ -9,7 +10,7 @@ export default Ember.Route.extend({
       return new Ember.RSVP.Promise(function(resolve, reject) {
         Ember.$.ajax({
           type: 'GET',
-          url: 'https://api.byfirebepurged.com/account',
+          url: ENV.api + '/account',
           headers: {
             Authorization: 'apikey ' + apikey
           },

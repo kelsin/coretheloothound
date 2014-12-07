@@ -1,5 +1,6 @@
 /* global $ */
 
+import ENV from 'coretheloothound/config/environment';
 import Ember from 'ember';
 
 /**
@@ -16,7 +17,7 @@ export default Ember.Controller.extend({
     login: function() {
       Ember.$.ajax({
         type: 'GET',
-        url: 'https://api.byfirebepurged.com/login',
+        url: ENV.api + '/login',
         data: {
           redirect: window.location.protocol +
             '//' + window.location.host +

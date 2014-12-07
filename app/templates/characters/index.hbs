@@ -4,7 +4,7 @@
     {{view "select" id="realms" class="form-control" content=realms value=realm}}
   </div>
   <div class="checkbox">
-    <label>{{input type="checkbox" checked=onlyMax}} Only show level 90 characters</label>
+    <label>{{input type="checkbox" checked=onlyMax}} Only show max level characters</label>
   </div>
 </div>
 <div class="characters-list">
@@ -21,7 +21,7 @@
     </div>
   {{else}}
     <div class="empty">
-      <div class="alert alert-info">No {{#if onlyMax}}Max Level {{/if}}Characters</div>
+      <div class="alert alert-info">No {{#if onlyMax}}max level {{/if}}characters</div>
     </div>
   {{/each}}
 </div>
