@@ -9,8 +9,27 @@ export default Ember.ObjectController.extend({
     return this.get('realm').dasherize();
   }.property('realm'),
 
+  className: function() {
+    switch(this.get('class_id')) {
+    case 1: return 'Warrior';
+    case 2: return 'Paladin';
+    case 3: return 'Hunter';
+    case 4: return 'Rogue';
+    case 5: return 'Priest';
+    case 6: return 'Death Knight';
+    case 7: return 'Shaman';
+    case 8: return 'Mage';
+    case 9: return 'Warlock';
+    case 10: return 'Monk';
+    case 11: return 'Druid';
+    }
+  }.property('class_id'),
+
   label: function() {
-    return this.get('level') + ': ' + this.get('name') + ' - ' + this.get('realm');
+    return this.get('level') +
+      ': '  + this.get('name') +
+      ' - ' + this.get('className') +
+      ' - ' + this.get('realm');
   }.property('name', 'realm'),
 
   canHeal: function() {

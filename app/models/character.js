@@ -14,5 +14,6 @@ export default DS.Model.extend({
 
   account: DS.belongsTo('account'),
   guild: DS.belongsTo('guild'),
-  signups: DS.hasMany('signup')
+  signups: DS.hasMany('signup'),
+  roles: DS.hasMany('role')
 });

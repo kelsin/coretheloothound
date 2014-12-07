@@ -7,16 +7,18 @@
         {{view "select" id="character"
                         class="form-control"
                         content=characters
-                        value=character_id
                         selection=character
                         optionValuePath="content.id"
                         optionLabelPath="content.label"}}
 
-        <label for="role">Role</label>
-        {{view "select" id="role"
-                        class="form-control"
-                        content=roles
-                        value=role}}
+        {{#each roleCheckboxes}}
+          <div class="checkbox">
+            <label>
+              {{input id=slug type="checkbox" checked=checked name=name click=select}}
+              {{name}}
+            </label>
+          </div>
+        {{/each}}
       </div>
       <button class="btn btn-primary" {{action 'signup'}}>Sign Up</button>
     </div>

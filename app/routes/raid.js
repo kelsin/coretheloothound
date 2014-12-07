@@ -6,17 +6,21 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    signup: function(character, role) {
+    signup: function(character, roles) {
       var _this = this;
       var raid = this.currentModel;
 
       var signup = this.store.createRecord('signup', {
         character: character.get('model'),
-        raid: raid,
-        role: role.toLowerCase()
+        raid: raid
       });
 
-      signup.save();
+      this.store.find('role', 1)
+        .then(function(role) {
+          signup.get('roles').addObject(role);
+          console.log(signup);
+          signup.save();
+        });
     },
     unsignup: function(signup) {
       signup.destroyRecord();
