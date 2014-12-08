@@ -6,7 +6,18 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    signup: function(character, roles) {
+    seat: function(signup, role) {
+      signup.set('seated', true);
+      signup.set('role', role);
+      signup.save();
+    },
+
+    unseat: function(signup) {
+      signup.set('seated', false);
+      signup.save();
+    },
+
+    signup: function(character, role_ids) {
       var _this = this;
       var raid = this.currentModel;
 
@@ -15,12 +26,15 @@ export default Ember.Route.extend({
         raid: raid
       });
 
-      this.store.find('role', 1)
-        .then(function(role) {
+      Ember.RSVP.all(_.map(role_ids, function(role_id) {
+        return _this.store.find('role', role_id);
+      })).then(function(roles) {
+        return _.each(roles, function(role) {
           signup.get('roles').addObject(role);
-          console.log(signup);
-          signup.save();
         });
+      }).then(function() {
+        signup.save();
+      });
     },
     unsignup: function(signup) {
       signup.destroyRecord();

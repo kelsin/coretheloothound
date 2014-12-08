@@ -54,7 +54,6 @@ export default Ember.Route.extend({
 
   actions: {
     loadUser: function() {
-      console.log('Refreshing');
       this.refresh();
     }
   }

@@ -2,14 +2,23 @@
 
 <table class="table">
   <thead>
-    <tr><th>Title</th><th>Date</th><th>Signups</th><th>Creator</th></tr>
+    <tr><th>Title</th><th>Date</th><th>Signups</th><th>Roles</th><th>Creator</th></tr>
   </thead>
   <tbody>
     {{#each}}
       <tr>
         <td>{{#link-to 'raid' id data-content=note data-toggle="popover"}}{{name}}{{/link-to}}</td>
-        <td><i class="fa fa-calendar"</i> {{dateCalendar}} <small>{{dateAgo}}</small></td>
-        <td><i class="fa fa-user"></i> {{totalSignups}} / {{totalSlots}}</td>
+        <td><i class="fa fa-calendar"></i> {{dateCalendar}} <small>{{dateAgo}}</small></td>
+        <td>
+          <span title="Accounts signed up">{{accountSignups}} <i class="fa fa-users fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
+          <span title="Accounts on the waiting list">{{accountWaitingList}} <i class="fa fa-bars fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
+          <span title="Seated accounts">{{accountSeated}} <i class="fa fa-check fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
+        </td>
+        <td>
+          {{#each roles itemController="role"}}
+          <span {{bind-attr title="name"}} {{bind-attr class="statClasses"}}>{{number}} <i {{bind-attr class="iconClasses"}}></i>&nbsp;&nbsp;&nbsp;
+          {{/each}}
+        </td>
         <td>{{account.battletag}}</td>
       </tr>
     {{/each}}

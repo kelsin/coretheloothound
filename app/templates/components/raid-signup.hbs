@@ -1,0 +1,23 @@
+<span {{bind-attr class=classes}}>{{signup.character.name}}</span>
+<small>{{signup.character.level}}</small>
+<small>
+  {{#if signup.seated}}
+    {{signup.role.name}}
+  {{else}}
+    {{#each signup.roles}}
+      {{name}}
+    {{/each}}
+  {{/if}}
+</small>
+<a {{action 'unsignup'}}><i class="fa fa-close fa-fw"></i></a>
+{{#if signup.seated}}
+  <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
+{{else}}
+  {{#if signup.canBeSeated}}
+    {{view "select" content=signup.roles
+                    selection=role
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"}}
+    <a {{action 'seat'}}><i class="fa fa-arrow-circle-right fa-fw"></i></a>
+  {{/if}}
+{{/if}}

@@ -3,29 +3,54 @@
     <h1>{{name}} <small>{{account.battletag}}</small></h1>
   </section>
   <section class="info">
-    <p>{{dateCalendar}} <small>{{dateAgo}}</small></p>
+    <p><i class="fa fa-calendar"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
     <p class="description">{{note}}</p>
-    <p>{{groups.number}} Groups, {{groups.size}} Raiders, {{groups.tanks}} Tanks and {{groups.healers}} Healers required in each group.</p>
-    <p>{{signups.length}} Signups, {{totalTanks}} Tanks and {{totalHealers}} Healers</p>
-    <div class="waiting-list">
-      <h3>Waiting List</h3>
-      <ul>
-        {{#each waitingList itemController="signup"}}
-        <li>
-          <span {{bind-attr class=classes}}>{{character.name}}</span>
-          <small>{{character.level}}</small>
-          <small>{{role}}</small>
-          <a {{action 'unsignup' this}}><i class="fa fa-close fa-fw"></i></a>
-        </li>
-        {{/each}}
-      </ul>
-    </div>
     {{character-select characters=characters action="signup"}}
+  </section>
+  <section class="stats">
+    <div class="row">
+      <div title="Accounts signed up" class="stat">{{accountSignups}} <i class="fa fa-users fa-fw"></i></div>
+      <div title="Accounts on the waiting list" class="stat">{{accountWaitingList}} <i class="fa fa-bars fa-fw"></i></div>
+      <div title="Seated accounts" class="stat">{{accountSeated}} <i class="fa fa-check fa-fw"></i></div>
+      {{#each roles itemController="role"}}
+        <div {{bind-attr title="name"}} {{bind-attr class="statClasses"}}>{{number}} <i {{bind-attr class="iconClasses"}}></i></div>
+      {{/each}}
+    </div>
   </section>
   <section class="graphs">
     <div class="wrapper">
-      {{donut-graph title="Classes" data=data}}
-      {{donut-graph title="Roles" data=roleData}}
+      {{donut-graph title="Signed Up Classes" data=classData}}
+      {{donut-graph title="Signed Up Roles" data=roleData}}
+      {{donut-graph title="Seated Classes" data=seatedClassData}}
+      {{donut-graph title="Seated Roles" data=seatedRoleData}}
+    </div>
+  </section>
+  <section class="groups">
+    <div class="row">
+      <div class="signups">
+        <h3>Signups</h3>
+        <ul>
+          {{#each signups itemController="signup"}}
+          <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="waiting-list">
+        <h3>Waiting List</h3>
+        <ul>
+          {{#each waitingList itemController="signup"}}
+          <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="seated">
+        <h3>Seated</h3>
+        <ul>
+          {{#each seated itemController="signup"}}
+          <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
+          {{/each}}
+        </ul>
+      </div>
     </div>
   </section>
 </div>

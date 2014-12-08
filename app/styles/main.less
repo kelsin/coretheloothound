@@ -53,6 +53,11 @@ svg {
 .alliance { color: @alliance; }
 .horde { color: @horde; }
 
+// Stat Colors
+.stat.role-dps { color: @dps; }
+.stat.role-healing { color: @healing; }
+.stat.role-tank { color: @tank; }
+
 // Date Picker
 .datepicker {
   p {
@@ -171,27 +176,31 @@ svg {
     }
   }
 
+  section.stats {
+    .make-md-column(9);
+    margin-bottom: 0.7em;
+    font-size: 3em;
+
+    div.stat {
+      .make-md-column(2);
+    }
+  }
+
   section.groups {
     .make-md-column(9);
 
-    .roles {
-      font-size: 2.2em;
+    div.signups {
+      .make-md-column(4);
     }
 
-    .groups {
-      .group {
-        .make-row();
-
-        h4 {
-          .make-md-column(12);
-        }
-
-        .role {
-          .make-md-column(3);
-        }
-      }
+    div.seated {
+      .make-md-column(4);
     }
-  }
+
+    div.waiting-list {
+      .make-md-column(4);
+    }
+}
 
   section.signups {
     .make-md-column(12);
