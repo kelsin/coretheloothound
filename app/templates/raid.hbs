@@ -1,21 +1,31 @@
-<h1>{{name}} <small>{{account.battletag}}</small></h1>
-<p>{{dateCalendar}} <small>{{dateAgo}}</small></p>
-<p class="description">{{note}}</p>
-<p>{{groups.number}} Groups, {{groups.size}} Raiders, {{groups.tanks}} Tanks and {{groups.healers}} Healers required in each group.</p>
-<p>{{signups.length}} Signups, {{totalTanks}} Tanks and {{totalHealers}} Healers</p>
-<div class="waiting-list">
-  <h3>Waiting List</h3>
-  <ul>
-    {{#each waitingList itemController="signup"}}
-    <li>
-      <span {{bind-attr class=classes}}>{{character.name}}</span>
-      <small>{{character.level}}</small>
-      <small>{{role}}</small>
-      <a {{action 'unsignup' this}}><i class="fa fa-close fa-fw"></i></a>
-    </li>
-    {{/each}}
-  </ul>
+<div class="raid">
+  <section class="title">
+    <h1>{{name}} <small>{{account.battletag}}</small></h1>
+  </section>
+  <section class="info">
+    <p>{{dateCalendar}} <small>{{dateAgo}}</small></p>
+    <p class="description">{{note}}</p>
+    <p>{{groups.number}} Groups, {{groups.size}} Raiders, {{groups.tanks}} Tanks and {{groups.healers}} Healers required in each group.</p>
+    <p>{{signups.length}} Signups, {{totalTanks}} Tanks and {{totalHealers}} Healers</p>
+    <div class="waiting-list">
+      <h3>Waiting List</h3>
+      <ul>
+        {{#each waitingList itemController="signup"}}
+        <li>
+          <span {{bind-attr class=classes}}>{{character.name}}</span>
+          <small>{{character.level}}</small>
+          <small>{{role}}</small>
+          <a {{action 'unsignup' this}}><i class="fa fa-close fa-fw"></i></a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    {{character-select characters=characters action="signup"}}
+  </section>
+  <section class="graphs">
+    <div class="wrapper">
+      {{donut-graph title="Classes" data=data}}
+      {{donut-graph title="Roles" data=roleData}}
+    </div>
+  </section>
 </div>
-
-{{character-select characters=characters
-                   action="signup"}}

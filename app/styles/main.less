@@ -11,6 +11,44 @@
 .class-10 { color: @monk; }
 .class-11 { color: @druid; }
 
+.tank { color: @tank; }
+.healing { color: @healing; }
+.dps { color: @dps; }
+
+svg {
+  .class-1 { fill: @warrior; }
+  .class-2 { fill: @paladin; }
+  .class-3 { fill: @hunter; }
+  .class-4 { fill: @rogue; }
+  .class-5 { fill: @priest; }
+  .class-6 { fill: @death-knight; }
+  .class-7 { fill: @shaman; }
+  .class-8 { fill: @mage; }
+  .class-9 { fill: @warlock; }
+  .class-10 { fill: @monk; }
+  .class-11 { fill: @druid; }
+
+  .tank { fill: @tank; }
+  .healing { fill: @healing; }
+  .dps { fill: @dps; }
+
+  .border-class-1 { fill: darken(@warrior, 15%); }
+  .border-class-2 { fill: darken(@paladin, 15%); }
+  .border-class-3 { fill: darken(@hunter, 15%); }
+  .border-class-4 { fill: darken(@rogue, 15%); }
+  .border-class-5 { fill: darken(@priest, 15%); }
+  .border-class-6 { fill: darken(@death-knight, 15%); }
+  .border-class-7 { fill: darken(@shaman, 15%); }
+  .border-class-8 { fill: darken(@mage, 15%); }
+  .border-class-9 { fill: darken(@warlock, 15%); }
+  .border-class-10 { fill: darken(@monk, 15%); }
+  .border-class-11 { fill: darken(@druid, 15%); }
+
+  .border-tank { fill: darken(@tank, 15%); }
+  .border-healing { fill: darken(@healing, 15%); }
+  .border-dps { fill: darken(@dps, 15%); }
+}
+
 // Faction colors
 .alliance { color: @alliance; }
 .horde { color: @horde; }
@@ -106,6 +144,31 @@
 
   section.info {
     .make-md-column(3);
+  }
+
+  section.graphs {
+    .make-md-column(9);
+
+    .wrapper {
+      .make-row();
+
+      .graph-container {
+        .make-md-column(3);
+        .clearfix();
+
+        h3 {
+          margin-top: 0;
+          font-size: 1.2em;
+        }
+      }
+
+      .graph {
+        border-radius: 10px;
+        background: @gray-darker;
+        padding: 10px;
+        text-align: center;
+      }
+    }
   }
 
   section.groups {

@@ -20,6 +20,9 @@ app.import('bower_components/font-awesome/fonts/fontawesome-webfont.svg', { dest
 app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf', { destDir: 'fonts' });
 app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff', { destDir: 'fonts' });
 
+// D3
+app.import('bower_components/d3/d3.js');
+
 // Lodash
 app.import('bower_components/lodash/dist/lodash.js');
 
