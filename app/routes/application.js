@@ -12,6 +12,7 @@ export default Ember.Route.extend({
           type: 'GET',
           url: ENV.api + '/account',
           headers: {
+            Accept: 'application/json+ember',
             Authorization: 'apikey ' + apikey
           },
           success: function(data) {

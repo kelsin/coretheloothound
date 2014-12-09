@@ -6,6 +6,7 @@ export default DS.ActiveModelAdapter.extend({
 
   headers: function() {
     return {
+      'Accept': 'application/json+ember',
       'Authorization': 'apikey ' + this.get('storage').getValue('apikey')
     };
   }.property().volatile()

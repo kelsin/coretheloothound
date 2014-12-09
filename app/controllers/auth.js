@@ -18,6 +18,9 @@ export default Ember.Controller.extend({
       Ember.$.ajax({
         type: 'GET',
         url: ENV.api + '/login',
+        headers: {
+          Accept: 'application/json+ember'
+        },
         data: {
           redirect: window.location.protocol +
             '//' + window.location.host +
