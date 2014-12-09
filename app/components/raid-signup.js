@@ -14,10 +14,10 @@ export default Ember.Component.extend({
       this.sendAction("unsignup",
                       this.get('signup.content'));
     },
-    seat: function() {
+    seat: function(role) {
       this.sendAction("seat",
                       this.get('signup.content'),
-                      this.get('role'));
+                      role);
     },
     unseat: function() {
       this.sendAction("unseat",

@@ -9,15 +9,13 @@
     {{/each}}
   {{/if}}
 </small>
-<a {{action 'unsignup'}}><i class="fa fa-close fa-fw"></i></a>
 {{#if signup.seated}}
   <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
 {{else}}
   {{#if signup.canBeSeated}}
-    {{view "select" content=signup.roles
-                    selection=role
-                    optionValuePath="content.id"
-                    optionLabelPath="content.name"}}
-    <a {{action 'seat'}}><i class="fa fa-arrow-circle-right fa-fw"></i></a>
+    {{#each signup.roles itemController="role"}}
+    <a {{action 'seat' this}}><i {{bind-attr class="iconClasses"}}></i></a>
+    {{/each}}
   {{/if}}
 {{/if}}
+<a {{action 'unsignup'}}><i class="fa fa-close fa-fw"></i></a>
