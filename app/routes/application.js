@@ -26,6 +26,10 @@ export default Ember.Route.extend({
               _this.store.push('guild', guild);
             });
 
+            Ember.$.each(data.roles, function(index, role) {
+              _this.store.push('role', role);
+            });
+
             resolve({
               apikey: apikey,
               account: data.account

@@ -6,17 +6,18 @@ export default Ember.ObjectController.extend({
   needs: ['application'],
   account: Ember.computed.alias('controllers.application.account'),
 
-  roles: function() {
-    return this.get('seated').map(function(signup) {
-      return signup.get('role');
-    }).uniq().sortBy('id');
-  }.property('seated.@each.role'),
+  moreThanOneGroup: function() {
+    return this.get('groups.number') > 1;
+  }.property('groups.number'),
 
   signedUpCharacterIds: function() {
     return this.get('signups').map(function(signup) {
       return signup.get('character.id');
     });
   }.property('signups.@each'),
+
+  rolesSorting: ['slug:desc'],
+  sortedRoles: Ember.computed.sort('roles', 'rolesSorting'),
 
   characters: function() {
     var ids = this.get('signedUpCharacterIds');

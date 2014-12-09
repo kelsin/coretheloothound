@@ -1,9 +1,11 @@
 <div class="raid">
   <section class="title">
-    <h1>{{name}} <small>{{account.battletag}}</small></h1>
+    <h1>{{name}}</h1>
   </section>
   <section class="info">
-    <p><i class="fa fa-calendar"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
+    <p><i class="fa fa-legal fa-fw"></i> {{account.battletag}}</p>
+    <p><i class="fa fa-calendar fa-fw"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
+    <p><i class="fa fa-pie-chart fa-fw"></i> {{groups.number}} group{{#if moreThanOneGroup}}s{{/if}} of {{groups.size}}</p>
     <p class="description">{{note}}</p>
     {{character-select characters=characters action="signup"}}
   </section>
@@ -12,7 +14,7 @@
       <div title="Accounts signed up" class="stat">{{accountSignups}} <i class="fa fa-users fa-fw"></i></div>
       <div title="Accounts on the waiting list" class="stat">{{accountWaitingList}} <i class="fa fa-bars fa-fw"></i></div>
       <div title="Seated accounts" class="stat">{{accountSeated}} <i class="fa fa-check fa-fw"></i></div>
-      {{#each roles itemController="role"}}
+      {{#each sortedRoles itemController="role"}}
         <div {{bind-attr title="name"}} {{bind-attr class="statClasses"}}>{{number}} <i {{bind-attr class="iconClasses"}}></i></div>
       {{/each}}
     </div>
