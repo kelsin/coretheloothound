@@ -1,14 +1,14 @@
 <span {{bind-attr class=classes}}>{{signup.character.name}}</span>
-<small>{{signup.character.level}}</small>
-<small>
-  {{#if signup.seated}}
-    {{signup.role.name}}
-  {{else}}
-    {{#each signup.roles}}
-      {{name}}
+{{signup.character.level}}
+{{#if signup.seated}}
+  <i {{bind-attr class="iconClasses"}}></i>
+{{else}}
+  {{#unless signup.canBeSeated}}
+    {{#each signup.roles itemController="role"}}
+    <i {{bind-attr class="iconClasses"}}></i>
     {{/each}}
-  {{/if}}
-</small>
+  {{/unless}}
+{{/if}}
 {{#if signup.seated}}
   <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
 {{else}}

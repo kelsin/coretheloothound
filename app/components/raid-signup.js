@@ -9,6 +9,10 @@ export default Ember.Component.extend({
     return classes;
   }.property('signup.character.class_id'),
 
+  iconClasses: function() {
+    return 'fa fa-' + this.get('signup.role.icon') + ' fa-fw';
+  }.property('signup.role.icon'),
+
   actions: {
     unsignup: function() {
       this.sendAction("unsignup",
