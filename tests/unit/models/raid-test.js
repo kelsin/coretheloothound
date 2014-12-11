@@ -5,7 +5,7 @@ import {
 
 moduleForModel('raid', 'Raid', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:account', 'model:character', 'model:guild', 'model:permission', 'model:permissioned', 'model:role', 'model:signup']
 });
 
 test('it exists', function() {

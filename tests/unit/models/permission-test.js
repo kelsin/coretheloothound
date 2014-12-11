@@ -5,7 +5,7 @@ import {
 
 moduleForModel('permission', 'Permission', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:permissioned']
 });
 
 test('it exists', function() {

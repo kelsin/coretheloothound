@@ -5,7 +5,7 @@ import {
 
 moduleForModel('character', 'Character', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:account', 'model:guild', 'model:signup', 'model:raid', 'model:role']
 });
 
 test('it exists', function() {

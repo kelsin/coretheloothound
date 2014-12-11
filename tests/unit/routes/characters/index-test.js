@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('route:raid/index', 'RaidIndexRoute', {
+moduleFor('route:characters/index', 'CharactersIndexRoute', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

@@ -5,7 +5,7 @@ import {
 
 moduleForComponent('character-select', 'CharacterSelectComponent', {
   // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
+  // needs: ['view:select']
 });
 
 test('it renders', function() {
