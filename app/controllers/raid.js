@@ -2,6 +2,7 @@ import Ember from 'ember';
 import CharacterController from './character';
 
 /* global moment */
+/* global _ */
 export default Ember.ObjectController.extend({
   needs: ['application'],
   account: Ember.computed.alias('controllers.application.account'),

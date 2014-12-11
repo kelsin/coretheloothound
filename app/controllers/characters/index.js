@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
     var realm = this.get('realm');
     var onlyMax = this.get('onlyMax');
 
-    return this.get('sorted').filter(function(character, index, enumerable) {
+    return this.get('sorted').filter(function(character) {
       if(onlyMax && character.get('level') < 100) {
         return false;
       }
