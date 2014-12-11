@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 import {
   moduleForComponent,
   test
@@ -5,7 +7,10 @@ import {
 
 moduleForComponent('raid-signup', 'RaidSignupComponent', {
   // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
+  needs: ['controller:role'],
+  setup: function(container) {
+    container.register('controller:array', Ember.ArrayController, { instantiate: false });
+  }
 });
 
 test('it renders', function() {
