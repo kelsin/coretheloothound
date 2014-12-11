@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     var apikey = this.get('storage').getValue('apikey');
 
     if (apikey) {
-      return new Ember.RSVP.Promise(function(resolve, reject) {
+      return new Ember.RSVP.Promise(function(resolve) {
         Ember.$.ajax({
           type: 'GET',
           url: ENV.api + '/account',

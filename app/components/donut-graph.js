@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 /* global d3 */
-/* global _ */
 /* global Math */
 export default Ember.Component.extend({
   classNames: ['graph-container'],
@@ -74,12 +73,6 @@ export default Ember.Component.extend({
   }.observes('data.@each'),
 
   didInsertElement: function() {
-    var _this = this;
-    var data = this.get('data');
-
-    var arcOuter = this.get('arcOuter');
-    var arcInner = this.get('arcInner');
-
     var element = d3.select('#' + this.get('elementId') + ' .graph');
 
     var svg = element.append('svg')

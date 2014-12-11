@@ -10,7 +10,6 @@ export function characterFaction(race_id) {
   case 22:
   case 25:
     return 'Alliance';
-    break;
   case 2:
   case 5:
   case 6:
@@ -19,11 +18,10 @@ export function characterFaction(race_id) {
   case 10:
   case 26:
     return 'Horde';
-    break;
   case 24:
+    return 'Neutral';
   default:
     return 'Neutral';
-    break;
   }
 }
 

@@ -1,5 +1,3 @@
-/* global $ */
-
 import ENV from 'coretheloothound/config/environment';
 import Ember from 'ember';
 
@@ -41,7 +39,7 @@ export default Ember.Controller.extend({
         headers: {
           Authorization: 'apikey ' + this.get('apikey')
         },
-        success: function(data) {
+        success: function() {
           _this.get('storage').removeValue('apikey');
           _this.set('apikey', undefined);
           _this.set('account', undefined);

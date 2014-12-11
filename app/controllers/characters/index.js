@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+/* global _ */
 export default Ember.Controller.extend({
   realm: 'All',
   onlyMax: true,
