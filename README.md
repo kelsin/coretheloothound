@@ -1,7 +1,6 @@
 # Coretheloothound
 
 [![Build Status](http://img.shields.io/travis/kelsin/coretheloothound.svg)](https://travis-ci.org/kelsin/coretheloothound)
-[![Code Coverage](http://img.shields.io/codeclimate/coverage/github/kelsin/coretheloothound.svg)](https://codeclimate.com/github/kelsin/coretheloothound)
 [![Code Climate](http://img.shields.io/codeclimate/github/kelsin/coretheloothound.svg)](https://codeclimate.com/github/kelsin/coretheloothound)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kelsin/coretheloothound/blob/master/LICENSE)
 [![Tips](https://img.shields.io/gratipay/kelsin.svg)](https://gratipay.com/kelsin/)
