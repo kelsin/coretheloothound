@@ -1,60 +1,62 @@
 <div class="raid">
   <section class="title">
     <h1>{{name}}</h1>
-  </section>
-  <section class="info">
-    <p><i class="fa fa-legal fa-fw"></i> {{account.battletag}}</p>
-    <p><i class="fa fa-calendar fa-fw"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
-    <p><i class="fa fa-pie-chart fa-fw"></i> {{groups.number}} group{{#if moreThanOneGroup}}s{{/if}} of {{groups.size}}</p>
-    <p><i class="fa fa-shield fa-fw"></i> {{groups.tanks}} tanks required</p>
-    <p><i class="fa fa-ambulance fa-fw"></i> {{groups.healers}} healers required</p>
-    <p class="description">{{note}}</p>
-    {{character-select characters=characters action="signup"}}
-  </section>
-  <section class="stats">
-    <div class="row">
-      <div title="Accounts signed up" class="stat">{{accountSignups}} <i class="fa fa-users fa-fw"></i></div>
-      <div title="Accounts on the waiting list" class="stat">{{accountWaitingList}} <i class="fa fa-bars fa-fw"></i></div>
-      <div title="Seated accounts" class="stat">{{accountSeated}} <i class="fa fa-check fa-fw"></i></div>
+    <div class="stats">
       {{#each sortedRoles itemController="role"}}
-        <div {{bind-attr title="name"}} {{bind-attr class="statClasses"}}>{{number}} <i {{bind-attr class="iconClasses"}}></i></div>
+      <div {{bind-attr title="name"}} {{bind-attr class="statClasses"}}>{{number}} <i {{bind-attr class="iconClasses"}}></i></div>
       {{/each}}
+      <div title="Seated accounts" class="stat">{{accountSeated}} <i class="fa fa-check fa-fw"></i></div>
+      <div title="Accounts on the waiting list" class="stat">{{accountWaitingList}} <i class="fa fa-bars fa-fw"></i></div>
+      <div title="Accounts signed up" class="stat">{{accountSignups}} <i class="fa fa-users fa-fw"></i></div>
     </div>
   </section>
-  <section class="graphs">
-    <div class="wrapper">
-      {{donut-graph title="Signed Up Classes" data=classData}}
-      {{donut-graph title="Signed Up Roles" data=roleData}}
-      {{donut-graph title="Seated Classes" data=seatedClassData}}
-      {{donut-graph title="Seated Roles" data=seatedRoleData}}
-    </div>
+  <section class="alerts">
   </section>
-  <section class="groups">
-    <div class="row">
-      <div class="signups">
-        <h3>Signups</h3>
-        <ul>
-          {{#each signups itemController="signup"}}
-          <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
-          {{/each}}
-        </ul>
+  <div class="raid-wrapper">
+    <section class="info">
+      <p><i class="fa fa-legal fa-fw"></i> {{account.battletag}}</p>
+      <p><i class="fa fa-calendar fa-fw"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
+      <p><i class="fa fa-pie-chart fa-fw"></i> {{groups.number}} group{{#if moreThanOneGroup}}s{{/if}} of {{groups.size}}</p>
+        <p><i class="fa fa-shield fa-fw"></i> {{groups.tanks}} tanks required</p>
+        <p><i class="fa fa-ambulance fa-fw"></i> {{groups.healers}} healers required</p>
+        <p class="description">{{note}}</p>
+        {{character-select characters=characters action="signup"}}
+    </section>
+    <section class="graphs">
+      <div class="wrapper">
+        {{donut-graph title="Signed Up Classes" data=classData}}
+        {{donut-graph title="Signed Up Roles" data=roleData}}
+        {{donut-graph title="Seated Classes" data=seatedClassData}}
+        {{donut-graph title="Seated Roles" data=seatedRoleData}}
       </div>
-      <div class="waiting-list">
-        <h3>Waiting List</h3>
-        <ul>
-          {{#each waitingList itemController="signup"}}
-          <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
-          {{/each}}
-        </ul>
+    </section>
+    <section class="groups">
+      <div class="row">
+        <div class="signups">
+          <h3>Signups</h3>
+          <ul>
+            {{#each signups itemController="signup"}}
+            <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="waiting-list">
+          <h3>Waiting List</h3>
+          <ul>
+            {{#each waitingList itemController="signup"}}
+            <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="seated">
+          <h3>Seated</h3>
+          <ul>
+            {{#each seated itemController="signup"}}
+            <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
+            {{/each}}
+          </ul>
+        </div>
       </div>
-      <div class="seated">
-        <h3>Seated</h3>
-        <ul>
-          {{#each seated itemController="signup"}}
-          <li>{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>

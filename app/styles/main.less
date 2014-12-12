@@ -159,18 +159,40 @@ header {
 
 // Raids
 .raid {
-  .make-row();
-
   img.new-signup-image {
     margin-top: 10px;
   }
 
   section.title {
-    .make-md-column(12);
+    .make-row();
 
     h1 {
+      .make-md-column(6);
       font-size: 3em;
+      height: 50px;
     }
+
+    .stats {
+      .make-md-column(6);
+      height: 50px;
+      margin: 20px 0 10px;
+
+      .stat {
+        line-height: 50px;
+        height: 50px;
+        font-size: 1.4em;
+        float: right;
+        padding-left: 20px;
+      }
+    }
+  }
+
+  section.title {
+    .make-row();
+  }
+
+  .raid-wrapper {
+    .make-row();
   }
 
   section.info {
@@ -199,16 +221,6 @@ header {
         padding: 10px;
         text-align: center;
       }
-    }
-  }
-
-  section.stats {
-    .make-md-column(9);
-    margin-bottom: 0.7em;
-    font-size: 3em;
-
-    div.stat {
-      .make-md-column(2);
     }
   }
 
