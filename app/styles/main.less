@@ -89,15 +89,33 @@ svg {
   }
 }
 
-// Session View
-.auth {
-  padding: 10px 0;
-  text-align: right;
-  overflow: auto;
+// Header
+header {
+  border-bottom: 1px solid @gray;
 
-  li {
-    display: inline-block;
-    padding-left: 20px;
+  div.wrapper {
+    .make-row();
+
+    h1 {
+      .make-md-column(6);
+      margin-top: 15px;
+      margin-bottom: 10px;
+      font-size: 1.6em;
+    }
+
+    // Session View
+    .auth {
+      .make-md-column(6);
+      text-align: right;
+      overflow: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      li {
+        display: inline-block;
+        padding-left: 20px;
+      }
+    }
   }
 }
 
@@ -149,6 +167,10 @@ svg {
 
   section.title {
     .make-md-column(12);
+
+    h1 {
+      font-size: 3em;
+    }
   }
 
   section.info {

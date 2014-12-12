@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
 
       Ember.$.ajax({
         type: 'GET',
-        url: 'https://api.byfirebepurged.com/logout',
+        url: ENV.api + '/logout',
         headers: {
           Authorization: 'apikey ' + this.get('apikey')
         },

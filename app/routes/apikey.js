@@ -8,6 +8,6 @@ export default Ember.Route.extend({
   afterModel: function(apikey, transition) {
     this.get('storage').setValue('apikey', apikey);
     transition.send('loadUser');
-    this.transitionTo('index');
+    this.transitionTo('raids.index');
   }
 });

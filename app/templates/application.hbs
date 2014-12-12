@@ -1,11 +1,11 @@
 <div class="container">
-  {{render "auth"}}
-  <div class="page-header">
-    <h1>Core the Loot Hound! <small>A World of Warcraft Raiding Site</small></h1>
-  </div>
-  <div>
-    {{outlet}}
-  </div>
+  <header>
+    <div class="wrapper">
+      <h1>Core the Loot Hound</h1>
+      {{render "auth"}}
+    </div>
+  </header>
+  {{outlet}}
   <footer>
     <div class="wrapper">
       <section class="description">
