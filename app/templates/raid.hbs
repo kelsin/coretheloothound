@@ -11,6 +11,24 @@
     </div>
   </section>
   <section class="alerts">
+    {{#if currentAccountSeated}}
+      <div class="alert alert-success" role="alert">
+        <img {{bind-attr src="currentAccountSeated.character.image_url"}}/>
+        <strong>Seated</strong>
+        on {{currentAccountSeated.character.name}}. See you at the raid!
+      </div>
+    {{else}}
+      {{#if currentAccountSignedUp}}
+        <div class="alert alert-info" role="alert">
+          You have {{currentAccountSignedUp.length}} characters on the <strong>Waiting List</strong>.
+        </div>
+      {{else}}
+        <div class="alert alert-warning" role="alert">
+          <strong>Not Signed Up!</strong>
+          Sign up using the form below!
+        </div>
+      {{/if}}
+    {{/if}}
   </section>
   <div class="raid-wrapper">
     <section class="info">

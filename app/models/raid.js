@@ -7,5 +7,6 @@ export default Permissioned.extend({
   note: DS.attr('string'),
   account: DS.belongsTo('account'),
   groups: DS.attr(),
+  status: DS.attr(),
   signups: DS.hasMany('signup')
 });

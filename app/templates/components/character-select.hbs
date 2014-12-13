@@ -11,21 +11,14 @@
                         optionValuePath="content.id"
                         optionLabelPath="content.label"}}
 
-        <div class="row">
-          <div class="col-md-6">
-            <img class="new-signup-image" {{bind-attr src="character.image_url"}}/>
+        {{#each roleCheckboxes}}
+          <div class="checkbox">
+            <label>
+              {{input id=slug type="checkbox" checked=checked name=name}}
+              {{name}}
+            </label>
           </div>
-          <div class="col-md-6">
-            {{#each roleCheckboxes}}
-              <div class="checkbox">
-                <label>
-                  {{input id=slug type="checkbox" checked=checked name=name}}
-                  {{name}}
-                </label>
-              </div>
-            {{/each}}
-          </div>
-        </div>
+        {{/each}}
       </div>
       <button class="btn btn-primary" {{action 'signup'}}>Sign Up</button>
     </div>

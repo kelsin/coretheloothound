@@ -91,6 +91,17 @@ export default Ember.ObjectController.extend({
 
   seated: Ember.computed.filterBy('signups', 'seated', true),
   unseated: Ember.computed.filterBy('signups', 'seated', false),
+
+  currentAccountSeated: function() {
+    var accountId = this.get('account.id').toString();
+    return this.get('seated').findBy('character.account.id', accountId);
+  }.property('seated.@each.character', 'account.id'),
+
+  currentAccountSignedUp: function() {
+    var accountId = this.get('account.id').toString();
+    return this.get('signups').filterBy('character.account.id', accountId);
+  }.property('signups.@each.character', 'account.id'),
+
   // Waiting list doesn't include anyone from an account that has been seated
   waitingList: function() {
     var seated = this.get('seated');

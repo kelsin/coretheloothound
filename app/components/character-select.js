@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   roleCheckboxes: Ember.computed.map('character.roles', function(role){
     return Ember.ObjectProxy.create({
       content: role,
-      checked: false
+      checked: true
     });
   }),
 
