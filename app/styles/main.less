@@ -187,8 +187,16 @@ header {
     }
   }
 
-  section.title {
+  section.alerts {
     .make-row();
+
+    .wrapper {
+      .make-md-column(12);
+
+      .alert-success, .alert-warning, .alert-info, .alert-danger {
+        background-color: @gray-darker;
+      }
+    }
   }
 
   .raid-wrapper {
@@ -197,6 +205,29 @@ header {
 
   section.info {
     .make-md-column(3);
+  }
+
+  section.seated, section.waiting-list {
+    .make-md-column(9);
+    margin-bottom: 20px;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .wrapper {
+      .make-row();
+
+      .signup-wrapper {
+        .make-md-column(3);
+
+        .signup {
+          border-radius: 5px;
+          padding: 5px 10px;
+          background-color: @gray-darker;
+        }
+      }
+    }
   }
 
   section.graphs {

@@ -1,5 +1,3 @@
-<span {{bind-attr class=classes}}>{{signup.character.name}}</span>
-{{signup.character.level}}
 {{#if signup.seated}}
   <i {{bind-attr class="iconClasses"}}></i>
 {{else}}
@@ -9,6 +7,7 @@
     {{/each}}
   {{/unless}}
 {{/if}}
+<span {{bind-attr class=classes}}>{{signup.character.name}}</span>
 {{#if signup.seated}}
   <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
 {{else}}

@@ -89,7 +89,17 @@ export default Ember.ObjectController.extend({
     }
   },
 
-  seated: Ember.computed.filterBy('signups', 'seated', true),
+  hasWaitingList: function() {
+    return this.get('waitingList.length') > 0;
+  }.property('waitingList.length'),
+
+  hasSeated: function() {
+    return this.get('seated.length') > 0;
+  }.property('seated.length'),
+
+  seatedUnsorted: Ember.computed.filterBy('signups', 'seated', true),
+  seatedSortFields: ['role.name:desc', 'name'],
+  seated: Ember.computed.sort('seatedUnsorted', 'seatedSortFields'),
   unseated: Ember.computed.filterBy('signups', 'seated', false),
 
   currentAccountSeated: function() {

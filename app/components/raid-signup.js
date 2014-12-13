@@ -1,8 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: 'signup',
+
   classes: function() {
-    var classes = 'class-' + this.get('character.class_id');
+    var classes = 'class-' + this.get('signup.character.class_id');
     if(this.get('preferred')) {
       classes += ' preferred';
     }
