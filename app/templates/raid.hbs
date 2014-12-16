@@ -24,13 +24,12 @@
             You have {{currentAccountSignedUp.length}} characters on the <strong>Waiting List</strong>.
           </div>
         {{else}}
-          <div class="alert alert-warning" role="alert">
+          <div class="alert alert-danger" role="alert">
             <strong>Not Signed Up!</strong>
             Sign up using the form below!
           </div>
         {{/if}}
       {{/if}}
-
     </div>
   </section>
   <div class="raid-wrapper">
@@ -39,9 +38,12 @@
       <p><i class="fa fa-shield fa-fw"></i> {{groups.tanks}} tanks required</p>
       <p><i class="fa fa-ambulance fa-fw"></i> {{groups.healers}} healers required</p>
       <p><i class="fa fa-pie-chart fa-fw"></i> {{groups.number}} group{{#if moreThanOneGroup}}s{{/if}} of {{groups.size}}</p>
-      <p><i class="fa fa-legal fa-fw"></i> {{account.battletag}}</p>
+      {{#if admin}}
+        <p><i class="fa fa-legal fa-fw"></i> You're an admin</p>
+      {{/if}}
       {{#if note}}<p><i class="fa fa-pencil fa-fw"></i> {{note}}</p>{{/if}}
       {{character-select characters=characters action="signup"}}
+      {{raid-permissions raid=this account=account newPermission="newPermission" deletePermission="deletePermission"}}
     </section>
     {{#if hasSeated}}
     <section class="seated">

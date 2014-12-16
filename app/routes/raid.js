@@ -45,8 +45,26 @@ export default Ember.Route.extend({
         signup.save();
       });
     },
+
     unsignup: function(signup) {
       signup.destroyRecord();
+    },
+
+    newPermission: function(level, key) {
+      var _this = this;
+      var raid = this.currentModel.raid;
+
+      var permission = this.store.createRecord('permission', {
+        level: level,
+        key: key,
+        permissioned: raid
+      });
+
+      permission.save();
+    },
+
+    deletePermission: function(permission) {
+      permission.destroyRecord();
     }
   }
 });
