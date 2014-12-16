@@ -15,6 +15,10 @@ export default Ember.Component.extend({
     return 'fa fa-' + this.get('signup.role.icon') + ' fa-fw';
   }.property('signup.role.icon'),
 
+  mine: function() {
+    return this.get('account.id') === this.get('signup.character.account.id');
+  }.property('account', 'signup.character.account'),
+
   actions: {
     unsignup: function() {
       this.sendAction("unsignup",

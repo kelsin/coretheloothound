@@ -49,7 +49,7 @@
     <section class="seated">
       <div class="wrapper">
         {{#each seated itemController="signup"}}
-        <div class="signup-wrapper">{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</div>
+        <div class="signup-wrapper">{{raid-signup signup=this account=account seat="seat" unseat="unseat" unsignup="unsignup"}}</div>
         {{/each}}
       </div>
     </section>
@@ -59,7 +59,7 @@
         <h3>Waiting List</h3>
         <div class="wrapper">
           {{#each waitingList itemController="signup"}}
-          <div class="signup-wrapper">{{raid-signup signup=this seat="seat" unseat="unseat" unsignup="unsignup"}}</div>
+          <div class="signup-wrapper">{{raid-signup signup=this account=account seat="seat" unseat="unseat" unsignup="unsignup"}}</div>
           {{/each}}
         </div>
       </section>
