@@ -3,15 +3,12 @@ import Ember from 'ember';
 /* global _ */
 export default Ember.Route.extend({
   model: function(params) {
-    return Ember.RSVP.hash({
-      raid: this.store.find('raid', params.raid_id),
-      roles: this.store.all('role')
-    });
+    return this.store.find('raid', params.raid_id);
   },
 
   setupController: function (controller, model) {
-    controller.set('model', model.raid);
-    controller.set('roles', model.roles);
+    controller.set('model', model);
+    controller.set('roles', this.store.all('role'));
   },
 
   actions: {
