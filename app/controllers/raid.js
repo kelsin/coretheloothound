@@ -4,8 +4,9 @@ import CharacterController from './character';
 /* global moment */
 /* global _ */
 export default Ember.ObjectController.extend({
-  needs: ['application'],
+  needs: ['application', 'raids/index'],
   account: Ember.computed.alias('controllers.application.account'),
+  roles: Ember.computed.alias('controllers.raids/index.roles'),
 
   moreThanOneGroup: function() {
     return this.get('groups.number') > 1;
