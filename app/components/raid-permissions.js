@@ -20,17 +20,13 @@ export default Ember.Component.extend({
     newMemberCharacterPermission: function() {
       this.sendAction('newPermission',
                       'member',
-                      'Character|'
-                      + this.get('characterName')
-                      + this.get('characterRealm'));
+                      'Character|' + this.get('characterName') + this.get('characterRealm'));
     },
 
     newMemberGuildPermission: function() {
       this.sendAction('newPermission',
                       'member',
-                      'Guild|'
-                      + this.get('guildName')
-                      + this.get('guildRealm'));
+                      'Guild|' + this.get('guildName') + this.get('guildRealm'));
     },
 
     deletePermission: function(permission) {
