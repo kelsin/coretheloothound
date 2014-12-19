@@ -12,24 +12,6 @@ export default Ember.Controller.extend({
   loggedIn: Ember.computed.alias('controllers.application.loggedIn'),
 
   actions: {
-    login: function() {
-      Ember.$.ajax({
-        type: 'GET',
-        url: ENV.api + '/login',
-        headers: {
-          Accept: 'application/json+ember'
-        },
-        data: {
-          redirect: window.location.protocol +
-            '//' + window.location.host +
-            '/#/apikey/'
-        },
-        success: function(data) {
-          window.location = data.href;
-        }
-      });
-    },
-
     logout: function() {
       var _this = this;
 
@@ -37,7 +19,7 @@ export default Ember.Controller.extend({
         type: 'GET',
         url: ENV.api + '/logout',
         headers: {
-          Authorization: 'apikey ' + this.get('apikey')
+          Authorization: 'apikey ' + _this.get('apikey')
         },
         success: function() {
           _this.get('storage').removeValue('apikey');

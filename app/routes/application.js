@@ -60,6 +60,24 @@ export default Ember.Route.extend({
   actions: {
     loadUser: function() {
       this.refresh();
+    },
+
+    login: function() {
+      Ember.$.ajax({
+        type: 'GET',
+        url: ENV.api + '/login',
+        headers: {
+          Accept: 'application/json+ember'
+        },
+        data: {
+          redirect: window.location.protocol +
+            '//' + window.location.host +
+            '/#/apikey/'
+        },
+        success: function(data) {
+          window.location = data.href;
+        }
+      });
     }
   }
 });
