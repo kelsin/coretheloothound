@@ -48,7 +48,7 @@ export default Ember.Route.extend({
     },
 
     newPermission: function(level, key) {
-      var raid = this.currentModel.raid;
+      var raid = this.currentModel;
 
       var permission = this.store.createRecord('permission', {
         level: level,
