@@ -3,6 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: 'signup',
 
+  rolesSorting: ['slug:desc'],
+  sortedRoles: Ember.computed.sort('signup.roles', 'rolesSorting'),
+
   classes: function() {
     var classes = 'class-' + this.get('signup.character.class_id');
     if(this.get('preferred')) {
