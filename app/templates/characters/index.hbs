@@ -11,7 +11,7 @@
   {{#each character in filtered itemController="character"}}
     <div class="character">
       <h3>{{character.name}} <small>{{character.level}} {{character.realm}}</small></h3>
-      <img {{bind-attr src="character.image_url"}}/>
+      <img class="character" {{bind-attr src="character.image_url"}}/>
       <p>{{character-race character.race_id}} {{character-class character.class_id}}</p>
       <p class="links">
         <a {{bind-attr href="character.armoryUrl"}}><img src="images/wow.png"/></a>

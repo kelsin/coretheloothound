@@ -132,7 +132,7 @@ header {
       .make-md-column(12);
     }
 
-    .character {
+    div.character {
       overflow: auto;
       margin-bottom: 20px;
       .make-sm-column(6);
@@ -141,7 +141,14 @@ header {
 
       img {
         float: left;
+        margin: 0;
         padding: 0 10px 10px 0;
+
+        &.character {
+          padding: 0;
+          margin: 0 10px 10px 0;
+          border-radius: 5px;
+        }
       }
 
       & > h3 {
