@@ -140,7 +140,6 @@ export default Ember.ObjectController.extend({
     var _this = this;
 
     return this.get('waitingList').mapBy('character.account').uniq().map(function(account) {
-      console.log(account);
       return Ember.Object.create({
         account: account,
         signups: _this.get('waitingList').filterBy('character.account.id', account.get('id'))
