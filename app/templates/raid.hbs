@@ -44,25 +44,27 @@
       {{character-select characters=characters action="signup"}}
       {{raid-permissions raid=this account=account newPermission="newPermission" deletePermission="deletePermission"}}
     </section>
-    {{#if hasSeated}}
-    <section class="seated">
+    <section class="signups">
       <div class="wrapper">
-        {{#each seated itemController="signup"}}
-        <div class="signup-wrapper">{{raid-signup signup=this account=account seat="seat" unseat="unseat" unsignup="unsignup"}}</div>
+        <div class="signup-wrapper waiting-list">
+          <h3><i class="fa fa-clock-o fa-fw"></i></h3>
+          {{#each waitingListAccount in waitingListByAccount}}
+            <h4>{{waitingListAccount.account.battletag}}</h4>
+            {{#each signup in waitingListAccount.signups itemController="signup"}}
+              {{raid-signup signup=signup account=account seat="seat" unseat="unseat" unsignup="unsignup"}}
+            {{/each}}
+          {{/each}}
+        </div>
+        {{#each seatedRole in seatedByRole}}
+          <div class="signup-wrapper">
+            <h3><i {{bind-attr class="seatedRole.role.iconClasses"}}></i></h3>
+            {{#each signup in seatedRole.signups itemController="signup"}}
+            {{raid-signup signup=signup account=account seat="seat" unseat="unseat" unsignup="unsignup"}}
+            {{/each}}
+          </div>
         {{/each}}
       </div>
     </section>
-    {{/if}}
-    {{#if hasWaitingList}}
-      <section class="waiting-list">
-        <h3>Waiting List</h3>
-        <div class="wrapper">
-          {{#each waitingList itemController="signup"}}
-          <div class="signup-wrapper">{{raid-signup signup=this account=account seat="seat" unseat="unseat" unsignup="unsignup"}}</div>
-          {{/each}}
-        </div>
-      </section>
-    {{/if}}
     <section class="graphs">
       <div class="wrapper">
         {{donut-graph title="Signed Up Classes" data=classData}}

@@ -103,6 +103,17 @@ export default Ember.ObjectController.extend({
   seated: Ember.computed.sort('seatedUnsorted', 'seatedSortFields'),
   unseated: Ember.computed.filterBy('signups', 'seated', false),
 
+  seatedByRole: function() {
+    var _this = this;
+
+    return this.get('sortedRoles').map(function(role) {
+      return Ember.Object.create({
+        role: role,
+        signups: _this.get('seated').filterBy('role.id', role.get('id'))
+      });
+    });
+  }.property('sortedRoles.@each.id', 'seated.@each.role'),
+
   currentAccountSeated: function() {
     var accountId = this.get('account.id').toString();
     return this.get('seated').findBy('character.account.id', accountId);
@@ -122,8 +133,20 @@ export default Ember.ObjectController.extend({
     }).uniq();
     return unseated.filter(function(signup) {
       return !account_ids.contains(signup.get('character.account.id'));
-    });
+    }).sortBy('character.account.battletag');
   }.property('seated.@each', 'unseated.@each'),
+
+  waitingListByAccount: function() {
+    var _this = this;
+
+    return this.get('waitingList').mapBy('character.account').uniq().map(function(account) {
+      console.log(account);
+      return Ember.Object.create({
+        account: account,
+        signups: _this.get('waitingList').filterBy('character.account.id', account.get('id'))
+      });
+    });
+  }.property('waitingList.@each.account'),
 
   seatedClassData: function() {
     var className = this.get('className');

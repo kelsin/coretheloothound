@@ -214,12 +214,17 @@ header {
     .make-md-column(3);
   }
 
-  section.seated, section.waiting-list {
+  section.signups {
     .make-md-column(9);
     margin-bottom: 20px;
 
     h3 {
       margin-top: 0;
+    }
+
+    h4 {
+      font-size: 0.8em;
+      margin: 11px 10px 4px;
     }
 
     .wrapper {
@@ -231,6 +236,7 @@ header {
         .signup {
           border-radius: 5px;
           padding: 5px 10px;
+          margin-bottom: 5px;
           background-color: @gray-darker;
         }
       }
@@ -276,10 +282,6 @@ header {
     div.waiting-list {
       .make-md-column(4);
     }
-}
-
-  section.signups {
-    .make-md-column(12);
   }
 
   section.log {
