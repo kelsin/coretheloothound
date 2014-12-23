@@ -6,5 +6,6 @@ export default DS.Model.extend({
   role: DS.belongsTo('role'),
   roles: DS.hasMany('role'),
   seated: DS.attr(),
-  preferred: DS.attr()
+  preferred: DS.attr(),
+  note: DS.attr()
 });

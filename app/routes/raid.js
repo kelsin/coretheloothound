@@ -23,12 +23,13 @@ export default Ember.Route.extend({
       signup.save();
     },
 
-    signup: function(character, role_ids) {
+    signup: function(character, note, role_ids) {
       var _this = this;
       var raid = this.currentModel;
 
       var signup = this.store.createRecord('signup', {
         character: character.get('model'),
+        note: note,
         raid: raid
       });
 
