@@ -3,16 +3,18 @@
 {{/if}}
 <span {{bind-attr class=classes}}>{{signup.character.name}}</span>
 {{#if signup.raid.admin}}
-  {{#if signup.seated}}
-    <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
-  {{else}}
-    {{#if signup.canBeSeated}}
-      {{#each sortedRoles itemController="role"}}
-      <a {{action 'seat' this}}><i {{bind-attr class="iconClasses"}}></i></a>
-      {{/each}}
+  <span class="pull-right">
+    {{#if signup.seated}}
+      <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
+    {{else}}
+      {{#if signup.canBeSeated}}
+        {{#each sortedRoles itemController="role"}}
+        <a {{action 'seat' this}}><i {{bind-attr class="iconClasses"}}></i></a>
+        {{/each}}
+      {{/if}}
     {{/if}}
-  {{/if}}
-  <a {{action 'unsignup'}}><i class="fa fa-close fa-fw"></i></a>
+    <a {{action 'unsignup'}}><i class="fa fa-close fa-fw"></i></a>
+  </span>
 {{else}}
   {{#if mine}}
     <a {{action 'unsignup'}}><i class="fa fa-close fa-fw"></i></a>
