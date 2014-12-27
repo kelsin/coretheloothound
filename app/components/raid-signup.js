@@ -6,8 +6,14 @@ export default Ember.Component.extend({
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('signup.roles', 'rolesSorting'),
 
+  attributeBindings: ['note:title'],
+
+  note: function() {
+    return this.get('signup.note');
+  }.property('signup.note'),
+
   classes: function() {
-    var classes = 'class-' + this.get('signup.character.class_id');
+    var classes = 'class class-' + this.get('signup.character.class_id');
     if(this.get('preferred')) {
       classes += ' preferred';
     }
