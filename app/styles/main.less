@@ -242,6 +242,14 @@ header {
           padding: 5px 10px;
           margin-bottom: 5px;
           background-color: @gray-darker;
+
+          &[title]:not([title=""]) {
+            cursor: help;
+
+            .class {
+              border-bottom: 1px dotted gray;
+            }
+          }
         }
       }
     }
