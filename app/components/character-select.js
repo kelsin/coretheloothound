@@ -26,7 +26,6 @@ export default Ember.Component.extend({
       var roles = this.get('roles').map(function(role) {
         return role.get('id');
       });
-      alert(this.get('note'));
       this.sendAction("action",
                       this.get('character'),
                       this.get('note'),
