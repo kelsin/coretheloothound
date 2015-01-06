@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 /* global moment */
 export default Ember.ObjectController.extend({
+  needs: ['application'],
+  account: Ember.computed.alias('controllers.application.account'),
+
   init: function() {
     this._super();
     this.set('name', '');
@@ -15,6 +18,7 @@ export default Ember.ObjectController.extend({
 
       var raid = this.store.createRecord('raid', {
         name: this.get('name'),
+        guild: this.get('guild'),
         date: this.get('date')
       });
 

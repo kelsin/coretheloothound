@@ -6,6 +6,7 @@ import {
 moduleFor('controller:raids/new', 'RaidsNewController', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
+  needs: ['controller:application']
 });
 
 // Replace this with your real tests.

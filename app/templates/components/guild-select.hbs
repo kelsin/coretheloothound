@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="input-group margin-bottom-sm">
+      {{view "select"
+             content=guilds
+             selection=guild
+             optionValuePath="content.id"
+             optionLabelPath="content.fullName"
+             prompt="None"
+             class="form-control"}}
+    </div>
+  </div>
+</div>
