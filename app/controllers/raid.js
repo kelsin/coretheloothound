@@ -5,7 +5,7 @@ import CharacterController from './character';
 /* global _ */
 export default Ember.ObjectController.extend({
   needs: ['application', 'raids/index'],
-  account: Ember.computed.alias('controllers.application.account'),
+  currentAccount: Ember.computed.alias('controllers.application.account'),
   roles: Ember.computed.alias('controllers.raids/index.roles'),
 
   moreThanOneGroup: function() {
@@ -16,14 +16,14 @@ export default Ember.ObjectController.extend({
     return this.get('signups').map(function(signup) {
       return signup.get('character.id');
     });
-  }.property('signups.@each'),
+  }.property('signups.@each.character'),
 
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('roles', 'rolesSorting'),
 
   characters: function() {
     var ids = this.get('signedUpCharacterIds');
-    return this.get('account.characters')
+    return this.get('currentAccount.characters')
       .filter(function(character) {
         return !ids.contains(character.get('id'));
       })
@@ -40,7 +40,7 @@ export default Ember.ObjectController.extend({
           return a.get('name').localeCompare(b.get('name'));
         }
       });
-  }.property('account.characters', 'signedUpCharacterIds'),
+  }.property('currentAccount.characters', 'signedUpCharacterIds'),
 
   dateAgo: function() {
     return moment(this.get('date')).fromNow();
@@ -54,19 +54,19 @@ export default Ember.ObjectController.extend({
     return this.get('signups').map(function(signup) {
       return signup.get('character.account.id');
     }).uniq().get('length');
-  }.property('signups.@each'),
+  }.property('signups.@each.character'),
 
   accountWaitingList: function() {
     return this.get('waitingList').map(function(signup) {
       return signup.get('character.account.id');
     }).uniq().get('length');
-  }.property('waitingList.@each'),
+  }.property('waitingList.@each.character'),
 
   accountSeated: function() {
     return this.get('seated').map(function(signup) {
       return signup.get('character.account.id');
     }).uniq().get('length');
-  }.property('seated.@each'),
+  }.property('seated.@each.character'),
 
   totalSlots: function() {
     var groups = this.get('groups');
@@ -115,14 +115,14 @@ export default Ember.ObjectController.extend({
   }.property('sortedRoles.@each.id', 'seated.@each.role'),
 
   currentAccountSeated: function() {
-    var accountId = this.get('account.id').toString();
+    var accountId = this.get('currentAccount.id').toString();
     return this.get('seated').findBy('character.account.id', accountId);
-  }.property('seated.@each.character', 'account.id'),
+  }.property('seated.@each.character', 'currentAccount.id'),
 
   currentAccountSignedUp: function() {
-    var accountId = this.get('account.id').toString();
+    var accountId = this.get('currentAccount.id').toString();
     return this.get('signups').filterBy('character.account.id', accountId);
-  }.property('signups.@each.character', 'account.id'),
+  }.property('signups.@each.character', 'currentAccount.id'),
 
   // Waiting list doesn't include anyone from an account that has been seated
   waitingList: function() {
@@ -134,7 +134,7 @@ export default Ember.ObjectController.extend({
     return unseated.filter(function(signup) {
       return !account_ids.contains(signup.get('character.account.id'));
     }).sortBy('character.account.battletag');
-  }.property('seated.@each', 'unseated.@each'),
+  }.property('seated.@each.character', 'unseated.@each.character'),
 
   waitingListByAccount: function() {
     var _this = this;

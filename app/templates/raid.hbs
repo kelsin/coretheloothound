@@ -34,6 +34,7 @@
   <div class="raid-wrapper">
     <section class="info">
       <p><i class="fa fa-calendar fa-fw"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
+      <p><i class="fa fa-users fa-fw"></i> <a {{bind-attr href=guild.url}}>{{guild.name}}</a></p>
       <p><i class="fa fa-shield fa-fw"></i> {{groups.tanks}} tanks required</p>
       <p><i class="fa fa-ambulance fa-fw"></i> {{groups.healers}} healers required</p>
       <p><i class="fa fa-pie-chart fa-fw"></i> {{groups.number}} group{{#if moreThanOneGroup}}s{{/if}} of {{groups.size}}</p>

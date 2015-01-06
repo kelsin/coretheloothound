@@ -5,7 +5,7 @@
     <tr><th>Realm</th><th>Guild</th><th>Title</th><th>Date</th><th>Signups</th><th>Roles</th><th>Creator</th></tr>
   </thead>
   <tbody>
-    {{#each raid in arrangedContent itemController="raid"}}
+    {{#each raid in controller}}
       <tr>
         <td>{{raid.guild.realm}}</td>
         <td>{{raid.guild.name}}</td>
