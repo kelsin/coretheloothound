@@ -14,13 +14,13 @@
       <label class="checkbox-inline">{{input type="checkbox" checked=onlyMax}} Only show level 90 characters</label>
     </div>
   </div>
-  {{#each characters}}
+  {{#each character in characters}}
     <div class="character">
-      <h3>{{name}} <small>{{level}} {{realm}}</small></h3>
-      <img {{bind-attr src="image_url"}}/>
-      <p>{{class class}}</p>
-      <p>{{spec.name}}</p>
-      <p><span {{bind-attr class="faction race"}}>{{race race}}</span></p>
+      <h3>{{character.name}} <small>{{character.level}} {{character.realm}}</small></h3>
+      <img {{bind-attr src="character.image_url"}}/>
+      <p>{{class character.class}}</p>
+      <p>{{character.spec.name}}</p>
+      <p><span {{bind-attr class="character.faction character.race"}}>{{race character.race}}</span></p>
     </div>
   {{else}}
     <div class="alert alert-info">No {{#if onlyMax}}Max Level {{/if}}Characters</div>

@@ -12,11 +12,11 @@
                         optionLabelPath="content.label"}}
         {{input class="form-control" placeholder="Note" value=note}}
 
-        {{#each roleCheckboxes}}
+        {{#each box in roleCheckboxes}}
           <div class="checkbox">
             <label>
-              {{input id=slug type="checkbox" checked=checked name=name}}
-              {{name}}
+              {{input id=slug type="checkbox" checked=box.checked name=box.name}}
+              {{box.name}}
             </label>
           </div>
         {{/each}}

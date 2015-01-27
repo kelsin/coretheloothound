@@ -1,4 +1,5 @@
---ignore-dir=tmp
 --ignore-dir=bower_components
 --ignore-dir=dist
+--ignore-dir=doc
+--ignore-dir=tmp
 --ignore-dir=vendor
