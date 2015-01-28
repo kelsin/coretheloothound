@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-  sortProperties: ['date', 'name', 'created_at'],
+  sortProperties: ['date', 'name'],
   itemController: 'raid'
 });
