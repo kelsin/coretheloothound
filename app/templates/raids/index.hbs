@@ -20,6 +20,9 @@
         <td>{{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}</td>
         <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}} <small>{{dateAgo}}</small></td>
         <td>
+          {{#if raid.admin}}
+            <i class="fa fa-legal fa-fw"></i>&nbsp;
+          {{/if}}
           {{#if raid.currentAccountSeated}}
             <strong class="text-success">Seated on {{raid.currentAccountSeated.character.name}}</strong>
           {{else}}
