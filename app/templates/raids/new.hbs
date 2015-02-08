@@ -11,6 +11,11 @@
     <label for="raid-name">Guild</label>
     {{guild-select account=account guild=guild}}
   </div>
+  <div class="checkbox">
+    <label>
+      {{input type="checkbox" id="raid-hidden" checked=hidden class="form-control"}} Hidden
+    </label>
+  </div>
   <div class="form-group">
     <label for="raid-name">Date</label>
     {{date-time date=date}}

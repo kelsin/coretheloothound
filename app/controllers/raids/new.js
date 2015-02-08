@@ -10,6 +10,7 @@ export default Ember.ObjectController.extend({
     this.set('name', '');
     this.set('date',
              moment().endOf('isoWeek').hour(19).minute(0).second(0).add(2, 'days').toDate());
+    this.set('hidden', true);
   },
 
   actions: {
@@ -19,7 +20,8 @@ export default Ember.ObjectController.extend({
       var raid = this.store.createRecord('raid', {
         name: this.get('name'),
         guild: this.get('guild'),
-        date: this.get('date')
+        date: this.get('date'),
+        hidden: this.get('hidden')
       });
 
       raid.save().then(function(raid) {

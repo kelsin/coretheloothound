@@ -9,5 +9,7 @@ export default Permissioned.extend({
   groups: DS.attr(),
   admin: DS.attr(),
   guild: DS.belongsTo('guild'),
-  signups: DS.hasMany('signup')
+  signups: DS.hasMany('signup'),
+  finalized: DS.attr(),
+  hidden: DS.attr()
 });

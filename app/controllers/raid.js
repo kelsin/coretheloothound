@@ -17,6 +17,10 @@ export default Ember.ObjectController.extend({
     });
   }.property('signups.@each.character'),
 
+  hiddenAndNotFinalized: function() {
+    return this.get('hidden') && !this.get('finalized');
+  }.property('hidden', 'finalized'),
+
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('roles', 'rolesSorting'),
 
