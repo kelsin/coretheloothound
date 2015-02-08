@@ -5,6 +5,7 @@ export default DS.Model.extend({
   realm: DS.attr('string'),
 
   level: DS.attr('number'),
+  item_level: DS.attr('number'),
 
   class_id: DS.attr('number'),
   race_id: DS.attr('number'),
