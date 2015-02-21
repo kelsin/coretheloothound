@@ -19,3 +19,8 @@ testem.log
 
 # editors
 *.sublime-*
+
+# Global
+GTAGS
+GPATH
+GRTAGS
