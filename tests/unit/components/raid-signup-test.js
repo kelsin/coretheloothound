@@ -7,10 +7,7 @@ import {
 
 moduleForComponent('raid-signup', 'RaidSignupComponent', {
   // specify the other units that are required for this test
-  needs: ['controller:role'],
-  setup: function(container) {
-    container.register('controller:array', Ember.ArrayController, { instantiate: false });
-  }
+  needs: ['controller:role']
 });
 
 test('it renders', function() {
