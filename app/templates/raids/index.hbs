@@ -3,20 +3,17 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Realm</th>
       <th>Guild</th>
       <th>Title</th>
       <th>Date</th>
       <th>You</th>
       <th>Signups</th>
-      <th>Creator</th>
     </tr>
   </thead>
   <tbody>
     {{#each raid in controller}}
       <tr>
-        <td>{{raid.guild.realm}}</td>
-        <td>{{raid.guild.name}}</td>
+        <td>{{#if raid.guild}}{{raid.guild.name}}<br/><small>{{raid.guild.realm}}</small>{{/if}}</td>
         <td>{{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}</td>
         <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}} <small>{{dateAgo}}</small></td>
         <td>
@@ -38,7 +35,6 @@
           <span title="Accounts on the waiting list">{{raid.accountWaitingList}} <i class="fa fa-bars fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
           <span title="Seated accounts">{{raid.accountSeated}} <i class="fa fa-check fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
         </td>
-        <td>{{raid.account.battletag}}</td>
       </tr>
     {{/each}}
   </tbody>
