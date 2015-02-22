@@ -1,11 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  init: function() {
-    this._super();
-    this.set('note', '');
-  },
-
   character: function() {
     return this.get('characters').get('firstObject');
   }.property('characters.@each'),
@@ -23,14 +18,12 @@ export default Ember.Component.extend({
 
   actions: {
     signup: function() {
-      var roles = this.get('roles').map(function(role) {
-        return role.get('id');
-      });
+      var role_ids = this.get('roles').mapBy('id');
       this.sendAction("action",
                       this.get('character'),
                       this.get('note'),
-                      roles);
-      this.init();
+                      role_ids);
+      this.set('note', '');
     }
   }
 });
