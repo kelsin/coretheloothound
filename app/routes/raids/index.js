@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model: function() {
     return this.store.filter('raid', {}, function(raid) {
-      return moment(raid.get('date')).subtract(6, 'hours').isAfter();
+      return moment(raid.get('date')).add(6, 'hours').isAfter();
     });
   },
 
