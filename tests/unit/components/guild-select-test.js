@@ -8,10 +8,7 @@ import {
 moduleForComponent('guild-select', 'GuildSelectComponent', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
-  needs: ['controller:application'],
-  setup: function(container) {
-    container.register('view:select', Ember.Select, { instantiate: false });
-  }
+  needs: ['controller:application']
 });
 
 test('it renders', function() {

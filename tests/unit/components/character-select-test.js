@@ -8,9 +8,6 @@ import {
 moduleForComponent('character-select', 'CharacterSelectComponent', {
   // specify the other units that are required for this test
   // needs: ['view:select']
-  setup: function(container) {
-    container.register('view:select', Ember.Select, { instantiate: false });
-  }
 });
 
 test('it renders', function() {
