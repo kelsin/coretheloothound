@@ -15,6 +15,16 @@
 .healing { color: @healing; }
 .dps { color: @dps; }
 
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
 svg {
   .class-1 { fill: @warrior; }
   .class-2 { fill: @paladin; }
@@ -269,14 +279,13 @@ header {
           padding: 5px 10px;
           margin-bottom: 5px;
           background-color: @gray-darker;
+          cursor: move;
 
           small {
             color: @gray;
           }
 
           &[title]:not([title=""]) {
-            cursor: help;
-
             .class {
               border-bottom: 1px dotted gray;
             }

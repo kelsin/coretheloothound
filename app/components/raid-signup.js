@@ -6,7 +6,8 @@ export default Ember.Component.extend({
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('signup.roles', 'rolesSorting'),
 
-  attributeBindings: ['note:title'],
+  attributeBindings: ['draggable:draggable', 'note:title'],
+  draggable: true,
 
   note: function() {
     return this.get('signup.note');
