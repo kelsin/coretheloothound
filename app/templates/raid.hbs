@@ -47,6 +47,8 @@
         {{else}}
           <p><i class="fa fa-unlock fa-fw"></i> Not Finalized</p>
         {{/if}}
+      {{else}}
+        <p><i class="fa fa-eye fa-fw"></i> Visible</p>
       {{/if}}
       <p><i class="fa fa-shield fa-fw"></i> {{groups.tanks}} tanks required</p>
       <p><i class="fa fa-ambulance fa-fw"></i> {{groups.healers}} healers required</p>
@@ -65,7 +67,7 @@
           {{#each waitingListAccount in waitingListByAccount}}
             <h4>{{waitingListAccount.account.battletag}}</h4>
             {{#each signup in waitingListAccount.signups itemController="signup"}}
-              {{raid-signup signup=signup account=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+              {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
             {{/each}}
           {{/each}}
         </div>
@@ -73,7 +75,7 @@
           <div class="signup-wrapper">
             <h3><i {{bind-attr class="seatedRole.role.iconClasses"}}></i> <small>{{seatedRole.role.name}}</small></h3>
             {{#each signup in seatedRole.signups itemController="signup"}}
-              {{raid-signup signup=signup account=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+              {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
             {{/each}}
           </div>
         {{/each}}

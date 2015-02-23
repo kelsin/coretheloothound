@@ -1,0 +1,9 @@
+.icon(@col: 0, @row: 0, @size: 20px) {
+  @unitsize: unit(@size);
+  width: @size;
+  height: @size;
+  display: inline-block;
+  background-image: url("../images/icons-@{unitsize}.png");
+  background-repeat: no-repeat;
+  background-position: (@size * -@col) (@size * -@row);
+}

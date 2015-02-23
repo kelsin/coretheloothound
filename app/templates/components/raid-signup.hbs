@@ -3,12 +3,12 @@
 {{/if}}
 <span {{bind-attr class=classes}}>{{signup.character.name}} <small>{{signup.character.item_level}}</small></span>
 {{#if signup.raid.admin}}
-  <span class="pull-right">
+  <span class="seat pull-right">
     {{#if signup.seated}}
       <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
     {{else}}
       {{#if signup.canBeSeated}}
-        {{#each role in sortedRoles itemController="role"}}
+        {{#each role in sortedRoles}}
         <a {{action 'seat' role}}><i {{bind-attr class="role.iconClasses"}}></i></a>
         {{/each}}
       {{/if}}
