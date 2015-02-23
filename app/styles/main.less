@@ -260,6 +260,15 @@ header {
       .signup-wrapper {
         .make-md-column(3);
 
+        h3 i {
+          &.tank { .icon(0, 0, 32px); }
+          &.healing { .icon(0, 1, 32px); }
+          &.dps { .icon(0, 2, 32px); }
+          margin: 0 5px 0 0;
+          display: block;
+          float: left;
+        }
+
         .signup {
           border-radius: 5px;
           padding: 5px 10px;
@@ -276,6 +285,19 @@ header {
             .class {
               border-bottom: 1px dotted gray;
             }
+          }
+
+          i.role {
+            &.tank { .icon(0, 0, 20px); }
+            &.healing { .icon(0, 1, 20px); }
+            &.dps { .icon(0, 2, 20px); }
+            margin: 0 5px 0 -5px;
+            display: block;
+            float: left;
+          }
+
+          .seat i.role {
+            margin: 0 5px 0 0;
           }
         }
       }

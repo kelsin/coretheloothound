@@ -14,8 +14,21 @@
     {{#each raid in controller}}
       <tr>
         <td>{{#if raid.guild}}{{raid.guild.name}}<br/><small>{{raid.guild.realm}}</small>{{/if}}</td>
-        <td>{{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}</td>
-        <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}} <small>{{dateAgo}}</small></td>
+        <td>
+          {{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}<br/>
+          <small>
+            {{#if raid.hidden}}
+              {{#if raid.finalized}}
+                <i class="fa fa-lock fa-fw"></i> Finalized
+              {{else}}
+                <i class="fa fa-unlock fa-fw"></i> Not Finalized
+              {{/if}}
+            {{else}}
+              <i class="fa fa-eye fa-fw"></i> Visible
+            {{/if}}
+          </small>
+        </td>
+        <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}}<br/><small>{{raid.dateAgo}}</small></td>
         <td>
           {{#if raid.admin}}
             <i class="fa fa-legal fa-fw"></i>&nbsp;

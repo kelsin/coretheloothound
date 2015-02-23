@@ -7,6 +7,6 @@ export default DS.Model.extend({
   class_ids: DS.attr(),
 
   iconClasses: function() {
-    return 'fa fa-' + this.get('icon') + ' fa-fw ' + this.get('slug');
-  }.property('icon', 'slug')
+    return 'role ' + this.get('slug');
+  }.property('slug')
 });

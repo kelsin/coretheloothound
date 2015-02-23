@@ -21,12 +21,12 @@ export default Ember.Component.extend({
   }.property('signup.character.class_id'),
 
   iconClasses: function() {
-    return 'fa fa-' + this.get('signup.role.icon') + ' fa-fw';
-  }.property('signup.role.icon'),
+    return 'role ' + this.get('signup.role.slug');
+  }.property('signup.role.slug'),
 
   mine: function() {
-    return this.get('account.id') === this.get('signup.character.account.id');
-  }.property('account', 'signup.character.account'),
+    return this.get('currentAccount.id') === this.get('signup.character.account.id');
+  }.property('currentAccount.id', 'signup.character.account.id'),
 
   actions: {
     unsignup: function() {

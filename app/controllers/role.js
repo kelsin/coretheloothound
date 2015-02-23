@@ -13,6 +13,6 @@ export default Ember.ObjectController.extend({
   }.property('slug'),
 
   iconClasses: function() {
-    return 'fa fa-' + this.get('icon') + ' fa-fw';
-  }.property('icon')
+    return 'icon-20 icon-' + this.get('slug');
+  }.property('slug')
 });
