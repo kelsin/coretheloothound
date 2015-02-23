@@ -38,17 +38,24 @@
     <section class="info">
       <p><i class="fa fa-calendar fa-fw"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
       <p><i class="fa fa-users fa-fw"></i> <a {{bind-attr href=guild.url}}>{{guild.name}}</a></p>
-      {{#if hidden}}
+      {{#if admin}}
+        {{#if hidden}}
+          {{#if finalized}}
+            <p><i class="fa fa-lock fa-fw"></i> <a {{action "unfinalize"}}>Finalized</a></p>
+          {{else}}
+            <p><i class="fa fa-unlock fa-fw"></i> <a {{action "finalize"}}>Not Finalized</a></p>
+          {{/if}}
+          <p><i class="fa fa-eye-slash fa-fw"></i> <a {{action "unhide"}}>Hidden</a></p>
+        {{else}}
+          <p><i class="fa fa-eye fa-fw"></i> <a {{action "hide"}}>Visible</a></p>
+        {{/if}}
+        <p><i class="fa fa-legal fa-fw"></i> You're an admin</p>
+      {{else}}
         {{#if finalized}}
           <p><i class="fa fa-lock fa-fw"></i> Finalized</p>
         {{else}}
           <p><i class="fa fa-unlock fa-fw"></i> Not Finalized</p>
         {{/if}}
-      {{else}}
-        <p><i class="fa fa-eye fa-fw"></i> Visible</p>
-      {{/if}}
-      {{#if admin}}
-        <p><i class="fa fa-legal fa-fw"></i> You're an admin</p>
       {{/if}}
       {{#if note}}<p><i class="fa fa-pencil fa-fw"></i> {{note}}</p>{{/if}}
       {{character-select characters=characters action="signup"}}

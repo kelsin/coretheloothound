@@ -12,6 +12,30 @@ export default Ember.Route.extend({
   },
 
   actions: {
+    hide: function() {
+      var raid = this.currentModel;
+      raid.set('hidden', true);
+      raid.save();
+    },
+
+    unhide: function() {
+      var raid = this.currentModel;
+      raid.set('hidden', false);
+      raid.save();
+    },
+
+    finalize: function() {
+      var raid = this.currentModel;
+      raid.set('finalized', true);
+      raid.save();
+    },
+
+    unfinalize: function() {
+      var raid = this.currentModel;
+      raid.set('finalized', false);
+      raid.save();
+    },
+
     seat: function(signup, role) {
       signup.set('seated', true);
       signup.set('role', role);
