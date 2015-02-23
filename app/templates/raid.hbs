@@ -2,9 +2,6 @@
   <section class="title">
     <h1>{{name}}</h1>
     <div class="stats">
-      {{#each role in sortedRoles itemController="role"}}
-      <div {{bind-attr title="role.name"}} {{bind-attr class="role.statClasses"}}>{{role.number}} <i {{bind-attr class="role.iconClasses"}}></i></div>
-      {{/each}}
       <div title="Seated accounts" class="stat">{{accountSeated}} <i class="fa fa-check fa-fw"></i></div>
       <div title="Accounts on the waiting list" class="stat">{{accountWaitingList}} <i class="fa fa-bars fa-fw"></i></div>
       <div title="Accounts signed up" class="stat">{{accountSignups}} <i class="fa fa-users fa-fw"></i></div>

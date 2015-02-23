@@ -9,10 +9,10 @@ export default Ember.ObjectController.extend({
   }.property('parentController.seated.@each.role'),
 
   statClasses: function() {
-    return 'stat role-' + this.get('slug');
-  }.property('slug'),
+    return 'stat ' + this.get('iconClasses');
+  }.property('iconClasses'),
 
   iconClasses: function() {
-    return 'icon-20 icon-' + this.get('slug');
+    return 'role ' + this.get('slug');
   }.property('slug')
 });
