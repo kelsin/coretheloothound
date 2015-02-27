@@ -28,7 +28,7 @@ app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff', { des
 app.import('bower_components/d3/d3.js');
 
 // Lodash
-app.import('bower_components/lodash/dist/lodash.js');
+app.import('bower_components/lodash/lodash.js');
 
 // Moment
 app.import('bower_components/moment/moment.js');

@@ -13,9 +13,34 @@
   <tbody>
     {{#each raid in controller}}
       <tr>
-        <td>{{#if raid.guild}}{{raid.guild.name}}<br/><small>{{raid.guild.realm}}</small>{{/if}}</td>
         <td>
-          {{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}<br/>
+          {{#if raid.guild}}
+            <div class="emblem">
+              <div class="background" {{bind-attr style="raid.guild.backgroundStyle"}}>
+                <div class="icon" {{bind-attr style="raid.guild.iconStyle"}}>
+                </div>
+              </div>
+            </div>
+            {{raid.guild.name}}<br/><small>{{raid.guild.realm}}</small>
+          {{/if}}
+        </td>
+        <td>
+          {{#if raid.admin}}
+            <i class="fa fa-legal fa-fw"></i>&nbsp;
+          {{/if}}
+          {{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}
+        </td>
+        <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}}<br/><small>{{raid.dateAgo}}</small></td>
+        <td>
+          {{#if raid.currentAccountSeated}}
+            <strong class="text-success">Seated on {{raid.currentAccountSeated.character.name}}</strong>
+          {{else}}
+            {{#if raid.currentAccountSignedUp}}
+              <strong class="text-info">Signed Up</strong>
+            {{else}}
+              <strong class="text-danger">Not Signed Up!</strong>
+            {{/if}}
+          {{/if}}<br/>
           <small>
             {{#if raid.hidden}}
               {{#if raid.finalized}}
@@ -25,21 +50,6 @@
               {{/if}}
             {{/if}}
           </small>
-        </td>
-        <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}}<br/><small>{{raid.dateAgo}}</small></td>
-        <td>
-          {{#if raid.admin}}
-            <i class="fa fa-legal fa-fw"></i>&nbsp;
-          {{/if}}
-          {{#if raid.currentAccountSeated}}
-            <strong class="text-success">Seated on {{raid.currentAccountSeated.character.name}}</strong>
-          {{else}}
-            {{#if raid.currentAccountSignedUp}}
-              <strong class="text-info">Signed Up</strong>
-            {{else}}
-              <strong class="text-danger">Not Signed Up!</strong>
-            {{/if}}
-          {{/if}}
         </td>
         <td>
           <span title="Accounts signed up">{{raid.accountSignups}} <i class="fa fa-users fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
