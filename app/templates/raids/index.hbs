@@ -15,12 +15,14 @@
       <tr>
         <td>
           {{#if raid.guild}}
-            <div class="emblem">
-              <div class="background" {{bind-attr style="raid.guild.backgroundStyle"}}>
-                <div class="icon" {{bind-attr style="raid.guild.iconStyle"}}>
+            {{#if raid.guild.icon}}
+              <div class="emblem">
+                <div class="background" {{bind-attr style="raid.guild.backgroundStyle"}}>
+                  <div class="icon" {{bind-attr style="raid.guild.iconStyle"}}>
+                  </div>
                 </div>
               </div>
-            </div>
+            {{/if}}
             {{raid.guild.name}}<br/><small>{{raid.guild.realm}}</small>
           {{/if}}
         </td>
