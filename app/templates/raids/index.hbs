@@ -30,7 +30,11 @@
           {{#if raid.admin}}
             <i title="You're an admin" class="fa fa-legal fa-fw"></i>&nbsp;
           {{/if}}
-          {{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}
+          {{#if raid.note}}
+            {{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}
+          {{else}}
+            {{#link-to 'raid' raid.id}}{{raid.name}}{{/link-to}}
+          {{/if}}
         </td>
         <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}}<br/><small>{{raid.dateAgo}}</small></td>
         <td>
