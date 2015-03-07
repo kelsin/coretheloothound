@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import CharacterController from './character';
+import CharacterController from '../character';
 
 export default Ember.ObjectController.extend({
   needs: ['application', 'raids/index'],

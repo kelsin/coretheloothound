@@ -18,4 +18,11 @@ export default function(){
     this.use('toLeft'),
     this.reverse('toRight')
   );
+
+  this.transition(
+    this.fromRoute('raid.index'),
+    this.toRoute('raid.edit'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
 }

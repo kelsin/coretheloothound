@@ -13,7 +13,9 @@ Router.map(function() {
   this.resource('raids', function() {
     this.route('new');
   });
-  this.resource('raid', { path: '/raid/:raid_id' });
+  this.resource('raid', { path: '/raid/:raid_id' }, function() {
+    this.route('edit');
+  });
 
   // User Preference Pages
   this.resource('account', function() {

@@ -1,0 +1,49 @@
+<div class="raid-wrapper">
+  <section class="info">
+    <p><i class="fa fa-calendar fa-fw"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
+    <p><i class="fa fa-users fa-fw"></i> <a {{bind-attr href=guild.url}}>{{guild.name}}</a></p>
+    {{#if admin}}
+      {{#if hidden}}
+        {{#if finalized}}
+          <p><i class="fa fa-lock fa-fw"></i> <a {{action "unfinalize"}}>Finalized</a></p>
+        {{else}}
+          <p><i class="fa fa-unlock fa-fw"></i> <a {{action "finalize"}}>Not Finalized</a></p>
+        {{/if}}
+        <p><i class="fa fa-eye-slash fa-fw"></i> <a {{action "unhide"}}>Hidden</a></p>
+      {{else}}
+        <p><i class="fa fa-eye fa-fw"></i> <a {{action "hide"}}>Visible</a></p>
+      {{/if}}
+      <p><i class="fa fa-legal fa-fw"></i> You're an admin</p>
+      <p><i class="fa fa-pencil fa-fw"></i> {{#link-to 'raid.edit' this}}Edit{{/link-to}}</p>
+    {{else}}
+      {{#if finalized}}
+        <p><i class="fa fa-lock fa-fw"></i> Finalized</p>
+      {{else}}
+        <p><i class="fa fa-unlock fa-fw"></i> Not Finalized</p>
+      {{/if}}
+    {{/if}}
+    {{#if note}}<p><i class="fa fa-file-text-o fa-fw"></i> {{note}}</p>{{/if}}
+    {{character-select characters=characters action="signup"}}
+  </section>
+  <section class="signups">
+    <div class="wrapper">
+      <div class="signup-wrapper waiting-list">
+        <h3><i class="fa fa-clock-o fa-fw"></i> <small>Waiting List</small></h3>
+        {{#each waitingListAccount in waitingListByAccount}}
+          <h4>{{waitingListAccount.account.battletag}}</h4>
+          {{#each signup in waitingListAccount.signups itemController="signup"}}
+          {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+          {{/each}}
+        {{/each}}
+      </div>
+      {{#each seatedRole in seatedByRole}}
+        <div class="signup-wrapper">
+          <h3><i {{bind-attr class="seatedRole.role.iconClasses"}}></i> <small>{{seatedRole.role.name}}</small></h3>
+          {{#each signup in seatedRole.signups itemController="signup"}}
+          {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+          {{/each}}
+        </div>
+      {{/each}}
+    </div>
+  </section>
+</div>
