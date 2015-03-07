@@ -15,6 +15,16 @@
 .healing { color: @healing; }
 .dps { color: @dps; }
 
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
 svg {
   .class-1 { fill: @warrior; }
   .class-2 { fill: @paladin; }
@@ -181,6 +191,25 @@ header {
       color: @gray;
     }
   }
+
+  .emblem {
+    height: 40px;
+    width: 40px;
+    float: left;
+    margin-right: 5px;
+
+    .background {
+      height: 100%;
+      width: 100%;
+      border-width: 3px;
+      border-style: solid;
+
+      .icon {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .raid {
@@ -230,6 +259,10 @@ header {
 
   section.info {
     .make-md-column(3);
+
+    a {
+      cursor: pointer;
+    }
   }
 
   section.signups {
@@ -247,6 +280,64 @@ header {
     h4 {
       font-size: 0.8em;
       margin: 11px 10px 4px;
+    }
+
+    .group {
+      .make-row();
+      min-height: 100px;
+      margin-bottom: 20px;
+
+      .targets {
+        background-color: #000;
+        overflow: auto;
+        height: 100%;
+
+        > div.waiting-list {
+          .make-md-column(12);
+        }
+
+        > div {
+          .make-md-column(4);
+          height: 100%;
+
+          &.highlight {
+            .target {
+              opacity: 1.0;
+              border-style: solid;
+            }
+          }
+
+          .target {
+            min-height: 100px;
+            height: 100%;
+            opacity: 0.33;
+            border-radius: 5px;
+            border-size: 3px;
+            border-style: dashed;
+            background-position: center center;
+            background-repeat: no-repeat;
+          }
+
+          &.tank {
+            .target {
+              border-color: @tank;
+              background-image: url('../images/tank.png');
+            }
+          }
+          &.healing {
+            .target {
+              border-color: @healing;
+              background-image: url('../images/healing.png');
+            }
+          }
+          &.dps {
+            .target {
+              border-color: @dps;
+              background-image: url('../images/dps.png');
+            }
+          }
+        }
+      }
     }
 
     .wrapper {
@@ -269,14 +360,13 @@ header {
           padding: 5px 10px;
           margin-bottom: 5px;
           background-color: @gray-darker;
+          cursor: move;
 
           small {
             color: @gray;
           }
 
           &[title]:not([title=""]) {
-            cursor: help;
-
             .class {
               border-bottom: 1px dotted gray;
             }

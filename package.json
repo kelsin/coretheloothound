@@ -18,6 +18,9 @@
   },
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "rimraf": "2.2.8"
+  },
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.0",
     "ember-cli": "0.1.15",
@@ -38,6 +41,7 @@
     "groc": "^0.7.0",
     "gulp": "^3.8.10",
     "gulp-file": "^0.2.0",
-    "gulp-gh-pages": "^0.4.0"
+    "gulp-gh-pages": "^0.4.0",
+    "liquid-fire": "^0.17.1"
   }
 }

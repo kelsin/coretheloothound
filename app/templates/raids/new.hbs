@@ -1,20 +1,30 @@
 <form class="form">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="raid-name">Name</label>
+  <div class="form-group">
+    <label for="raid-name">Name</label>
+    <div class="row">
+      <div class="col-md-6">
         {{input type="text" id="raid-name" value=name class="form-control" placeholder="Name"}}
       </div>
     </div>
   </div>
   <div class="form-group">
     <label for="raid-name">Guild</label>
-    {{guild-select account=account guild=guild}}
+    <div class="row">
+      <div class="col-md-6">
+        {{guild-select account=account guild=guild}}
+      </div>
+    </div>
   </div>
-  <div class="checkbox">
-    <label>
-      {{input type="checkbox" id="raid-hidden" checked=hidden class="form-control"}} Hidden
-    </label>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="checkbox">
+          <label>
+            {{input type="checkbox" id="raid-hidden" checked=hidden class="form-control"}} Hidden
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="raid-name">Date</label>
