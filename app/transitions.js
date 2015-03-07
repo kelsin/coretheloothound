@@ -1,8 +1,15 @@
 export default function(){
   this.transition(
+    this.toRoute('index'),
+    this.use('crossFade'),
+    this.reverse('crossFade')
+  );
+
+  this.transition(
+    this.fromRoute('raids', 'raid'),
     this.toRoute('account'),
-    this.use('fade'),
-    this.reverse('fade')
+    this.use('toDown'),
+    this.reverse('toUp')
   );
 
   this.transition(
