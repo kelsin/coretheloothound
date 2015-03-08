@@ -12,7 +12,7 @@
     {{else}}
       <p><i class="fa fa-eye fa-fw"></i> <a {{action "hide"}}>Visible</a></p>
     {{/if}}
-    <p><i class="fa fa-legal fa-fw"></i> You're an admin</p>
+    <p><i class="fa fa-trash-o fa-fw"></i> <a {{action "delete"}}>Delete</a></p>
     <p><i class="fa fa-arrow-left fa-fw"></i> {{#link-to 'raid.index' this}}Back{{/link-to}}</p>
     {{#if note}}<p><i class="fa fa-file-text-o fa-fw"></i> {{note}}</p>{{/if}}
   </section>

@@ -36,6 +36,14 @@ export default Ember.Route.extend({
       raid.save();
     },
 
+    delete: function() {
+      var _this = this;
+      var raid = this.currentModel;
+      raid.destroyRecord().then(function() {
+        _this.transitionTo('raids.index');
+      });
+    },
+
     seat: function(signup, role) {
       signup.set('seated', true);
       signup.set('role', role);

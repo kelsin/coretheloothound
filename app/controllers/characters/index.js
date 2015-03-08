@@ -16,9 +16,7 @@ export default Ember.Controller.extend({
   realms: function() {
     this.set('realm', window.localStorage.getItem('coretheloothound_realm') || 'All');
 
-    return ['All'].concat(_.uniq(_.map(this.get('model').toArray(), function(character) {
-      return character.get('realm');
-    })).sort());
+    return ['All'].concat(_.uniq(this.get('model').mapBy('realm')).sort());
   }.property('model.@each.realm'),
 
   sortProperties: ['level:desc', 'name'],

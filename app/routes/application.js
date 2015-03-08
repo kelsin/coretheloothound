@@ -16,23 +16,14 @@ export default Ember.Route.extend({
             Authorization: 'apikey ' + apikey
           },
           success: function(data) {
-            _this.store.push('account', data.account);
+            delete data.permissions;
+            _this.store.pushPayload('account', data);
 
-            Ember.$.each(data.characters, function(index, character) {
-              _this.store.push('character', character);
-            });
-
-            Ember.$.each(data.guilds, function(index, guild) {
-              _this.store.push('guild', guild);
-            });
-
-            Ember.$.each(data.roles, function(index, role) {
-              _this.store.push('role', role);
-            });
-
-            resolve({
-              apikey: apikey,
-              account: data.account
+            _this.store.find('account', data.account.id).then(function(account) {
+              resolve({
+                apikey: apikey,
+                account: account
+              });
             });
           },
           error: function() {
