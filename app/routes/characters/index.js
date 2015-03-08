@@ -2,6 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    return this.modelFor('application').account.characters;
+    return this.modelFor('application').account.get('characters');
   }
 });
