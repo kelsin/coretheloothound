@@ -39,9 +39,11 @@ export default Ember.Route.extend({
     delete: function() {
       var _this = this;
       var raid = this.currentModel;
-      raid.destroyRecord().then(function() {
-        _this.transitionTo('raids.index');
-      });
+      if(window.confirm('Are you sure you want to delete "' + raid.get('name') + '"?')) {
+        raid.destroyRecord().then(function() {
+          _this.transitionTo('raids.index');
+        });
+      }
     },
 
     seat: function(signup, role) {
