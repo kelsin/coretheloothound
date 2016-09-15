@@ -4,15 +4,13 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'coretheloothound',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'hash',
-
     contentSecurityPolicy: {
       'connect-src': "'self' https://staging.byfirebepurged.com https://api.byfirebepurged.com ws://localhost:35729 ws://0.0.0.0:35729",
       'img-src': "'self' https://us.battle.net",
       'style-src': "'self' 'unsafe-inline'"
     },
-
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -37,7 +35,6 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter

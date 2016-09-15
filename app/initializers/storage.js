@@ -1,4 +1,4 @@
-export function initialize(container, application) {
+export function initialize(application) {
   //application.register('service:storage', 'model:storage');
   application.inject('route', 'storage', 'model:storage');
   application.inject('controller', 'storage', 'model:storage');
