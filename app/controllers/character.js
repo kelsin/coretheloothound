@@ -22,6 +22,7 @@ export default Ember.ObjectController.extend({
     case 9: return 'Warlock';
     case 10: return 'Monk';
     case 11: return 'Druid';
+    case 12: return 'Demon Hunter';
     }
   }.property('class_id'),
 
