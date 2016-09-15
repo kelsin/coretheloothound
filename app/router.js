@@ -10,16 +10,16 @@ Router.map(function() {
   this.route('apikey', { path: '/apikey/:apikey' });
 
   // Raiding!
-  this.resource('raids', function() {
+  this.route('raids', function() {
     this.route('new');
   });
-  this.resource('raid', { path: '/raid/:raid_id' }, function() {
+  this.route('raid', { path: '/raid/:raid_id' }, function() {
     this.route('edit');
   });
 
   // User Preference Pages
-  this.resource('account', function() {
-    this.resource('characters', function() {});
+  this.route('account', function() {
+    this.route('characters', function() {});
   });
 });
 
