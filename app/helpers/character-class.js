@@ -12,7 +12,8 @@ export function characterClass(class_id) {
     8: 'Mage',
     9: 'Warlock',
     10: 'Monk',
-    11: 'Druid'
+    11: 'Druid',
+    12: 'Demon Hunter'
   };
 
   return new Ember.Handlebars.SafeString('<span class="class-' + class_id + '">' + classes[class_id] + '</span>');
