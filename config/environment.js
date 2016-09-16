@@ -9,7 +9,7 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: {
       'connect-src': "'self' https://staging.byfirebepurged.com https://api.byfirebepurged.com ws://localhost:35729 ws://0.0.0.0:35729",
-      'img-src': "'self' https://us.battle.net",
+      'img-src': "'self' https://render-api-us.worldofwarcraft.com https://us.battle.net",
       'style-src': "'self' 'unsafe-inline'"
     },
 
