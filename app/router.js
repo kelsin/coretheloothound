@@ -5,7 +5,7 @@ var Router = Ember.Router.extend({
   location: config.locationType
 });
 
-Router.map(function() {
+export default Router.map(function() {
   // Login
   this.route('apikey', { path: '/apikey/:apikey' });
 
@@ -22,5 +22,3 @@ Router.map(function() {
     this.resource('characters', function() {});
   });
 });
-
-export default Router;

@@ -1,10 +1,10 @@
 {{#if signup.seated}}
   <i {{bind-attr class="iconClasses"}}></i>
 {{/if}}
-<span {{bind-attr class=classes}}>{{signup.character.name}} <small>{{signup.character.item_level}}</small></span>
-{{#if signup.raid.admin}}
+<span {{bind-attr class=classes}}>{{signup.model.character.name}} <small>{{signup.model.character.item_level}}</small></span>
+{{#if signup.model.raid.admin}}
   <span class="seat pull-right">
-    {{#if signup.seated}}
+    {{#if signup.model.seated}}
       <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
     {{else}}
       {{#if signup.canBeSeated}}

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from 'coretheloothound/config/environment';
 
 /* global _ */
 export default Ember.Controller.extend({
@@ -27,7 +28,7 @@ export default Ember.Controller.extend({
     var onlyMax = this.get('onlyMax');
 
     return this.get('sorted').filter(function(character) {
-      if(onlyMax && character.get('level') < 100) {
+      if(onlyMax && character.get('level') < ENV.maxLevel) {
         return false;
       }
 
