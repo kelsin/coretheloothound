@@ -46,7 +46,7 @@ export default Ember.ObjectController.extend({
   }.property('dashedName', 'dashedRealm'),
 
   robotUrl: function() {
-    return 'http://www.askmrrobot.com/wow/player/us/' + this.get('dashedRealm') + '/' + this.get('dashedName');
+    return 'http://www.askmrrobot.com/wow/gear/us/' + this.get('dashedRealm') + '/' + this.get('dashedName');
   }.property('dashedName', 'dashedRealm'),
 
   wowheadUrl: function() {
