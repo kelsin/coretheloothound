@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 
   setupController(controller, model) {
     controller.set('model', model);
-    controller.set('roles', this.store.all('role'));
+    controller.set('roles', this.store.peekAll('role'));
   },
 
   actions: {
