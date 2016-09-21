@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 /* global _ */
@@ -30,11 +31,11 @@ export default DS.Model.extend({
   }.property('backgroundColor'),
 
   backgroundStyle: function() {
-    return 'background-color: ' + this.get('backgroundHexColor') + '; border-color: ' + this.get('borderHexColor') + ';';
+    return Ember.String.htmlSafe('background-color: ' + this.get('backgroundHexColor') + '; border-color: ' + this.get('borderHexColor') + ';');
   }.property('backgroundHexColor', 'borderHexColor'),
 
   iconStyle: function() {
-    return 'background-color: ' + this.get('iconHexColor') + "; -webkit-mask-box-image: url('https://us.battle.net/wow/static/images/guild/tabards/emblem_" + this.get('iconPadded') + ".png');";
+    return Ember.String.htmlSafe('background-color: ' + this.get('iconHexColor') + "; -webkit-mask-box-image: url('https://us.battle.net/wow/static/images/guild/tabards/emblem_" + this.get('iconPadded') + ".png');");
   }.property('iconHexColor', 'iconPadded'),
 
   characters: DS.hasMany('character'),
