@@ -43,6 +43,6 @@
     "gulp": "^3.8.10",
     "gulp-file": "^0.2.0",
     "gulp-gh-pages": "^0.4.0",
-    "liquid-fire": "^0.21.0"
+    "liquid-fire": "^0.25.0"
   }
 }
