@@ -11,14 +11,14 @@
     </tr>
   </thead>
   <tbody>
-    {{#each controller as |raid|}}
+    {{#each sortedRaids itemController="raid" as |raid|}}
       <tr>
         <td>
           {{#if raid.model.guild}}
             {{#if raid.model.guild.icon}}
               <div class="emblem">
-                <div class="background" style="{{raid.model.guild.backgroundStyle}}">
-                  <div class="icon" style="{{raid.model.guild.iconStyle}}">
+                <div class="background" style={{raid.model.guild.backgroundStyle}}>
+                  <div class="icon" style={{raid.model.guild.iconStyle}}>
                   </div>
                 </div>
               </div>
