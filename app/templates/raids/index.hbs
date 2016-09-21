@@ -38,10 +38,10 @@
         </td>
         <td><i class="fa fa-calendar"></i> {{raid.model.dateCalendar}}<br/><small>{{raid.model.dateAgo}}</small></td>
         <td>
-          {{#if raid.model.currentAccountSeated}}
-            <strong class="text-success">Seated on {{raid.model.currentAccountSeated.character.name}}</strong>
+          {{#if raid.currentAccountSeated}}
+            <strong class="text-success">Seated on {{raid.currentAccountSeated.character.name}}</strong>
           {{else}}
-            {{#if raid.model.currentAccountSignedUp}}
+            {{#if raid.currentAccountSignedUp}}
               <strong class="text-info">Signed Up</strong>
             {{else}}
               <strong class="text-danger">Not Signed Up!</strong>
