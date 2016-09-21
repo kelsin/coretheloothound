@@ -6,24 +6,24 @@ export default Ember.Controller.extend({
   realm: 'All',
   onlyMax: true,
 
-  updateRealm: function() {
+  updateRealm: Ember.observer('realm', function() {
     var realm = this.get('realm');
 
     if (realm) {
       window.localStorage.setItem('coretheloothound_realm', realm);
     }
-  }.observes('realm'),
+  }),
 
-  realms: function() {
+  realms: Ember.computed('model.@each.realm', function() {
     this.set('realm', window.localStorage.getItem('coretheloothound_realm') || 'All');
 
     return ['All'].concat(_.uniq(this.get('model').mapBy('realm')).sort());
-  }.property('model.@each.realm'),
+  }),
 
   sortProperties: ['level:desc', 'name'],
   sorted: Ember.computed.sort('model', 'sortProperties'),
 
-  filtered: function() {
+  filtered: Ember.computed('sorted', 'onlyMax', 'realm', function() {
     var realm = this.get('realm');
     var onlyMax = this.get('onlyMax');
 
@@ -38,5 +38,5 @@ export default Ember.Controller.extend({
         return realm === character.get('realm');
       }
     });
-  }.property('sorted', 'onlyMax', 'realm')
+  })
 });

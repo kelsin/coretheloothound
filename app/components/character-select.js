@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  character: function() {
+  character: Ember.computed('characters.@each', function() {
     return this.get('characters').get('firstObject');
-  }.property('characters.@each'),
+  }),
 
   roleCheckboxes: Ember.computed.map('character.model.roles', function(role){
     return Ember.ObjectProxy.create({
@@ -17,7 +17,7 @@ export default Ember.Component.extend({
   roles: Ember.computed.mapBy('checkedRoles', 'content'),
 
   actions: {
-    signup: function() {
+    signup() {
       var role_ids = this.get('roles').mapBy('id');
       this.sendAction("action",
                       this.get('character'),

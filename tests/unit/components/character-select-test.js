@@ -8,16 +8,16 @@ moduleForComponent('character-select', 'CharacterSelectComponent', {
   // needs: ['view:select']
 });
 
-test('it renders', function() {
-  expect(2);
+test('it renders', function(assert) {
+  assert.expect(2);
 
   // creates the component instance
   var component = this.subject({
     characters: []
   });
-  equal(component._state, 'preRender');
+  assert.equal(component._state, 'preRender');
 
   // appends the component to the page
   this.append();
-  equal(component._state, 'inDOM');
+  assert.equal(component._state, 'inDOM');
 });

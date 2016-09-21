@@ -8,8 +8,8 @@ moduleForModel('raid', 'Raid', {
   needs: ['model:account', 'model:character', 'model:guild', 'model:permission', 'model:permissioned', 'model:role', 'model:signup']
 });
 
-test('it exists', function() {
+test('it exists', function(assert) {
   var model = this.subject();
   // var store = this.store();
-  ok(!!model);
+  assert.ok(!!model);
 });

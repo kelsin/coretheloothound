@@ -9,37 +9,37 @@ export default Ember.Component.extend({
   attributeBindings: ['draggable:draggable', 'note:title'],
   draggable: true,
 
-  note: function() {
+  note: Ember.computed('signup.model.note', function() {
     return this.get('signup.model.note');
-  }.property('signup.model.note'),
+  }),
 
-  classes: function() {
+  classes: Ember.computed('signup.model.character.class_id', function() {
     var classes = 'class class-' + this.get('signup.model.character.class_id');
     if(this.get('preferred')) {
       classes += ' preferred';
     }
     return classes;
-  }.property('signup.model.character.class_id'),
+  }),
 
-  iconClasses: function() {
+  iconClasses: Ember.computed('signup.role.slug', function() {
     return 'role ' + this.get('signup.role.slug');
-  }.property('signup.role.slug'),
+  }),
 
-  mine: function() {
+  mine: Ember.computed('currentAccount.id', 'signup.character.account.id', function() {
     return this.get('currentAccount.id') === this.get('signup.character.account.id');
-  }.property('currentAccount.id', 'signup.character.account.id'),
+  }),
 
   actions: {
-    unsignup: function() {
+    unsignup() {
       this.sendAction("unsignup",
                       this.get('signup.content'));
     },
-    seat: function(role) {
+    seat(role) {
       this.sendAction("seat",
                       this.get('signup.content'),
                       role);
     },
-    unseat: function() {
+    unseat() {
       this.sendAction("unseat",
                       this.get('signup.content'));
     }

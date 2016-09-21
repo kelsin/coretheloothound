@@ -5,13 +5,13 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['graph-container'],
 
-  angle: function() {
+  angle: Ember.computed(function() {
     return d3.scale.linear()
       .domain([0.0, 1.0])
       .range([0.0, 2.0 * Math.PI]);
-  }.property(),
+  }),
 
-  arc: function(inner, outer) {
+  arc(inner, outer) {
     var angle = this.get('angle');
     return d3.svg.arc()
       .innerRadius(inner)
@@ -24,15 +24,15 @@ export default Ember.Component.extend({
       });
   },
 
-  arcInner: function() {
+  arcInner: Ember.computed('angle', function() {
     return this.arc(34, 56);
-  }.property('angle'),
+  }),
 
-  arcOuter: function() {
+  arcOuter: Ember.computed('angle', function() {
     return this.arc(30, 60);
-  }.property('angle'),
+  }),
 
-  update: function() {
+  update: Ember.observer('data.@each', function() {
     var svg = this.get('svg');
     var data = this.get('data');
     var arcOuter = this.get('arcOuter');
@@ -70,9 +70,9 @@ export default Ember.Component.extend({
     dataInner.exit().remove();
     dataInner.attr('d', arcInner);
 
-  }.observes('data.@each'),
+  }),
 
-  didInsertElement: function() {
+  didInsertElement() {
     var element = d3.select('#' + this.get('elementId') + ' .graph');
 
     var svg = element.append('svg')

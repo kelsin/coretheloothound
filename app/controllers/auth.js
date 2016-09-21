@@ -5,14 +5,14 @@ import Ember from 'ember';
  * Controller for the login/logout view
  */
 export default Ember.Controller.extend({
-  needs: ['application'],
+  applicationController: Ember.inject.controller('application'),
 
-  apikey: Ember.computed.alias('controllers.application.apikey'),
-  account: Ember.computed.alias('controllers.application.account'),
-  loggedIn: Ember.computed.alias('controllers.application.loggedIn'),
+  apikey: Ember.computed.alias('applicationController.apikey'),
+  account: Ember.computed.alias('applicationController.account'),
+  loggedIn: Ember.computed.alias('applicationController.loggedIn'),
 
   actions: {
-    logout: function() {
+    logout() {
       var _this = this;
 
       Ember.$.ajax({
@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
         headers: {
           Authorization: 'apikey ' + _this.get('apikey')
         },
-        success: function() {
+        success() {
           _this.get('storage').removeValue('apikey');
           _this.set('apikey', undefined);
           _this.set('account', undefined);

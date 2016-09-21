@@ -1,3 +1,4 @@
+import {module, test} from 'qunit';
 import {
   characterRace
 } from 'coretheloothound/helpers/character-race';
@@ -5,7 +6,7 @@ import {
 module('CharacterRaceHelper');
 
 // Replace this with your real tests.
-test('it works', function() {
+test('it works', function(assert) {
   var result = characterRace(42);
-  ok(result);
+  assert.ok(result);
 });
