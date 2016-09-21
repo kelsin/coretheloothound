@@ -1,10 +1,10 @@
 import {module, test} from 'qunit';
 import Ember from 'ember';
-import { initialize } from 'coretheloothound/initializers/link-view';
+import { initialize } from 'coretheloothound/initializers/link-component';
 
 var container, application;
 
-module('LinkViewInitializer', {
+module('LinkComponentInitializer', {
   beforeEach: function() {
     Ember.run(function() {
       container = new Ember.Container();
@@ -21,4 +21,3 @@ test('it works', function(assert) {
   // you would normally confirm the results of the initializer here
   assert.ok(true);
 });
-
