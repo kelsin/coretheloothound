@@ -2,11 +2,7 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp({
-  vendorFiles: {
-    'handlebars.js': null
-  }
-});
+var app = new EmberApp();
 
 // Modernizr
 app.import('vendor/modernizr.js');

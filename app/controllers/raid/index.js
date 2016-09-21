@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import CharacterController from '../character';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   needs: ['application', 'raids/index'],
   currentAccount: Ember.computed.alias('controllers.application.account'),
   roles: Ember.computed.alias('controllers.raids/index.roles'),
@@ -15,23 +15,23 @@ export default Ember.ObjectController.extend({
     return this.get('sortedRoles').map(function(role) {
       return Ember.Object.create({
         role: role,
-        signups: _this.get('seated').filterBy('role.id', role.get('id'))
+        signups: _this.get('model.seated').filterBy('role.id', role.get('id'))
       });
     });
-  }.property('sortedRoles.@each.id', 'seated.@each.role'),
+  }.property('sortedRoles.@each.id', 'model.seated.@each.role'),
 
   currentAccountSeated: function() {
     var accountId = this.get('currentAccount.id').toString();
-    return this.get('seated').findBy('character.account.id', accountId);
-  }.property('seated.@each.character', 'currentAccount.id'),
+    return this.get('model.seated').findBy('character.account.id', accountId);
+  }.property('model.seated.@each.character', 'currentAccount.id'),
 
   currentAccountSignedUp: function() {
     var accountId = this.get('currentAccount.id').toString();
-    return this.get('signups').filterBy('character.account.id', accountId);
-  }.property('signups.@each.character', 'currentAccount.id'),
+    return this.get('model.signups').filterBy('character.account.id', accountId);
+  }.property('model.signups.@each.character', 'currentAccount.id'),
 
   characters: function() {
-    var ids = this.get('signedUpCharacterIds');
+    var ids = this.get('model.signedUpCharacterIds');
     return this.get('currentAccount.characters')
       .filter(function(character) {
         return !ids.contains(character.get('id'));
@@ -42,12 +42,12 @@ export default Ember.ObjectController.extend({
         });
       })
       .sort(function(a,b) {
-        var diff = b.get('level') - a.get('level');
+        var diff = b.get('model.level') - a.get('model.level');
         if(diff) {
           return diff;
         } else {
-          return a.get('name').localeCompare(b.get('name'));
+          return a.get('model.name').localeCompare(b.get('model.name'));
         }
       });
-  }.property('currentAccount.characters', 'signedUpCharacterIds')
+  }.property('currentAccount.characters', 'model.signedUpCharacterIds')
 });

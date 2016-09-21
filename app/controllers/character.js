@@ -1,16 +1,16 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   dashedName: function() {
-    return this.get('name').dasherize();
-  }.property('name'),
+    return this.get('model.name').dasherize();
+  }.property('model.name'),
 
   dashedRealm: function() {
-    return this.get('realm').dasherize();
-  }.property('realm'),
+    return this.get('model.realm').dasherize();
+  }.property('model.realm'),
 
   className: function() {
-    switch(this.get('class_id')) {
+    switch(this.get('model.class_id')) {
     case 1: return 'Warrior';
     case 2: return 'Paladin';
     case 3: return 'Hunter';
@@ -23,30 +23,31 @@ export default Ember.ObjectController.extend({
     case 10: return 'Monk';
     case 11: return 'Druid';
     case 12: return 'Demon Hunter';
+    default: return '';
     }
-  }.property('class_id'),
+  }.property('model.class_id'),
 
   label: function() {
-    return this.get('level') +
-      ': '  + this.get('name') +
+    return this.get('model.level') +
+      ': '  + this.get('model.name') +
       ' - ' + this.get('className') +
-      ' - ' + this.get('realm');
-  }.property('name', 'realm'),
+      ' - ' + this.get('model.realm');
+  }.property('model.level', 'className', 'model.name', 'model.realm'),
 
   canHeal: function() {
-    return [2, 5, 7, 10, 11].contains(this.get('class_id'));
-  }.property('class_id'),
+    return [2, 5, 7, 10, 11].contains(this.get('model.class_id'));
+  }.property('model.class_id'),
 
   canTank: function() {
-    return [1, 2, 6, 10, 11].contains(this.get('class_id'));
-  }.property('class_id'),
+    return [1, 2, 6, 10, 11, 12].contains(this.get('model.class_id'));
+  }.property('model.class_id'),
 
   armoryUrl: function() {
     return 'http://us.battle.net/wow/character/' + this.get('dashedRealm') + '/' + this.get('dashedName') + '/simple';
   }.property('dashedName', 'dashedRealm'),
 
   robotUrl: function() {
-    return 'http://www.askmrrobot.com/wow/player/us/' + this.get('dashedRealm') + '/' + this.get('dashedName');
+    return 'http://www.askmrrobot.com/wow/gear/us/' + this.get('dashedRealm') + '/' + this.get('dashedName');
   }.property('dashedName', 'dashedRealm'),
 
   wowheadUrl: function() {

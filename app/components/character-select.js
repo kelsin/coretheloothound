@@ -5,7 +5,7 @@ export default Ember.Component.extend({
     return this.get('characters').get('firstObject');
   }.property('characters.@each'),
 
-  roleCheckboxes: Ember.computed.map('character.roles', function(role){
+  roleCheckboxes: Ember.computed.map('character.model.roles', function(role){
     return Ember.ObjectProxy.create({
       content: role,
       checked: true
