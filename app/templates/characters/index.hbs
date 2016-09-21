@@ -11,12 +11,12 @@
   {{#each filtered itemController="character" as |character|}}
     <div class="character">
       <h3>{{character.model.name}} <small>{{character.model.level}} {{character.model.realm}}</small></h3>
-      <img class="character" {{bind-attr src="character.model.image_url"}}/>
+      <img class="character" src="{{character.model.image_url}}"/>
       <p>{{character-race character.model.race_id}} {{character-class character.model.class_id}}</p>
       <p class="links">
-        <a {{bind-attr href="character.armoryUrl"}}><img src="images/wow.png"/></a>
-        <a {{bind-attr href="character.wowheadUrl"}}><img src="images/wowhead.png"/></a>
-        <a {{bind-attr href="character.robotUrl"}}><img src="images/robot.png"/></a>
+        <a href="{{character.armoryUrl}}"><img src="images/wow.png"/></a>
+        <a href="{{character.wowheadUrl}}"><img src="images/wowhead.png"/></a>
+        <a href="{{character.robotUrl}}"><img src="images/robot.png"/></a>
       </p>
     </div>
   {{else}}

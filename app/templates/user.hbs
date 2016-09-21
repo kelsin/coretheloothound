@@ -17,10 +17,10 @@
   {{#each characters as |character|}}
     <div class="character">
       <h3>{{character.name}} <small>{{character.level}} {{character.realm}}</small></h3>
-      <img {{bind-attr src="character.image_url"}}/>
+      <img src="{{character.image_url}}"/>
       <p>{{class character.class}}</p>
       <p>{{character.spec.name}}</p>
-      <p><span {{bind-attr class="character.faction character.race"}}>{{race character.race}}</span></p>
+      <p><span class="{{character.faction character.race}}">{{race character.race}}</span></p>
     </div>
   {{else}}
     <div class="alert alert-info">No {{#if onlyMax}}Max Level {{/if}}Characters</div>
