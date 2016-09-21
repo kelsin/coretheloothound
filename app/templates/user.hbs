@@ -14,7 +14,7 @@
       <label class="checkbox-inline">{{input type="checkbox" checked=onlyMax}} Only show level 90 characters</label>
     </div>
   </div>
-  {{#each character in characters}}
+  {{#each characters as |character|}}
     <div class="character">
       <h3>{{character.name}} <small>{{character.level}} {{character.realm}}</small></h3>
       <img {{bind-attr src="character.image_url"}}/>

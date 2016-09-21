@@ -8,7 +8,7 @@
       <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
     {{else}}
       {{#if signup.canBeSeated}}
-        {{#each role in sortedRoles}}
+        {{#each sortedRoles as |role|}}
         <a {{action 'seat' role}}><i {{bind-attr class="role.iconClasses"}}></i></a>
         {{/each}}
       {{/if}}

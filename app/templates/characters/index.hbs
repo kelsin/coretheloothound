@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="characters-list">
-  {{#each character in filtered itemController="character"}}
+  {{#each filtered itemController="character" as |character|}}
     <div class="character">
       <h3>{{character.model.name}} <small>{{character.model.level}} {{character.model.realm}}</small></h3>
       <img class="character" {{bind-attr src="character.model.image_url"}}/>
