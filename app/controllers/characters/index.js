@@ -20,8 +20,8 @@ export default Ember.Controller.extend({
     return ['All'].concat(_.uniq(this.get('model').mapBy('realm')).sort());
   }),
 
-  sortProperties: ['level:desc', 'name'],
-  sorted: Ember.computed.sort('model', 'sortProperties'),
+  characterSorting: ['level:desc', 'name'],
+  sorted: Ember.computed.sort('model', 'characterSorting'),
 
   filtered: Ember.computed('sorted', 'onlyMax', 'realm', function() {
     var realm = this.get('realm');
