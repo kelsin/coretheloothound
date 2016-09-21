@@ -27,6 +27,9 @@ export default DS.Model.extend({
   }),
 
   backgroundHexColor: Ember.computed('backgroundColor', function() {
+    console.log(this.get('name'));
+    console.log(this.get('id'));
+    console.log(this.get('backgroundColor'));
     return '#' + this.get('backgroundColor').substring(2,8);
   }),
 

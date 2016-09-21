@@ -32,7 +32,7 @@
         {{#each model.waitingListByAccount as |waitingListAccount|}}
           <h4>{{waitingListAccount.account.battletag}}</h4>
           {{#each waitingListAccount.signups itemController="signup" as |signup|}}
-          {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+          {{raid-signup signup=signup currentAccount=currentAccount seat=(route-action "seat") unseat=(route-action "unseat") unsignup=(route-action "unsignup")}}
           {{/each}}
         {{/each}}
       </div>
@@ -40,7 +40,7 @@
         <div class="signup-wrapper">
           <h3><i class="{{seatedRole.role.iconClasses}}"></i> <small>{{seatedRole.role.name}}</small></h3>
           {{#each seatedRole.signups itemController="signup" as |signup|}}
-          {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+          {{raid-signup signup=signup currentAccount=currentAccount seat=(route-action "seat") unseat=(route-action "unseat") unsignup=(route-action "unsignup")}}
           {{/each}}
         </div>
       {{/each}}

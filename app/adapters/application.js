@@ -1,8 +1,8 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 import ENV from 'coretheloothound/config/environment';
-import ActiveModelAdapter from 'active-model-adapter';
 
-export default ActiveModelAdapter.extend({
+export default DS.RESTAdapter.extend({
   host: ENV.api,
 
   headers: Ember.computed(function() {
