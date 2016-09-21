@@ -4,22 +4,22 @@ export default Ember.Component.extend({
   classNames: 'signup',
 
   rolesSorting: ['slug:desc'],
-  sortedRoles: Ember.computed.sort('signup.roles', 'rolesSorting'),
+  sortedRoles: Ember.computed.sort('signup.model.roles', 'rolesSorting'),
 
   attributeBindings: ['draggable:draggable', 'note:title'],
   draggable: true,
 
   note: function() {
-    return this.get('signup.note');
-  }.property('signup.note'),
+    return this.get('signup.model.note');
+  }.property('signup.model.note'),
 
   classes: function() {
-    var classes = 'class class-' + this.get('signup.character.class_id');
+    var classes = 'class class-' + this.get('signup.model.character.class_id');
     if(this.get('preferred')) {
       classes += ' preferred';
     }
     return classes;
-  }.property('signup.character.class_id'),
+  }.property('signup.model.character.class_id'),
 
   iconClasses: function() {
     return 'role ' + this.get('signup.role.slug');

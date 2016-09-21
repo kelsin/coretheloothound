@@ -1,10 +1,10 @@
 <div class="raid">
   <section class="title">
-    <h1>{{name}}</h1>
+    <h1>{{model.name}}</h1>
     <div class="stats">
-      <div title="Seated accounts" class="stat">{{accountSeated}} <i class="fa fa-check fa-fw"></i></div>
-      <div title="Accounts on the waiting list" class="stat">{{accountWaitingList}} <i class="fa fa-bars fa-fw"></i></div>
-      <div title="Accounts signed up" class="stat">{{accountSignups}} <i class="fa fa-users fa-fw"></i></div>
+      <div title="Seated accounts" class="stat">{{model.accountSeated}} <i class="fa fa-check fa-fw"></i></div>
+      <div title="Accounts on the waiting list" class="stat">{{model.accountWaitingList}} <i class="fa fa-bars fa-fw"></i></div>
+      <div title="Accounts signed up" class="stat">{{model.accountSignups}} <i class="fa fa-users fa-fw"></i></div>
     </div>
   </section>
   <section class="alerts">
@@ -26,7 +26,7 @@
           </div>
         {{/if}}
       {{/if}}
-      {{#if hiddenAndNotFinalized}}
+      {{#if model.hiddenAndNotFinalized}}
         <div class="alert alert-danger" role="alert">
           <strong>Raid is not yet finalized!</strong>
           You will not be able to see the seating arrangement until the raid is finalized.

@@ -1,9 +1,9 @@
 <div class="raid-wrapper">
   <section class="info">
-    <p><i class="fa fa-calendar fa-fw"></i> {{dateCalendar}} <small>{{dateAgo}}</small></p>
-    <p><i class="fa fa-users fa-fw"></i> <a {{bind-attr href=guild.url}}>{{guild.name}}</a></p>
-    {{#if hidden}}
-      {{#if finalized}}
+    <p><i class="fa fa-calendar fa-fw"></i> {{model.dateCalendar}} <small>{{model.dateAgo}}</small></p>
+    <p><i class="fa fa-users fa-fw"></i> <a {{bind-attr href=model.guild.url}}>{{model.guild.name}}</a></p>
+    {{#if model.hidden}}
+      {{#if model.finalized}}
         <p><i class="fa fa-lock fa-fw"></i> <a {{action "unfinalize"}}>Finalized</a></p>
       {{else}}
         <p><i class="fa fa-unlock fa-fw"></i> <a {{action "finalize"}}>Not Finalized</a></p>
@@ -13,10 +13,10 @@
       <p><i class="fa fa-eye fa-fw"></i> <a {{action "hide"}}>Visible</a></p>
     {{/if}}
     <p><i class="fa fa-trash-o fa-fw"></i> <a {{action "delete"}}>Delete</a></p>
-    <p><i class="fa fa-arrow-left fa-fw"></i> {{#link-to 'raid.index' this}}Back{{/link-to}}</p>
-    {{#if note}}<p><i class="fa fa-file-text-o fa-fw"></i> {{note}}</p>{{/if}}
+    <p><i class="fa fa-arrow-left fa-fw"></i> {{#link-to 'raid.index' model}}Back{{/link-to}}</p>
+    {{#if model.note}}<p><i class="fa fa-file-text-o fa-fw"></i> {{model.note}}</p>{{/if}}
   </section>
   <section class="signups">
-    {{raid-permissions raid=this account=account newPermission="newPermission" deletePermission="deletePermission"}}
+    {{raid-permissions raid=model account=model.account newPermission="newPermission" deletePermission="deletePermission"}}
   </section>
 </div>

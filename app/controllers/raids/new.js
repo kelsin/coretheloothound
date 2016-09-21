@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 /* global moment */
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   needs: ['application'],
   account: Ember.computed.alias('controllers.application.account'),
 
