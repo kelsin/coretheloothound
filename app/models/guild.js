@@ -27,18 +27,7 @@ export default DS.Model.extend({
   }),
 
   backgroundHexColor: Ember.computed('backgroundColor', function() {
-    console.log(this.get('name'));
-    console.log(this.get('id'));
-    console.log(this.get('backgroundColor'));
     return '#' + this.get('backgroundColor').substring(2,8);
-  }),
-
-  backgroundStyle: Ember.computed('backgroundHexColor', 'borderHexColor', function() {
-    return Ember.String.htmlSafe('background-color: ' + this.get('backgroundHexColor') + '; border-color: ' + this.get('borderHexColor') + ';');
-  }),
-
-  iconStyle: Ember.computed('iconHexColor', 'iconPadded', function() {
-    return Ember.String.htmlSafe('background-color: ' + this.get('iconHexColor') + "; -webkit-mask-box-image: url('https://us.battle.net/wow/static/images/guild/tabards/emblem_" + this.get('iconPadded') + ".png');");
   }),
 
   characters: DS.hasMany('character', {

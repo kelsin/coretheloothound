@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 /* global moment */
 export default Ember.Controller.extend({
+  applicationController: Ember.inject.controller('application'),
+  currentAccount: Ember.computed.alias('applicationController.account'),
+
   raidSorting: ['date', 'name'],
 
   filteredRaids: Ember.computed('model.[]', function() {

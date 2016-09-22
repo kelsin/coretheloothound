@@ -20,16 +20,6 @@ export default Ember.Controller.extend({
     });
   }),
 
-  currentAccountSeated: Ember.computed('model.seated.[].character', 'currentAccount.id', function() {
-    var accountId = this.get('currentAccount.id').toString();
-    return this.get('model.seated').findBy('character.account.id', accountId);
-  }),
-
-  currentAccountSignedUp: Ember.computed('model.signups.[].character', 'currentAccount.id', function() {
-    var accountId = this.get('currentAccount.id').toString();
-    return this.get('model.signups').filterBy('character.account.id', accountId);
-  }),
-
   characters: Ember.computed('currentAccount.characters', 'signedUpCharacterIds', function() {
     var ids = this.get('signedUpCharacterIds');
     return this.get('currentAccount.characters')

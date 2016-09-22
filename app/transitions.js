@@ -15,8 +15,8 @@ export default function(){
   this.transition(
     this.fromRoute('raids'),
     this.toRoute('raid'),
-    this.use('toLeft'),
-    this.reverse('toRight')
+    this.use('toLeft')
+    //this.reverse('toRight')
   );
 
   this.transition(
