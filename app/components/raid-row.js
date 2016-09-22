@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   }),
 
   accountSignedUp: Ember.computed('raid.signups.[].character', 'account.id', function() {
-    var accountId = this.get('account.id');
+    var accountId = this.get('account.id').toString();
     return this.get('raid.signups').filterBy('character.account.id', accountId);
   })
 });
