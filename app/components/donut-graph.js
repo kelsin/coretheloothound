@@ -32,7 +32,7 @@ export default Ember.Component.extend({
     return this.arc(30, 60);
   }),
 
-  update: Ember.observer('data.@each', function() {
+  update: Ember.observer('data.[]', function() {
     var svg = this.get('svg');
     var data = this.get('data');
     var arcOuter = this.get('arcOuter');

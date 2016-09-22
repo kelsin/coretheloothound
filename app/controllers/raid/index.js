@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('roles', 'rolesSorting'),
 
-  seatedByRole: Ember.computed('sortedRoles.@each.id', 'model.seated.@each.role', function() {
+  seatedByRole: Ember.computed('sortedRoles.[].id', 'model.seated.[].role', function() {
     var _this = this;
 
     return this.get('sortedRoles').map(function(role) {
@@ -20,12 +20,12 @@ export default Ember.Controller.extend({
     });
   }),
 
-  currentAccountSeated: Ember.computed('model.seated.@each.character', 'currentAccount.id', function() {
+  currentAccountSeated: Ember.computed('model.seated.[].character', 'currentAccount.id', function() {
     var accountId = this.get('currentAccount.id').toString();
     return this.get('model.seated').findBy('character.account.id', accountId);
   }),
 
-  currentAccountSignedUp: Ember.computed('model.signups.@each.character', 'currentAccount.id', function() {
+  currentAccountSignedUp: Ember.computed('model.signups.[].character', 'currentAccount.id', function() {
     var accountId = this.get('currentAccount.id').toString();
     return this.get('model.signups').filterBy('character.account.id', accountId);
   }),

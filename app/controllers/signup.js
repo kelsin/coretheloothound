@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   raid: Ember.inject.controller(),
 
   // This signup can be seated if they are currently in the waiting list
-  canBeSeated: Ember.computed('raid.model.waitingList.@each', function() {
+  canBeSeated: Ember.computed('raid.model.waitingList.[]', function() {
     var waitingList = this.get('raid.model.waitingList');
     return waitingList.map(function(signup) {
       return signup.get('id');

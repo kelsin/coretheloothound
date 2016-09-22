@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  character: Ember.computed('characters.@each', function() {
+  character: Ember.computed('characters.[]', function() {
     return this.get('characters').get('firstObject');
   }),
 

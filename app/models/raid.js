@@ -25,7 +25,7 @@ export default Permissioned.extend({
     return this.get('groups.number') > 1;
   }),
 
-  signedUpCharacterIds: Ember.computed('signups.@each.character', function() {
+  signedUpCharacterIds: Ember.computed('signups.[].character', function() {
     return this.get('signups').map(function(signup) {
       return signup.get('character.id');
     });
@@ -43,19 +43,19 @@ export default Permissioned.extend({
     return moment(this.get('date')).calendar();
   }),
 
-  accountSignups: Ember.computed('signups.@each.character', function() {
+  accountSignups: Ember.computed('signups.[].character', function() {
     return this.get('signups').map(function(signup) {
       return signup.get('character.account.id');
     }).uniq().get('length');
   }),
 
-  accountWaitingList: Ember.computed('waitingList.@each.character', function() {
+  accountWaitingList: Ember.computed('waitingList.[].character', function() {
     return this.get('waitingList').map(function(signup) {
       return signup.get('character.account.id');
     }).uniq().get('length');
   }),
 
-  accountSeated: Ember.computed('seated.@each.character', function() {
+  accountSeated: Ember.computed('seated.[].character', function() {
     return this.get('seated').map(function(signup) {
       return signup.get('character.account.id');
     }).uniq().get('length');
@@ -97,7 +97,7 @@ export default Permissioned.extend({
   unseated: Ember.computed.filterBy('signups', 'seated', false),
 
   // Waiting list doesn't include anyone from an account that has been seated
-  waitingList: Ember.computed('seated.@each.character', 'unseated.@each.character', function() {
+  waitingList: Ember.computed('seated.[].character', 'unseated.[].character', function() {
     var seated = this.get('seated');
     var unseated = this.get('unseated');
     var account_ids = seated.map(function(signup) {
@@ -108,7 +108,7 @@ export default Permissioned.extend({
     }).sortBy('character.account.battletag');
   }),
 
-  waitingListByAccount: Ember.computed('waitingList.@each.account', function() {
+  waitingListByAccount: Ember.computed('waitingList.[].account', function() {
     var _this = this;
 
     return this.get('waitingList').mapBy('character.account').uniq().map(function(account) {

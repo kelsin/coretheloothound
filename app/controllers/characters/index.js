@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
     }
   }),
 
-  realms: Ember.computed('model.@each.realm', function() {
+  realms: Ember.computed('model.[].realm', function() {
     this.set('realm', window.localStorage.getItem('coretheloothound_realm') || 'All');
 
     return ['All'].concat(_.uniq(this.get('model').mapBy('realm')).sort());
