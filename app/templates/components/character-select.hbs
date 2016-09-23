@@ -4,12 +4,13 @@
     <div class="col-md-12">
       <div class="form-group">
         <label for="character">Character</label>
-        {{view "select" id="character"
-                        class="form-control"
-                        content=characters
-                        selection=character
-                        optionValuePath="content.model.id"
-                        optionLabelPath="content.label"}}
+        <select id="character" class="form-control" onchange={{action "change"}}>
+          {{#each characters as |item|}}
+          <option value="{{item.model.id}}" selected={{eq character item}}>
+            {{item.label}}
+          </option>
+          {{/each}}
+        </select>
         {{input class="form-control" placeholder="Note" value=note}}
 
         {{#each roleCheckboxes as |box|}}

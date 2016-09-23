@@ -6,6 +6,11 @@ export default Ember.Controller.extend({
   realm: 'All',
   onlyMax: true,
 
+  init() {
+    this.set('realm', window.localStorage.getItem('coretheloothound_realm') || 'All');
+    console.log(typeof this.get('realm'));
+  },
+
   updateRealm: Ember.observer('realm', function() {
     var realm = this.get('realm');
 
@@ -15,8 +20,6 @@ export default Ember.Controller.extend({
   }),
 
   realms: Ember.computed('model.[].realm', function() {
-    this.set('realm', window.localStorage.getItem('coretheloothound_realm') || 'All');
-
     return ['All'].concat(_.uniq(this.get('model').mapBy('realm')).sort());
   }),
 
@@ -38,5 +41,11 @@ export default Ember.Controller.extend({
         return realm === character.get('realm');
       }
     });
-  })
+  }),
+
+  actions: {
+    changeRealm(realm) {
+      this.set('realm', realm);
+    }
+  }
 });

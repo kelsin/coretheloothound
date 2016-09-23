@@ -1,8 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  character: Ember.computed('characters.[]', function() {
-    return this.get('characters').get('firstObject');
+  character: Ember.computed('characters', {
+    get(key) {
+      return this.get('characters').get('firstObject');
+    },
+    set(key, value) {
+      return value;
+    }
   }),
 
   roleCheckboxes: Ember.computed.map('character.model.roles', function(role){
@@ -17,6 +22,12 @@ export default Ember.Component.extend({
   roles: Ember.computed.mapBy('checkedRoles', 'content'),
 
   actions: {
+    change(event) {
+      const characters = this.get('characters');
+      const selectedIndex = event.target.selectedIndex;
+      const character = characters[selectedIndex];
+      this.set('character', character);
+    },
     signup() {
       var role_ids = this.get('roles').mapBy('id');
       this.sendAction("action",

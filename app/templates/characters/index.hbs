@@ -1,7 +1,13 @@
 <div class="well form">
   <div class="form-group">
     <label for="realms">Realm</label>
-    {{view "select" id="realms" class="form-control" content=realms value=realm}}
+    <select id="realms" class="form-control" onchange={{action "changeRealm" value="target.value"}}>
+      {{#each realms as |item|}}
+      <option value={{item}} selected={{eq realm item}}>
+        {{item}}
+      </option>
+      {{/each}}
+    </select>
   </div>
   <div class="checkbox">
     <label>{{input type="checkbox" checked=onlyMax}} Only show max level characters</label>

@@ -1,7 +1,8 @@
-{{view "select"
-       content=guilds
-       selection=guild
-       optionValuePath="content.id"
-       optionLabelPath="content.fullName"
-       prompt="None"
-       class="form-control"}}
+<select class="form-control" onchange={{action "change"}}>
+  <option>None</option>
+  {{#each guilds as |item|}}
+  <option value="{{item.id}}" selected={{eq guild item}}>
+    {{item.fullName}}
+  </option>
+  {{/each}}
+</select>

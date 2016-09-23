@@ -25,8 +25,8 @@ export default Ember.Component.extend({
     return 'role ' + this.get('signup.role.slug');
   }),
 
-  mine: Ember.computed('currentAccount.id', 'signup.character.account.id', function() {
-    return this.get('currentAccount.id') === this.get('signup.character.account.id');
+  mine: Ember.computed('currentAccount.id', 'signup.model.character.account.id', function() {
+    return this.get('currentAccount.id') === this.get('signup.model.character.account.id');
   }),
 
   actions: {
