@@ -31,16 +31,16 @@
         <h3><i class="fa fa-clock-o fa-fw"></i> <small>Waiting List</small></h3>
         {{#each model.waitingListByAccount as |waitingListAccount|}}
           <h4>{{waitingListAccount.account.battletag}}</h4>
-          {{#each waitingListAccount.signups itemController="signup" as |signup|}}
-          {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+          {{#each waitingListAccount.signups as |signup|}}
+          {{raid-signup signup=signup currentAccount=currentAccount seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
           {{/each}}
         {{/each}}
       </div>
       {{#each seatedByRole as |seatedRole|}}
         <div class="signup-wrapper">
           <h3><i class="{{seatedRole.role.iconClasses}}"></i> <small>{{seatedRole.role.name}}</small></h3>
-          {{#each seatedRole.signups itemController="signup" as |signup|}}
-          {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+          {{#each seatedRole.signups as |signup|}}
+          {{raid-signup signup=signup currentAccount=currentAccount seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
           {{/each}}
         </div>
       {{/each}}

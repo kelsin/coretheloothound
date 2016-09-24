@@ -4,44 +4,49 @@ export default Ember.Component.extend({
   classNames: 'signup',
 
   rolesSorting: ['slug:desc'],
-  sortedRoles: Ember.computed.sort('signup.model.roles', 'rolesSorting'),
+  sortedRoles: Ember.computed.sort('signup.roles', 'rolesSorting'),
 
   attributeBindings: ['draggable:draggable', 'note:title'],
   draggable: true,
 
-  note: function() {
-    return this.get('signup.model.note');
-  }.property('signup.model.note'),
+  note: Ember.computed('signup.note', function() {
+    return this.get('signup.note');
+  }),
 
-  classes: function() {
-    var classes = 'class class-' + this.get('signup.model.character.class_id');
+  classes: Ember.computed('signup.character.class_id', function() {
+    var classes = 'class class-' + this.get('signup.character.class_id');
     if(this.get('preferred')) {
       classes += ' preferred';
     }
     return classes;
-  }.property('signup.model.character.class_id'),
+  }),
 
-  iconClasses: function() {
+  iconClasses: Ember.computed('signup.role.slug', function() {
     return 'role ' + this.get('signup.role.slug');
-  }.property('signup.role.slug'),
+  }),
 
-  mine: function() {
+  mine: Ember.computed('currentAccount.id', 'signup.character.account.id', function() {
     return this.get('currentAccount.id') === this.get('signup.character.account.id');
-  }.property('currentAccount.id', 'signup.character.account.id'),
+  }),
+
+  canBeSeated: Ember.computed('signup.raid.waitingList.[]', function() {
+    var waitingList = this.get('signup.raid.waitingList');
+    return waitingList.mapBy('id').includes(this.get('signup.id'));
+  }),
 
   actions: {
-    unsignup: function() {
+    unsignup() {
       this.sendAction("unsignup",
-                      this.get('signup.content'));
+                      this.get('signup'));
     },
-    seat: function(role) {
+    seat(role) {
       this.sendAction("seat",
-                      this.get('signup.content'),
+                      this.get('signup'),
                       role);
     },
-    unseat: function() {
+    unseat() {
       this.sendAction("unseat",
-                      this.get('signup.content'));
+                      this.get('signup'));
     }
   }
 });

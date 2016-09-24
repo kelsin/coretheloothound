@@ -1,15 +1,14 @@
 import Ember from 'ember';
-import CharacterController from '../character';
 
 export default Ember.Controller.extend({
-  needs: ['application', 'raids/index'],
-  currentAccount: Ember.computed.alias('controllers.application.account'),
-  roles: Ember.computed.alias('controllers.raids/index.roles'),
-
+  indexController: Ember.inject.controller('raids/index'),
+  applicationController: Ember.inject.controller('application'),
+  currentAccount: Ember.computed.alias('applicationController.account'),
+  roles: Ember.computed.alias('indexController.roles'),
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('roles', 'rolesSorting'),
 
-  seatedByRole: function() {
+  seatedByRole: Ember.computed('sortedRoles.[].id', 'model.seated.[].role', function() {
     var _this = this;
 
     return this.get('sortedRoles').map(function(role) {
@@ -18,36 +17,48 @@ export default Ember.Controller.extend({
         signups: _this.get('model.seated').filterBy('role.id', role.get('id'))
       });
     });
-  }.property('sortedRoles.@each.id', 'model.seated.@each.role'),
+  }),
 
-  currentAccountSeated: function() {
+  currentAccountSeated: Ember.computed('model.seated.[].character', 'currentAccount.id', function() {
     var accountId = this.get('currentAccount.id').toString();
     return this.get('model.seated').findBy('character.account.id', accountId);
-  }.property('model.seated.@each.character', 'currentAccount.id'),
+  }),
 
-  currentAccountSignedUp: function() {
+  currentAccountSignedUp: Ember.computed('model.signups.[].character', 'currentAccount.id', function() {
     var accountId = this.get('currentAccount.id').toString();
     return this.get('model.signups').filterBy('character.account.id', accountId);
-  }.property('model.signups.@each.character', 'currentAccount.id'),
+  }),
 
-  characters: function() {
+  characters: Ember.computed('currentAccount.characters', 'model.signedUpCharacterIds', function() {
     var ids = this.get('model.signedUpCharacterIds');
     return this.get('currentAccount.characters')
       .filter(function(character) {
-        return !ids.contains(character.get('id'));
-      })
-      .map(function(character) {
-        return CharacterController.create({
-          model: character
-        });
+        return !ids.includes(character.get('id'));
       })
       .sort(function(a,b) {
-        var diff = b.get('model.level') - a.get('model.level');
+        var diff = b.get('level') - a.get('level');
         if(diff) {
           return diff;
         } else {
-          return a.get('model.name').localeCompare(b.get('model.name'));
+          return a.get('name').localeCompare(b.get('name'));
         }
       });
-  }.property('currentAccount.characters', 'model.signedUpCharacterIds')
+  }),
+
+  actions: {
+    seat(signup, role) {
+      signup.set('seated', true);
+      signup.set('role', role);
+      signup.save();
+    },
+
+    unseat(signup) {
+      signup.set('seated', false);
+      signup.save();
+    },
+
+    unsignup(signup) {
+      signup.destroyRecord();
+    }
+  }
 });

@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -6,7 +7,7 @@ export default DS.Model.extend({
   icon: DS.attr(),
   class_ids: DS.attr(),
 
-  iconClasses: function() {
+  iconClasses: Ember.computed('slug', function() {
     return 'role ' + this.get('slug');
-  }.property('slug')
+  })
 });

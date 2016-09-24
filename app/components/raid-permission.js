@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  label: function() {
+  label: Ember.computed('permission.type', 'permission.args', function() {
     var type = this.get('permission.type');
     switch (type) {
     case 'Guild':
@@ -10,14 +10,14 @@ export default Ember.Component.extend({
     default:
       return this.get('permission.args');
     }
-  }.property('permission.type', 'permission.args'),
+  }),
 
-  ownAccount: function() {
+  ownAccount: Ember.computed('permission.key', 'account.battletag', function() {
     return this.get('permission.key') === ('Account|' + this.get('account.battletag'));
-  }.property('permission.key', 'account.battletag'),
+  }),
 
   actions: {
-    deletePermission: function() {
+    deletePermission() {
       this.sendAction('deletePermission',
                       this.get('permission'));
     }

@@ -1,12 +1,12 @@
 import Ember from 'ember';
 
 export function initialize() {
-  Ember.LinkView.reopen({
+  Ember.LinkComponent.reopen({
     attributeBindings: ['data-content', 'data-toggle']
   });
 }
 
 export default {
-  name: 'link-view',
+  name: 'link-component',
   initialize: initialize
 };

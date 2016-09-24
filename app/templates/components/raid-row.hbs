@@ -1,0 +1,42 @@
+<td>
+  {{#if raid.guild}}
+    {{guild-icon guild=raid.guild}}
+    {{raid.guild.name}}<br/><small>{{raid.guild.realm}}</small>
+  {{/if}}
+</td>
+<td>
+  {{#if raid.admin}}
+    <i title="You're an admin" class="fa fa-legal fa-fw"></i>&nbsp;
+  {{/if}}
+  {{#if raid.note}}
+    {{#link-to 'raid' raid.id data-content=raid.note data-toggle="popover"}}{{raid.name}}{{/link-to}}
+  {{else}}
+    {{#link-to 'raid' raid.id}}{{raid.name}}{{/link-to}}
+  {{/if}}
+</td>
+<td><i class="fa fa-calendar"></i> {{raid.dateCalendar}}<br/><small>{{raid.dateAgo}}</small></td>
+<td>
+  {{#if accountSeated}}
+    <strong class="text-success">Seated on {{accountSeated.character.name}}</strong>
+  {{else}}
+    {{#if accountSignedUp}}
+      <strong class="text-info">Signed Up</strong>
+    {{else}}
+      <strong class="text-danger">Not Signed Up!</strong>
+    {{/if}}
+  {{/if}}<br/>
+  <small>
+    {{#if raid.hidden}}
+      {{#if raid.finalized}}
+        <i class="fa fa-lock fa-fw"></i> Finalized
+      {{else}}
+        <i class="fa fa-unlock fa-fw"></i> Not Finalized
+      {{/if}}
+    {{/if}}
+  </small>
+</td>
+<td>
+  <span title="Accounts signed up">{{raid.accountSignups}} <i class="fa fa-users fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
+  <span title="Accounts on the waiting list">{{raid.accountWaitingList}} <i class="fa fa-bars fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
+  <span title="Seated accounts">{{raid.accountSeated}} <i class="fa fa-check fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
+</td>

@@ -9,44 +9,38 @@ export default DS.Model.extend({
   icon: DS.attr('number'),
   border: DS.attr('number'),
 
-  iconPadded: function() {
+  iconPadded: Ember.computed('icon', function() {
     var icon = this.get('icon');
     return _.pad(icon, 2, '0');
-  }.property('icon'),
+  }),
 
   iconColor: DS.attr('string'),
   borderColor: DS.attr('string'),
   backgroundColor: DS.attr('string'),
 
-  iconHexColor: function() {
+  iconHexColor: Ember.computed('iconColor', function() {
     return '#' + this.get('iconColor').substring(2,8);
-  }.property('iconColor'),
+  }),
 
-  borderHexColor: function() {
+  borderHexColor: Ember.computed('borderColor', function() {
     return '#' + this.get('borderColor').substring(2,8);
-  }.property('borderColor'),
+  }),
 
-  backgroundHexColor: function() {
+  backgroundHexColor: Ember.computed('backgroundColor', function() {
     return '#' + this.get('backgroundColor').substring(2,8);
-  }.property('backgroundColor'),
+  }),
 
-  backgroundStyle: function() {
-    return Ember.String.htmlSafe('background-color: ' + this.get('backgroundHexColor') + '; border-color: ' + this.get('borderHexColor') + ';');
-  }.property('backgroundHexColor', 'borderHexColor'),
+  characters: DS.hasMany('character', {
+    async: false
+  }),
 
-  iconStyle: function() {
-    return Ember.String.htmlSafe('background-color: ' + this.get('iconHexColor') + "; -webkit-mask-box-image: url('https://us.battle.net/wow/static/images/guild/tabards/emblem_" + this.get('iconPadded') + ".png');");
-  }.property('iconHexColor', 'iconPadded'),
-
-  characters: DS.hasMany('character'),
-
-  fullName: function() {
+  fullName: Ember.computed('name', 'realm', function() {
     return this.get('name') + ' - ' + this.get('realm');
-  }.property('name', 'realm'),
+  }),
 
-  url: function() {
+  url: Ember.computed('name', 'realm', function() {
     return 'http://us.battle.net/wow/guild/' +
       encodeURIComponent(this.get('realm')) + '/' +
       encodeURIComponent(this.get('name')) + '/';
-  }.property('name', 'realm')
+  })
 });
