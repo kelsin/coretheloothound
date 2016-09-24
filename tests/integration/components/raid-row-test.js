@@ -25,13 +25,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{raid-row raid=raid account=account}}`);
 
   assert.equal(this.$().text().trim(), 'Not Signed Up!');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#raid-row raid=raid account=account}}
-      template block text
-    {{/raid-row}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'Not Signed Up!');
 });

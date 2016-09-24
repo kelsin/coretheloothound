@@ -1,16 +1,15 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('guild-icon', 'Integration | Component | guild icon', {
+moduleForComponent('raid-permission', 'Integration | Component | raid permission', {
   integration: true
 });
 
 test('it renders', function(assert) {
-
   // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+  // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{guild-icon}}`);
+  this.render(hbs`{{raid-permission}}`);
 
   assert.equal(this.$().text().trim(), '');
 });

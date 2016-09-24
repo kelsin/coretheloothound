@@ -18,11 +18,11 @@ export default Ember.Route.extend({
           success(data) {
             delete data.permissions;
             _this.store.pushPayload('account', data);
-            _this.store.find('account', data.account.id).then(function(account) {
-              resolve({
-                apikey: apikey,
-                account: account
-              });
+
+            var account = _this.store.peekRecord('account', data.account.id);
+            resolve({
+              apikey: apikey,
+              account: account
             });
           },
           error() {

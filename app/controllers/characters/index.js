@@ -8,7 +8,6 @@ export default Ember.Controller.extend({
 
   init() {
     this.set('realm', window.localStorage.getItem('coretheloothound_realm') || 'All');
-    console.log(typeof this.get('realm'));
   },
 
   updateRealm: Ember.observer('realm', function() {

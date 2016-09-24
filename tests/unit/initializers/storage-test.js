@@ -1,13 +1,12 @@
-import {module, test} from 'qunit';
 import Ember from 'ember';
-import { initialize } from 'coretheloothound/initializers/storage';
+import StorageInitializer from 'coretheloothound/initializers/storage';
+import { module, test } from 'qunit';
 
-var container, application;
+let application;
 
-module('StorageInitializer', {
-  beforeEach: function() {
+module('Unit | Initializer | storage', {
+  beforeEach() {
     Ember.run(function() {
-      container = new Ember.Container();
       application = Ember.Application.create();
       application.deferReadiness();
     });
@@ -16,9 +15,8 @@ module('StorageInitializer', {
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  initialize(container, application);
+  StorageInitializer.initialize(application);
 
   // you would normally confirm the results of the initializer here
   assert.ok(true);
 });
-
