@@ -94,7 +94,7 @@ export default Permissioned.extend({
     var unseated = this.get('unseated');
     var account_ids = seated.mapBy('character.account.id').uniq();
     return unseated.filter(function(signup) {
-      return !account_ids.contains(signup.get('character.account.id'));
+      return !account_ids.includes(signup.get('character.account.id'));
     }).sortBy('character.account.battletag');
   }),
 

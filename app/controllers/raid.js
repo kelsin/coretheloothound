@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
     var ids = this.get('signedUpCharacterIds');
     return this.get('currentAccount.characters')
       .filter(function(character) {
-        return !ids.contains(character.get('id'));
+        return !ids.includes(character.get('id'));
       })
       .sort(function(a,b) {
         var diff = b.get('level') - a.get('level');

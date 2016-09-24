@@ -31,7 +31,7 @@ export default Ember.Component.extend({
 
   canBeSeated: Ember.computed('signup.raid.waitingList.[]', function() {
     var waitingList = this.get('signup.raid.waitingList');
-    return waitingList.mapBy('id').contains(this.get('signup.id'));
+    return waitingList.mapBy('id').includes(this.get('signup.id'));
   }),
 
   actions: {

@@ -57,7 +57,7 @@ export default Ember.Route.extend({
       });
 
       Ember.RSVP.all(_.map(role_ids, function(role_id) {
-        return _this.store.find('role', role_id);
+        return _this.store.peekRecord('role', role_id);
       })).then(function(roles) {
         return _.each(roles, function(role) {
           signup.get('roles').addObject(role);

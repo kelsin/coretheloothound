@@ -16,7 +16,7 @@ export function characterClass(class_id) {
     12: 'Demon Hunter'
   };
 
-  return new Ember.Handlebars.SafeString('<span class="class-' + class_id + '">' + classes[class_id] + '</span>');
+  return new Ember.String.htmlSafe('<span class="class-' + class_id + '">' + classes[class_id] + '</span>');
 }
 
 export default Ember.Helper.helper(characterClass);
