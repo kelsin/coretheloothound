@@ -46,17 +46,6 @@ export default Ember.Route.extend({
       }
     },
 
-    seat(signup, role) {
-      signup.set('seated', true);
-      signup.set('role', role);
-      signup.save();
-    },
-
-    unseat(signup) {
-      signup.set('seated', false);
-      signup.save();
-    },
-
     signup(character, note, role_ids) {
       var _this = this;
       var raid = this.currentModel;
@@ -76,10 +65,6 @@ export default Ember.Route.extend({
       }).then(function() {
         signup.save();
       });
-    },
-
-    unsignup(signup) {
-      signup.destroyRecord();
     },
 
     newPermission(level, key) {

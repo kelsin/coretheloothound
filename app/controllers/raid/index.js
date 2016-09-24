@@ -43,5 +43,22 @@ export default Ember.Controller.extend({
           return a.get('name').localeCompare(b.get('name'));
         }
       });
-  })
+  }),
+
+  actions: {
+    seat(signup, role) {
+      signup.set('seated', true);
+      signup.set('role', role);
+      signup.save();
+    },
+
+    unseat(signup) {
+      signup.set('seated', false);
+      signup.save();
+    },
+
+    unsignup(signup) {
+      signup.destroyRecord();
+    }
+  }
 });
