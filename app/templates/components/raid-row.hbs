@@ -17,7 +17,7 @@
 <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}}<br/><small>{{raid.dateAgo}}</small></td>
 <td>
   {{#if accountSeated}}
-    <strong class="text-success">Seated on {{raid.currentAccountSeated.character.name}}</strong>
+    <strong class="text-success">Seated on {{accountSeated.character.name}}</strong>
   {{else}}
     {{#if accountSignedUp}}
       <strong class="text-info">Signed Up</strong>
