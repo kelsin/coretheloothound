@@ -25,4 +25,4 @@ export function characterFaction(race_id) {
   }
 }
 
-export default Ember.Handlebars.makeBoundHelper(characterFaction);
+export default Ember.Helper.helper(characterFaction);

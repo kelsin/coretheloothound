@@ -19,4 +19,4 @@ export function characterClass(class_id) {
   return new Ember.Handlebars.SafeString('<span class="class-' + class_id + '">' + classes[class_id] + '</span>');
 }
 
-export default Ember.Handlebars.makeBoundHelper(characterClass);
+export default Ember.Helper.helper(characterClass);

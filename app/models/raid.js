@@ -26,9 +26,7 @@ export default Permissioned.extend({
   }),
 
   signedUpCharacterIds: Ember.computed('signups.[].character', function() {
-    return this.get('signups').map(function(signup) {
-      return signup.get('character.id');
-    });
+    return this.get('signups').mapBy('character.id');
   }),
 
   hiddenAndNotFinalized: Ember.computed('hidden', 'finalized', function() {
@@ -44,21 +42,15 @@ export default Permissioned.extend({
   }),
 
   accountSignups: Ember.computed('signups.[].character', function() {
-    return this.get('signups').map(function(signup) {
-      return signup.get('character.account.id');
-    }).uniq().get('length');
+    return this.get('signups').mapBy('character.account.id').uniq().get('length');
   }),
 
   accountWaitingList: Ember.computed('waitingList.[].character', function() {
-    return this.get('waitingList').map(function(signup) {
-      return signup.get('character.account.id');
-    }).uniq().get('length');
+    return this.get('waitingList').mapBy('character.account.id').uniq().get('length');
   }),
 
   accountSeated: Ember.computed('seated.[].character', function() {
-    return this.get('seated').map(function(signup) {
-      return signup.get('character.account.id');
-    }).uniq().get('length');
+    return this.get('seated').mapBy('character.account.id').uniq().get('length');
   }),
 
   totalSlots: Ember.computed('groups', function() {
@@ -100,9 +92,7 @@ export default Permissioned.extend({
   waitingList: Ember.computed('seated.[].character', 'unseated.[].character', function() {
     var seated = this.get('seated');
     var unseated = this.get('unseated');
-    var account_ids = seated.map(function(signup) {
-      return signup.get('character.account.id');
-    }).uniq();
+    var account_ids = seated.mapBy('character.account.id').uniq();
     return unseated.filter(function(signup) {
       return !account_ids.contains(signup.get('character.account.id'));
     }).sortBy('character.account.battletag');
