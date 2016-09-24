@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function(params) {
+  model(params) {
     return params.apikey;
   },
 
-  afterModel: function(apikey, transition) {
+  afterModel(apikey, transition) {
     this.get('storage').setValue('apikey', apikey);
     transition.send('loadUser');
     this.transitionTo('raids.index');

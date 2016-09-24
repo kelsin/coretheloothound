@@ -1,3 +1,4 @@
+import {module, test} from 'qunit';
 import {
   characterClass
 } from 'coretheloothound/helpers/character-class';
@@ -5,7 +6,7 @@ import {
 module('CharacterClassHelper');
 
 // Replace this with your real tests.
-test('it works', function() {
+test('it works', function(assert) {
   var result = characterClass(42);
-  ok(result);
+  assert.ok(result);
 });

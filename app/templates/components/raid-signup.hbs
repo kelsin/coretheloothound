@@ -1,15 +1,15 @@
 {{#if signup.seated}}
-  <i {{bind-attr class="iconClasses"}}></i>
+  <i class="{{iconClasses}}"></i>
 {{/if}}
-<span {{bind-attr class=classes}}>{{signup.model.character.name}} <small>{{signup.model.character.item_level}}</small></span>
-{{#if signup.model.raid.admin}}
+<span class="{{classes}}">{{signup.character.name}} <small>{{signup.character.item_level}}</small></span>
+{{#if signup.raid.admin}}
   <span class="seat pull-right">
-    {{#if signup.model.seated}}
+    {{#if signup.seated}}
       <a {{action 'unseat'}}><i class="fa fa-arrow-circle-left fa-fw"></i></a>
     {{else}}
-      {{#if signup.canBeSeated}}
-        {{#each role in sortedRoles}}
-        <a {{action 'seat' role}}><i {{bind-attr class="role.iconClasses"}}></i></a>
+      {{#if canBeSeated}}
+        {{#each sortedRoles as |role|}}
+        <a {{action 'seat' role}}><i class="{{role.iconClasses}}"></i></a>
         {{/each}}
       {{/if}}
     {{/if}}

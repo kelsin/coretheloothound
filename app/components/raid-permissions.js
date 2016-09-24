@@ -5,31 +5,31 @@ export default Ember.Component.extend({
   memberPermissions: Ember.computed.filterBy('raid.permissions', 'level', 'member'),
 
   actions: {
-    newAdminPermission: function() {
+    newAdminPermission() {
       this.sendAction('newPermission',
                       'admin',
                       'Account|' + this.get('adminAccount'));
     },
 
-    newMemberAccountPermission: function() {
+    newMemberAccountPermission() {
       this.sendAction('newPermission',
                       'member',
                       'Account|' + this.get('memberAccount'));
     },
 
-    newMemberCharacterPermission: function() {
+    newMemberCharacterPermission() {
       this.sendAction('newPermission',
                       'member',
                       'Character|' + this.get('characterName') + ':' + this.get('characterRealm'));
     },
 
-    newMemberGuildPermission: function() {
+    newMemberGuildPermission() {
       this.sendAction('newPermission',
                       'member',
                       'Guild|' + this.get('guildName') + ':' + this.get('guildRealm'));
     },
 
-    deletePermission: function(permission) {
+    deletePermission(permission) {
       this.sendAction('deletePermission',
                       permission);
     }

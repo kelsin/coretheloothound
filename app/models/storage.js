@@ -40,7 +40,7 @@ import Ember from 'ember';
 export default Ember.Object.extend({
   base: 'coretheloothound_',
 
-  getValue: function(key) {
+  getValue(key) {
     if (Modernizr.localstorage) {
       return window.localStorage.getItem(this.get('base') + key);
     } else {
@@ -48,7 +48,7 @@ export default Ember.Object.extend({
     }
   },
 
-  setValue: function(key, value) {
+  setValue(key, value) {
     if (Modernizr.localstorage) {
       window.localStorage.setItem(this.get('base') + key, value);
     } else {
@@ -56,7 +56,7 @@ export default Ember.Object.extend({
     }
   },
 
-  removeValue: function(key) {
+  removeValue(key) {
     if (Modernizr.localstorage) {
       window.localStorage.removeItem(this.get('base') + key);
     } else {

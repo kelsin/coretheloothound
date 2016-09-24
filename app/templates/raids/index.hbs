@@ -11,58 +11,8 @@
     </tr>
   </thead>
   <tbody>
-    {{#each raid in controller}}
-      <tr>
-        <td>
-          {{#if raid.model.guild}}
-            {{#if raid.model.guild.icon}}
-              <div class="emblem">
-                <div class="background" {{bind-attr style="raid.model.guild.backgroundStyle"}}>
-                  <div class="icon" {{bind-attr style="raid.model.guild.iconStyle"}}>
-                  </div>
-                </div>
-              </div>
-            {{/if}}
-            {{raid.model.guild.name}}<br/><small>{{raid.model.guild.realm}}</small>
-          {{/if}}
-        </td>
-        <td>
-          {{#if raid.model.admin}}
-            <i title="You're an admin" class="fa fa-legal fa-fw"></i>&nbsp;
-          {{/if}}
-          {{#if raid.model.note}}
-            {{#link-to 'raid' raid.id data-content=raid.model.note data-toggle="popover"}}{{raid.model.name}}{{/link-to}}
-          {{else}}
-            {{#link-to 'raid' raid.model.id}}{{raid.model.name}}{{/link-to}}
-          {{/if}}
-        </td>
-        <td><i class="fa fa-calendar"></i> {{raid.model.dateCalendar}}<br/><small>{{raid.model.dateAgo}}</small></td>
-        <td>
-          {{#if raid.currentAccountSeated}}
-            <strong class="text-success">Seated on {{raid.currentAccountSeated.character.name}}</strong>
-          {{else}}
-            {{#if raid.currentAccountSignedUp}}
-              <strong class="text-info">Signed Up</strong>
-            {{else}}
-              <strong class="text-danger">Not Signed Up!</strong>
-            {{/if}}
-          {{/if}}<br/>
-          <small>
-            {{#if raid.model.hidden}}
-              {{#if raid.model.finalized}}
-                <i class="fa fa-lock fa-fw"></i> Finalized
-              {{else}}
-                <i class="fa fa-unlock fa-fw"></i> Not Finalized
-              {{/if}}
-            {{/if}}
-          </small>
-        </td>
-        <td>
-          <span title="Accounts signed up">{{raid.model.accountSignups}} <i class="fa fa-users fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
-          <span title="Accounts on the waiting list">{{raid.model.accountWaitingList}} <i class="fa fa-bars fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
-          <span title="Seated accounts">{{raid.model.accountSeated}} <i class="fa fa-check fa-fw"></i></span>&nbsp;&nbsp;&nbsp;
-        </td>
-      </tr>
+    {{#each sortedRaids as |raid|}}
+      {{raid-row raid=raid account=currentAccount}}
     {{/each}}
   </tbody>
 </table>

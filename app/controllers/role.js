@@ -1,18 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  number: function() {
+  number: Ember.computed('parentController.seated.[].role', function() {
     var id = this.get('id');
     return this.get('parentController.seated').filter(function(signup) {
       return signup.get('role.id') === id;
     }).get('length');
-  }.property('parentController.seated.@each.role'),
+  }),
 
-  statClasses: function() {
+  statClasses: Ember.computed('iconClasses', function() {
     return 'stat ' + this.get('iconClasses');
-  }.property('iconClasses'),
+  }),
 
-  iconClasses: function() {
+  iconClasses: Ember.computed('slug', function() {
     return 'role ' + this.get('slug');
-  }.property('slug')
+  })
 });

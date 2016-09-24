@@ -1,7 +1,7 @@
 <div class="raid-wrapper">
   <section class="info">
     <p><i class="fa fa-calendar fa-fw"></i> {{model.dateCalendar}} <small>{{model.dateAgo}}</small></p>
-    <p><i class="fa fa-users fa-fw"></i> <a {{bind-attr href=model.guild.url}}>{{model.guild.name}}</a></p>
+    <p><i class="fa fa-users fa-fw"></i> <a href="{{model.guild.url}}">{{model.guild.name}}</a></p>
     {{#if model.admin}}
       {{#if model.hidden}}
         {{#if model.finalized}}
@@ -29,18 +29,18 @@
     <div class="wrapper">
       <div class="signup-wrapper waiting-list">
         <h3><i class="fa fa-clock-o fa-fw"></i> <small>Waiting List</small></h3>
-        {{#each waitingListAccount in model.waitingListByAccount}}
+        {{#each model.waitingListByAccount as |waitingListAccount|}}
           <h4>{{waitingListAccount.account.battletag}}</h4>
-          {{#each signup in waitingListAccount.signups itemController="signup"}}
-          {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+          {{#each waitingListAccount.signups as |signup|}}
+          {{raid-signup signup=signup currentAccount=currentAccount seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
           {{/each}}
         {{/each}}
       </div>
-      {{#each seatedRole in seatedByRole}}
+      {{#each seatedByRole as |seatedRole|}}
         <div class="signup-wrapper">
-          <h3><i {{bind-attr class="seatedRole.role.iconClasses"}}></i> <small>{{seatedRole.role.name}}</small></h3>
-          {{#each signup in seatedRole.signups itemController="signup"}}
-          {{raid-signup signup=signup currentAccount=currentAccount seat="seat" unseat="unseat" unsignup="unsignup"}}
+          <h3><i class="{{seatedRole.role.iconClasses}}"></i> <small>{{seatedRole.role.name}}</small></h3>
+          {{#each seatedRole.signups as |signup|}}
+          {{raid-signup signup=signup currentAccount=currentAccount seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
           {{/each}}
         </div>
       {{/each}}

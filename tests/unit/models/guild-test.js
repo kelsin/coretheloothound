@@ -8,8 +8,8 @@ moduleForModel('guild', 'Guild', {
   needs: ['model:account', 'model:character', 'model:signup', 'model:raid', 'model:role']
 });
 
-test('it exists', function() {
+test('it exists', function(assert) {
   var model = this.subject();
   // var store = this.store();
-  ok(!!model);
+  assert.ok(!!model);
 });

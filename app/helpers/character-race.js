@@ -44,7 +44,7 @@ export function characterRace(race_id) {
     26: 'Pandaren'
   };
 
-  return new Ember.Handlebars.SafeString('<span class="' + faction(race_id) + '">' + races[race_id] + '</span>');
+  return new Ember.String.htmlSafe('<span class="' + faction(race_id) + '">' + races[race_id] + '</span>');
 }
 
-export default Ember.Handlebars.makeBoundHelper(characterRace);
+export default Ember.Helper.helper(characterRace);

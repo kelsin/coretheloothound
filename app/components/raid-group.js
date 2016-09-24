@@ -5,13 +5,13 @@ export default Ember.Component.extend({
   classNameBindings: ['dragClass'],
   dragClass: '',
 
-  dragStart: function(event) {
+  dragStart(event) {
     alert('Dragging started');
     event.preventDefault();
     this.set('dragClass', 'dragging');
   },
 
-  dragOver: function(event) {
+  dragOver(event) {
     alert('Dragging Over');
     event.preventDefault();
     this.set('dragClass', '');

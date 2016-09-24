@@ -2,41 +2,41 @@ import Ember from 'ember';
 
 /* global _ */
 export default Ember.Route.extend({
-  model: function(params) {
+  model(params) {
     return this.store.find('raid', params.raid_id);
   },
 
-  setupController: function (controller, model) {
+  setupController(controller, model) {
     controller.set('model', model);
-    controller.set('roles', this.store.all('role'));
+    controller.set('roles', this.store.peekAll('role'));
   },
 
   actions: {
-    hide: function() {
+    hide() {
       var raid = this.currentModel;
       raid.set('hidden', true);
       raid.save();
     },
 
-    unhide: function() {
+    unhide() {
       var raid = this.currentModel;
       raid.set('hidden', false);
       raid.save();
     },
 
-    finalize: function() {
+    finalize() {
       var raid = this.currentModel;
       raid.set('finalized', true);
       raid.save();
     },
 
-    unfinalize: function() {
+    unfinalize() {
       var raid = this.currentModel;
       raid.set('finalized', false);
       raid.save();
     },
 
-    delete: function() {
+    delete() {
       var _this = this;
       var raid = this.currentModel;
       if(window.confirm('Are you sure you want to delete "' + raid.get('name') + '"?')) {
@@ -46,29 +46,18 @@ export default Ember.Route.extend({
       }
     },
 
-    seat: function(signup, role) {
-      signup.set('seated', true);
-      signup.set('role', role);
-      signup.save();
-    },
-
-    unseat: function(signup) {
-      signup.set('seated', false);
-      signup.save();
-    },
-
-    signup: function(character, note, role_ids) {
+    signup(character, note, role_ids) {
       var _this = this;
       var raid = this.currentModel;
 
       var signup = this.store.createRecord('signup', {
-        character: character.get('model'),
+        character: character,
         note: note,
         raid: raid
       });
 
       Ember.RSVP.all(_.map(role_ids, function(role_id) {
-        return _this.store.find('role', role_id);
+        return _this.store.peekRecord('role', role_id);
       })).then(function(roles) {
         return _.each(roles, function(role) {
           signup.get('roles').addObject(role);
@@ -78,11 +67,7 @@ export default Ember.Route.extend({
       });
     },
 
-    unsignup: function(signup) {
-      signup.destroyRecord();
-    },
-
-    newPermission: function(level, key) {
+    newPermission(level, key) {
       var raid = this.currentModel;
 
       var permission = this.store.createRecord('permission', {
@@ -94,7 +79,7 @@ export default Ember.Route.extend({
       permission.save();
     },
 
-    deletePermission: function(permission) {
+    deletePermission(permission) {
       permission.destroyRecord();
     }
   }

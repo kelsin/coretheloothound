@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 /* global moment */
 export default Ember.Controller.extend({
-  needs: ['application'],
-  account: Ember.computed.alias('controllers.application.account'),
+  applicationController: Ember.inject.controller('application'),
+  account: Ember.computed.alias('applicationController.account'),
 
-  init: function() {
+  init() {
     this._super();
     this.set('name', '');
     this.set('date',
@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    create: function() {
+    create() {
       var _this = this;
 
       var raid = this.store.createRecord('raid', {

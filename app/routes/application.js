@@ -2,7 +2,7 @@ import ENV from 'coretheloothound/config/environment';
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function() {
+  model() {
     var _this = this;
     var apikey = this.get('storage').getValue('apikey');
 
@@ -15,18 +15,17 @@ export default Ember.Route.extend({
             Accept: 'application/json+ember',
             Authorization: 'apikey ' + apikey
           },
-          success: function(data) {
+          success(data) {
             delete data.permissions;
             _this.store.pushPayload('account', data);
 
-            _this.store.find('account', data.account.id).then(function(account) {
-              resolve({
-                apikey: apikey,
-                account: account
-              });
+            var account = _this.store.peekRecord('account', data.account.id);
+            resolve({
+              apikey: apikey,
+              account: account
             });
           },
-          error: function() {
+          error() {
             // Bad API key
             resolve({
               apikey: undefined,
@@ -43,17 +42,17 @@ export default Ember.Route.extend({
     }
   },
 
-  setupController: function(controller, model) {
+  setupController(controller, model) {
     controller.set('apikey', model.apikey);
     controller.set('account', model.account);
   },
 
   actions: {
-    loadUser: function() {
+    loadUser() {
       this.refresh();
     },
 
-    login: function() {
+    login() {
       Ember.$.ajax({
         type: 'GET',
         url: ENV.api + '/login',
@@ -65,7 +64,7 @@ export default Ember.Route.extend({
             '//' + window.location.host +
             '/#/apikey/'
         },
-        success: function(data) {
+        success(data) {
           window.location = data.href;
         }
       });

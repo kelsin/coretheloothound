@@ -192,23 +192,28 @@ header {
       color: @gray;
     }
   }
+}
 
-  .emblem {
-    height: 40px;
-    width: 40px;
-    float: left;
-    margin-right: 5px;
+h1 .emblem {
+  margin-top: 5px;
+  margin-right: 10px;
+}
 
-    .background {
+.emblem {
+  height: 40px;
+  width: 40px;
+  float: left;
+  margin-right: 5px;
+
+  .background {
+    height: 100%;
+    width: 100%;
+    border-width: 3px;
+    border-style: solid;
+
+    .icon {
       height: 100%;
       width: 100%;
-      border-width: 3px;
-      border-style: solid;
-
-      .icon {
-        height: 100%;
-        width: 100%;
-      }
     }
   }
 }
