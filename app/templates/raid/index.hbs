@@ -31,7 +31,7 @@
         <h3><i class="fa fa-clock-o fa-fw"></i> <small>Waiting List</small></h3>
         {{#each model.waitingListByAccount as |waitingListAccount|}}
           <h4>{{waitingListAccount.account.battletag}}</h4>
-          {{#each waitingListAccount.signups itemController="signup" as |signup|}}
+          {{#each waitingListAccount.signups as |signup|}}
           {{raid-signup signup=signup currentAccount=currentAccount seat=(route-action "seat") unseat=(route-action "unseat") unsignup=(route-action "unsignup")}}
           {{/each}}
         {{/each}}
@@ -39,7 +39,7 @@
       {{#each seatedByRole as |seatedRole|}}
         <div class="signup-wrapper">
           <h3><i class="{{seatedRole.role.iconClasses}}"></i> <small>{{seatedRole.role.name}}</small></h3>
-          {{#each seatedRole.signups itemController="signup" as |signup|}}
+          {{#each seatedRole.signups as |signup|}}
           {{raid-signup signup=signup currentAccount=currentAccount seat=(route-action "seat") unseat=(route-action "unseat") unsignup=(route-action "unsignup")}}
           {{/each}}
         </div>

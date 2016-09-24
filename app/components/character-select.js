@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   character: Ember.computed('characters', {
-    get(key) {
+    get() {
       return this.get('characters').get('firstObject');
     },
     set(key, value) {
@@ -10,7 +10,7 @@ export default Ember.Component.extend({
     }
   }),
 
-  roleCheckboxes: Ember.computed.map('character.model.roles', function(role){
+  roleCheckboxes: Ember.computed.map('character.roles', function(role){
     return Ember.ObjectProxy.create({
       content: role,
       checked: true

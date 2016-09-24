@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import CharacterController from './character';
 
 export default Ember.Controller.extend({
   indexController: Ember.inject.controller('raids/index'),
@@ -24,19 +23,14 @@ export default Ember.Controller.extend({
     var ids = this.get('signedUpCharacterIds');
     return this.get('currentAccount.characters')
       .filter(function(character) {
-        return !ids.contains(character.get('model.id'));
-      })
-      .map(function(character) {
-        return CharacterController.create({
-          model: character
-        });
+        return !ids.contains(character.get('id'));
       })
       .sort(function(a,b) {
-        var diff = b.get('model.level') - a.get('model.level');
+        var diff = b.get('level') - a.get('level');
         if(diff) {
           return diff;
         } else {
-          return a.get('model.name').localeCompare(b.get('model.name'));
+          return a.get('name').localeCompare(b.get('name'));
         }
       });
   })

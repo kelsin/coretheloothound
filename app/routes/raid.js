@@ -62,7 +62,7 @@ export default Ember.Route.extend({
       var raid = this.currentModel;
 
       var signup = this.store.createRecord('signup', {
-        character: character.get('model'),
+        character: character,
         note: note,
         raid: raid
       });

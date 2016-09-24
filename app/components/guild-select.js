@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   guild: Ember.computed('guilds', {
-    get(key) {
+    get() {
       return this.get('guilds').get('firstObject');
     },
     set(key, value) {
