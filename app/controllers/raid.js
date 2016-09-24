@@ -33,5 +33,15 @@ export default Ember.Controller.extend({
           return a.get('name').localeCompare(b.get('name'));
         }
       });
+  }),
+
+  accountSeated: Ember.computed('model.seated.[].character', 'currentAccount.id', function() {
+    var accountId = this.get('currentAccount.id').toString();
+    return this.get('model.seated').findBy('character.account.id', accountId);
+  }),
+
+  accountSignedUp: Ember.computed('model.signups.[].character', 'currentAccount.id', function() {
+    var accountId = this.get('currentAccount.id').toString();
+    return this.get('model.signups').filterBy('character.account.id', accountId);
   })
 });

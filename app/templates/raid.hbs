@@ -9,15 +9,15 @@
   </section>
   <section class="alerts">
     <div class="wrapper">
-      {{#if currentAccountSeated}}
+      {{#if accountSeated}}
         <div class="alert alert-success" role="alert">
           <strong>Seated</strong>
-          on {{currentAccountSeated.character.name}}. See you at the raid!
+          on {{accountSeated.character.name}}. See you at the raid!
         </div>
       {{else}}
-        {{#if currentAccountSignedUp}}
+        {{#if accountSignedUp}}
           <div class="alert alert-info" role="alert">
-            You have {{currentAccountSignedUp.length}} characters on the <strong>Waiting List</strong>.
+            You have {{accountSignedUp.length}} characters on the <strong>Waiting List</strong>.
           </div>
         {{else}}
           <div class="alert alert-danger" role="alert">
