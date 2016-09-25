@@ -3,7 +3,7 @@ import Ember from 'ember';
 /* global moment */
 export default Ember.Controller.extend({
   applicationController: Ember.inject.controller('application'),
-  currentAccount: Ember.computed.alias('applicationController.account'),
+  currentAccount: Ember.computed.alias('applicationController.model'),
 
   raidSorting: ['date', 'name'],
 

@@ -37,7 +37,7 @@ import Ember from 'ember';
  * this.get('storage').removeValue('item');
  * ```
  */
-export default Ember.Object.extend({
+export default Ember.Service.extend({
   base: 'coretheloothound_',
 
   getValue(key) {

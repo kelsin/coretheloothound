@@ -2,11 +2,16 @@ import ENV from 'coretheloothound/config/environment';
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  session: Ember.inject.service(),
+
   model() {
     var _this = this;
-    var apikey = this.get('storage').getValue('apikey');
+    var session = this.get('session');
 
-    if (apikey) {
+    if (session.get('loggedIn')) {
+      var apikey = session.get('apikey');
+      console.log("Logged In:", apikey);
+
       return new Ember.RSVP.Promise(function(resolve) {
         Ember.$.ajax({
           type: 'GET',
@@ -20,54 +25,22 @@ export default Ember.Route.extend({
             _this.store.pushPayload('account', data);
 
             var account = _this.store.peekRecord('account', data.account.id);
-            resolve({
-              apikey: apikey,
-              account: account
-            });
+
+            resolve(account);
           },
           error() {
-            // Bad API key
-            resolve({
-              apikey: undefined,
-              account: undefined
-            });
+            return session.logout();
           }
         });
       });
     } else {
-      return {
-        apikey: undefined,
-        account: undefined
-      };
+      return undefined;
     }
   },
 
-  setupController(controller, model) {
-    controller.set('apikey', model.apikey);
-    controller.set('account', model.account);
-  },
-
   actions: {
-    loadUser() {
+    refresh() {
       this.refresh();
-    },
-
-    login() {
-      Ember.$.ajax({
-        type: 'GET',
-        url: ENV.api + '/login',
-        headers: {
-          Accept: 'application/json+ember'
-        },
-        data: {
-          redirect: window.location.protocol +
-            '//' + window.location.host +
-            '/#/apikey/'
-        },
-        success(data) {
-          window.location = data.href;
-        }
-      });
     }
   }
 });
