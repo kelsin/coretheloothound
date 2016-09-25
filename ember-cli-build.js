@@ -22,6 +22,13 @@ module.exports = function(defaults) {
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf', { destDir: 'fonts' });
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff', { destDir: 'fonts' });
 
+  // Octicons
+  app.import('bower_components/octicons/build/font/octicons.eot', { destDir: 'assets' });
+  app.import('bower_components/octicons/build/font/octicons.svg', { destDir: 'assets' });
+  app.import('bower_components/octicons/build/font/octicons.ttf', { destDir: 'assets' });
+  app.import('bower_components/octicons/build/font/octicons.woff', { destDir: 'assets' });
+  app.import('bower_components/octicons/build/font/octicons.woff2', { destDir: 'assets' });
+
   // D3
   app.import('bower_components/d3/d3.js');
 
