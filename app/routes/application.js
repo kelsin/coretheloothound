@@ -10,7 +10,6 @@ export default Ember.Route.extend({
 
     if (session.get('loggedIn')) {
       var apikey = session.get('apikey');
-      console.log("Logged In:", apikey);
 
       return new Ember.RSVP.Promise(function(resolve) {
         Ember.$.ajax({

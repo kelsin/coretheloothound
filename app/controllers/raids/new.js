@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 /* global moment */
 export default Ember.Controller.extend({
-  applicationController: Ember.inject.controller('application'),
-  account: Ember.computed.alias('applicationController.account'),
+  application: Ember.inject.controller(),
+  account: Ember.computed.alias('application.model'),
 
   init() {
     this._super();
@@ -14,6 +14,10 @@ export default Ember.Controller.extend({
   },
 
   actions: {
+    changeGuild(guild) {
+      this.set('guild', guild);
+    },
+
     create() {
       var _this = this;
 

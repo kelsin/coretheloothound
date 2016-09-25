@@ -11,7 +11,7 @@
     <label for="raid-name">Guild</label>
     <div class="row">
       <div class="col-md-6">
-        {{guild-select account=account guilds=guilds}}
+        {{guild-select account=account changeGuild=(action "changeGuild")}}
       </div>
     </div>
   </div>
