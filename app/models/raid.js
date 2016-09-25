@@ -107,5 +107,28 @@ export default Permissioned.extend({
         signups: _this.get('waitingList').filterBy('character.account.id', account.get('id')).sortBy('character.name')
       });
     });
+  }),
+
+  averageItemLevels: Ember.computed('seated.[].character', function() {
+    var counts = {};
+    var sums = {};
+    var avgs = {total:undefined};
+
+    this.get('seated').forEach(function(signup) {
+      var roleSlug = signup.get('role.slug');
+      var ilvl = signup.get('character.item_level');
+
+      counts.total = (counts.total || 0) + 1;
+      counts[roleSlug] = (counts[roleSlug] || 0) + 1;
+
+      sums.total = (sums.total || 0) + ilvl;
+      sums[roleSlug] = (sums[roleSlug] || 0) + ilvl;
+    });
+
+    Object.keys(sums).forEach(function(slug) {
+      avgs[slug] = sums[slug] / counts[slug];
+    });
+
+    return avgs;
   })
 });

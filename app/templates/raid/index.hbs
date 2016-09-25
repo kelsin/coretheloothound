@@ -4,6 +4,9 @@
     {{#if model.guild}}
       <p><i class="fa fa-users fa-fw"></i> <a href="{{model.guild.url}}">{{model.guild.name}}</a></p>
     {{/if}}
+    {{#if model.averageItemLevels.total}}
+      <p><i class="fa fa-gear fa-fw"></i> Avg iLvl {{model.averageItemLevels.total}}</p>
+    {{/if}}
     {{#if model.admin}}
       {{#if model.hidden}}
         {{#if model.finalized}}
@@ -40,7 +43,15 @@
       </div>
       {{#each seatedByRole as |seatedRole|}}
         <div class="signup-wrapper">
-          <h3><i class="{{seatedRole.role.iconClasses}}"></i> <small>{{seatedRole.role.name}}</small></h3>
+          <h3>
+            <i class="{{seatedRole.role.iconClasses}}"></i>
+            <small>
+              {{seatedRole.role.name}}
+              {{#if (get model.averageItemLevels seatedRole.role.slug)}}
+              - {{get model.averageItemLevels seatedRole.role.slug}}
+              {{/if}}
+            </small>
+          </h3>
           {{#each seatedRole.signups as |signup|}}
           {{raid-signup signup=signup currentAccount=currentAccount seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
           {{/each}}
