@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  loggedIn: Ember.computed('account', function() {
-    return !!this.get('account');
-  })
+  session: Ember.inject.service(),
+  apikey: Ember.computed.alias('session.apikey'),
+  loggedIn: Ember.computed.alias('session.loggedIn')
 });

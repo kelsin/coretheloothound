@@ -70,4 +70,27 @@
       {{/each}}
     </div>
   </div>
+
+  <hr/>
+  <h3><i class="fa fa-fw fa-save"></i> Saved Permissions</h3>
+  <div class="row permission-forms">
+    <div class="col-md-4">
+      <form class="form">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              {{input class="form-control" placeholder="Layout Name" value=layoutName}}
+            </div>
+            <button class="btn btn-primary" {{action 'savePermissions'}}>Add Layout</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-8">
+      {{#each permissionSets as |set|}}
+      <a {{action 'applyPermissions' set}}>{{set}}</a>
+      <a {{action 'deletePermissions' set}}><i class="fa fa-fw fa-close"></i></a>
+      {{/each}}
+    </div>
+  </div>
 {{/if}}
