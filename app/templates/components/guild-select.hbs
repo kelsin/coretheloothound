@@ -1,5 +1,5 @@
 <select class="form-control" onchange={{action "change"}}>
-  <option>None</option>
+  <option selected={{not guild}}>None</option>
   {{#each guilds as |item|}}
   <option value="{{item.id}}" selected={{eq guild item}}>
     {{item.fullName}}
