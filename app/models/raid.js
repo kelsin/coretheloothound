@@ -104,7 +104,7 @@ export default Permissioned.extend({
     return this.get('waitingList').mapBy('character.account').uniq().map(function(account) {
       return Ember.Object.create({
         account: account,
-        signups: _this.get('waitingList').filterBy('character.account.id', account.get('id')).sortBy('character.className', 'character.name')
+        signups: _this.get('waitingList').filterBy('character.account.id', account.get('id')).sortBy('character.name')
       });
     });
   })
