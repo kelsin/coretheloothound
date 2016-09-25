@@ -466,3 +466,26 @@ footer {
     }
   }
 }
+
+
+td {
+  i.role {
+    &.tank { .icon(0, 0, 16px); }
+    &.healing { .icon(0, 1, 16px); }
+    &.dps { .icon(0, 2, 16px); }
+    margin: 2px 0 0 0;
+    display: block;
+    position: relative;
+    top: 3px;
+  }
+
+  small {
+    i.role {
+      &.tank { .icon(0, 0, 12px); }
+      &.healing { .icon(0, 1, 12px); }
+      &.dps { .icon(0, 2, 12px); }
+      margin: 5px 3px 0 0;
+      top: 0;
+    }
+  }
+}

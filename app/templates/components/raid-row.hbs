@@ -17,14 +17,18 @@
 <td><i class="fa fa-calendar"></i> {{raid.dateCalendar}}<br/><small>{{raid.dateAgo}}</small></td>
 <td>
   {{#if accountSeated}}
-    <strong class="text-success">Seated on {{accountSeated.character.name}}</strong>
+    <strong class="text-success">Seated on {{accountSeated.character.name}} <i class="{{accountSeated.role.iconClasses}}"></i></strong><br/>
   {{else}}
     {{#if accountSignedUp}}
-      <strong class="text-info">Signed Up</strong>
+      <strong class="text-info">Signed Up</strong><br/>
+      <small>{{#each accountSignedUp as |signup|}}
+      {{signup.character.name}}
+      {{#each signup.roles as |role|}}<i class="{{role.iconClasses}}"></i>{{/each}}<br/>
+      {{/each}}</small>
     {{else}}
-      <strong class="text-danger">Not Signed Up!</strong>
+      <strong class="text-danger">Not Signed Up!</strong><br/>
     {{/if}}
-  {{/if}}<br/>
+  {{/if}}
   <small>
     {{#if raid.hidden}}
       {{#if raid.finalized}}
