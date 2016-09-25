@@ -126,7 +126,7 @@ export default Permissioned.extend({
     });
 
     Object.keys(sums).forEach(function(slug) {
-      avgs[slug] = sums[slug] / counts[slug];
+      avgs[slug] = Math.round(sums[slug] / counts[slug]);
     });
 
     return avgs;
