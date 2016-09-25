@@ -5,8 +5,11 @@ export default Ember.Component.extend({
     var type = this.get('permission.type');
     switch (type) {
     case 'Guild':
+      return 'Guild - ' + this.get('permission.name') + ' - ' + this.get('permission.realm');
     case 'Character':
-      return this.get('permission.name');
+      return 'Character - ' + this.get('permission.name') + ' - ' + this.get('permission.realm');
+    case 'Account':
+      return 'Account - ' + this.get('permission.name');
     default:
       return this.get('permission.args');
     }

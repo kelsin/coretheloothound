@@ -1,60 +1,73 @@
 {{#if raid.admin}}
-  <h3>Permissions</h3>
-  <h4>Admins</h4>
-  {{#each adminPermissions as |permission|}}
-    {{raid-permission account=account permission=permission deletePermission="deletePermission"}}
-  {{else}}
-    <div class="text-muted">None</div>
-  {{/each}}
-  <form class="form">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          {{input class="form-control" placeholder="Battletag#9999" value=adminAccount}}
+  <h2>Permissions</h2>
+  <h3>Admins</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <form class="form">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              {{input class="form-control" placeholder="Battletag#9999" value=adminAccount}}
+            </div>
+            <button class="btn btn-primary" {{action 'newAdminPermission'}}>Add Admin</button>
+          </div>
         </div>
-        <button class="btn btn-primary" {{action 'newAdminPermission'}}>Add Admin</button>
-      </div>
+      </form>
     </div>
-  </form>
-  <h4>Members</h4>
-  {{#each memberPermissions as |permission|}}
-    {{raid-permission account=account permission=permission deletePermission="deletePermission"}}
-  {{else}}
-    <div class="text-muted">None</div>
-  {{/each}}
-  <form class="form">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label>Battletag</label>
-          {{input class="form-control" placeholder="Battletag#9999" value=memberAccount}}
+    <div class="col-md-8">
+      {{#each adminPermissions as |permission|}}
+      {{raid-permission account=account permission=permission deletePermission="deletePermission"}}
+      {{else}}
+      <div class="text-muted">None</div>
+      {{/each}}
+    </div>
+  </div>
+  <hr/>
+  <h3>Members</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <form class="form">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Account</label>
+              {{input class="form-control" placeholder="Battletag#9999" value=memberAccount}}
+            </div>
+            <button class="btn btn-primary" {{action 'newMemberAccountPermission'}}>Add Account</button>
+          </div>
         </div>
-        <button class="btn btn-primary" {{action 'newMemberAccountPermission'}}>Add Member Battletag</button>
-      </div>
-    </div>
-  </form>
-  <form class="form">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label>Character</label>
-          {{input class="form-control" placeholder="Character Name" value=characterName}}
-          {{input class="form-control" placeholder="Character Realm" value=characterRealm}}
+      </form>
+      <form class="form">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Character</label>
+              {{input class="form-control" placeholder="Character Name" value=characterName}}
+              {{input class="form-control" placeholder="Character Realm" value=characterRealm}}
+            </div>
+            <button class="btn btn-primary" {{action 'newMemberCharacterPermission'}}>Add Character</button>
+          </div>
         </div>
-        <button class="btn btn-primary" {{action 'newMemberCharacterPermission'}}>Add Member Character</button>
-      </div>
-    </div>
-  </form>
-  <form class="form">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label>Guild</label>
-          {{input class="form-control" placeholder="Guild Name" value=guildName}}
-          {{input class="form-control" placeholder="Guild Realm" value=guildRealm}}
+      </form>
+      <form class="form">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Guild</label>
+              {{input class="form-control" placeholder="Guild Name" value=guildName}}
+              {{input class="form-control" placeholder="Guild Realm" value=guildRealm}}
+            </div>
+            <button class="btn btn-primary" {{action 'newMemberGuildPermission'}}>Add Guild</button>
+          </div>
         </div>
-        <button class="btn btn-primary" {{action 'newMemberGuildPermission'}}>Add Member Guild</button>
-      </div>
+      </form>
     </div>
-  </form>
+    <div class="col-md-8">
+      {{#each memberPermissions as |permission|}}
+      {{raid-permission account=account permission=permission deletePermission="deletePermission"}}
+      {{else}}
+      <div class="text-muted">None</div>
+      {{/each}}
+    </div>
+  </div>
 {{/if}}
