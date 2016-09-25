@@ -30,6 +30,7 @@ Router.map(function() {
       resetNamespace: true
     }, function() {});
   });
+  this.route('authenticated');
 });
 
 export default Router;

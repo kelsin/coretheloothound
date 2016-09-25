@@ -2,8 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   indexController: Ember.inject.controller('raids/index'),
-  applicationController: Ember.inject.controller('application'),
-  currentAccount: Ember.computed.alias('applicationController.account'),
+  application: Ember.inject.controller(),
+  currentAccount: Ember.computed.alias('application.model'),
+
   roles: Ember.computed.alias('indexController.roles'),
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('roles', 'rolesSorting'),

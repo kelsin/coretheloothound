@@ -1,5 +1,4 @@
 <ul class="auth">
-  <li>{{#link-to 'index'}}<i class="fa fa-home"></i> Home{{/link-to}}</li>
   {{#if loggedIn}}
     <li>{{#link-to 'raids'}}<i class="fa fa-trophy"></i> Raids{{/link-to}}</li>
     <li>{{#link-to 'characters'}}<i class="fa fa-users"></i> Characters{{/link-to}}</li>
@@ -10,10 +9,6 @@
       </button>
     </li>
   {{else}}
-    <li>
-      <button class="btn btn-sm btn-primary" {{action 'login'}}>
-        <i class="fa fa-sign-in"></i> Login
-      </button>
-    </li>
+    <li>Logging in <img src="/images/loading.gif"></li>
   {{/if}}
 </ul>

@@ -1,33 +1,23 @@
-import ENV from 'coretheloothound/config/environment';
 import Ember from 'ember';
 
 /**
  * Controller for the login/logout view
  */
 export default Ember.Controller.extend({
-  applicationController: Ember.inject.controller('application'),
+  application: Ember.inject.controller(),
+  session: Ember.inject.service(),
 
-  apikey: Ember.computed.alias('applicationController.apikey'),
-  account: Ember.computed.alias('applicationController.account'),
-  loggedIn: Ember.computed.alias('applicationController.loggedIn'),
+  account: Ember.computed.alias('application.model'),
+  apikey: Ember.computed.alias('session.apikey'),
+  loggedIn: Ember.computed.alias('session.loggedIn'),
 
   actions: {
     logout() {
       var _this = this;
-
-      Ember.$.ajax({
-        type: 'GET',
-        url: ENV.api + '/logout',
-        headers: {
-          Authorization: 'apikey ' + _this.get('apikey')
-        },
-        success() {
-          _this.get('storage').removeValue('apikey');
-          _this.set('apikey', undefined);
-          _this.set('account', undefined);
+      this.get('session').logout()
+        .then(function() {
           _this.transitionToRoute('index');
-        }
-      });
+        });
     }
   }
 });
