@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
     return this.get('sortedRoles').map(function(role) {
       return Ember.Object.create({
         role: role,
-        signups: _this.get('model.seated').filterBy('role.id', role.get('id'))
+        signups: _this.get('model.seated').filterBy('role.id', role.get('id')).sortBy('character.name')
       });
     });
   }),
