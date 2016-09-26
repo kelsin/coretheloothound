@@ -154,33 +154,47 @@ header {
     }
 
     div.character {
-      overflow: auto;
-      margin-bottom: 20px;
       .make-sm-column(6);
       .make-md-column(4);
       .make-lg-column(3);
+    }
+  }
+}
 
-      img {
-        float: left;
-        margin: 0;
-        padding: 0 10px 10px 0;
+div.character {
+  overflow: auto;
+  margin-bottom: 20px;
 
-        &.character {
-          padding: 0;
-          margin: 0 10px 10px 0;
-          border-radius: 5px;
-        }
-      }
+  p.guild, p.noguild {
+    margin: 0 0 4px;
+    color: @gray;
 
-      & > h3 {
-        margin-top: 0;
-      }
+    span {
+      color: @brand-primary;
+    }
+  }
 
-      .links {
-        img {
-          height: 30px;
-        }
-      }
+  img {
+    float: left;
+    margin: 0;
+    padding: 0 10px 10px 0;
+
+    &.character {
+      padding: 0;
+      margin: 0 10px 10px 0;
+      border-radius: 5px;
+    }
+  }
+
+  & > h3 {
+    margin: 0 0 2px;
+  }
+
+  .links {
+    overflow: auto;
+    margin: 0;
+    img {
+      height: 30px;
     }
   }
 }
@@ -368,6 +382,10 @@ h1 .emblem {
           background-color: @gray-darker;
           cursor: move;
 
+          &.selected {
+            border: 2px solid @brand-primary;
+          }
+
           small {
             color: @gray;
           }
@@ -497,5 +515,11 @@ span.octicon-git-branch {
 div.permission-forms {
   button {
     margin-bottom: 30px;
+  }
+}
+
+.character {
+  small {
+    color: @gray;
   }
 }

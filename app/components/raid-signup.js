@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: 'signup',
+  classNameBindings: 'selected',
+  selected: false,
 
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('signup.roles', 'rolesSorting'),
@@ -42,6 +44,10 @@ export default Ember.Component.extend({
     },
     unseat() {
       this.sendAction("unseat",
+                      this.get('signup'));
+    },
+    select() {
+      this.sendAction("select",
                       this.get('signup'));
     }
   }

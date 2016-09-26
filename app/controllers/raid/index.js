@@ -9,6 +9,8 @@ export default Ember.Controller.extend({
   rolesSorting: ['slug:desc'],
   sortedRoles: Ember.computed.sort('roles', 'rolesSorting'),
 
+  selectedSignup: null,
+
   seatedByRole: Ember.computed('sortedRoles.[].id', 'model.seated.[].role', function() {
     var _this = this;
 
@@ -60,6 +62,14 @@ export default Ember.Controller.extend({
 
     unsignup(signup) {
       signup.destroyRecord();
+    },
+
+    selectSignup(signup) {
+      if(this.get('selectedSignup') === signup) {
+        this.set('selectedSignup', null);
+      } else {
+        this.set('selectedSignup', signup);
+      }
     }
   }
 });

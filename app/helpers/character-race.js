@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export function characterRace(race_id) {
   var faction = function(race_id) {
-    switch(race_id) {
+    switch(parseInt(race_id)) {
     case 1:
     case 3:
     case 4:
@@ -44,7 +44,7 @@ export function characterRace(race_id) {
     26: 'Pandaren'
   };
 
-  return new Ember.String.htmlSafe('<span class="' + faction(race_id) + '">' + races[race_id] + '</span>');
+  return new Ember.String.htmlSafe('<span class="race_' + race_id + ' ' + faction(race_id) + '">' + races[race_id] + '</span>');
 }
 
 export default Ember.Helper.helper(characterRace);

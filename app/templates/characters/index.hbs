@@ -15,16 +15,7 @@
 </div>
 <div class="characters-list">
   {{#each filtered as |character|}}
-    <div class="character">
-      <h3>{{character.name}} <small>{{character.level}} {{character.realm}}</small></h3>
-      <img class="character" src="{{character.image_url}}"/>
-      <p>{{character-race character.race_id}} {{character-class character.class_id}}</p>
-      <p class="links">
-        <a href="{{character.armoryUrl}}"><img src="images/wow.png"/></a>
-        <a href="{{character.wowheadUrl}}"><img src="images/wowhead.png"/></a>
-        <a href="{{character.robotUrl}}"><img src="images/robot.png"/></a>
-      </p>
-    </div>
+    {{character-display character=character}}
   {{else}}
     <div class="empty">
       <div class="alert alert-info">No {{#if onlyMax}}max level {{/if}}characters</div>

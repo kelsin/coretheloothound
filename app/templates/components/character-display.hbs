@@ -1,0 +1,17 @@
+<div class="character">
+  <h3>{{character.name}} <small>lv{{character.level}} {{character.realm}}</small></h3>
+  {{#if character.guild}}
+    <p class="guild"><span>&lt;</span>{{character.guild.name}}<span>&gt;</span></p>
+  {{else}}
+    <p class="noguild">No Guild</p>
+  {{/if}}
+  <img class="character" src="{{character.image_url}}"/>
+  <p>{{character-race character.race_id}} {{character-class character.class_id}}</p>
+  <p class="links">
+    <a href="{{character.armoryUrl}}"><img src="images/wow.png"/></a>
+    <a href="{{character.wowheadUrl}}"><img src="images/wowhead.png"/></a>
+    <a href="{{character.robotUrl}}"><img src="images/robot.png"/></a>
+  </p>
+  <p><small>{{character.account.battletag}}</small></p>
+  {{yield}}
+</div>

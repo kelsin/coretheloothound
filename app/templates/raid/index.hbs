@@ -28,6 +28,11 @@
       {{/if}}
     {{/if}}
     {{#if model.note}}<p><i class="fa fa-file-text-o fa-fw"></i> {{model.note}}</p>{{/if}}
+      {{#if selectedSignup}}
+        {{#character-display character=selectedSignup.character}}
+          <p>{{selectedSignup.note}}</p>
+        {{/character-display}}
+      {{/if}}
     {{character-select characters=characters action="signup"}}
   </section>
   <section class="signups">
@@ -37,7 +42,7 @@
         {{#each model.waitingListByAccount as |waitingListAccount|}}
           <h4>{{waitingListAccount.account.battletag}}</h4>
           {{#each waitingListAccount.signups as |signup|}}
-          {{raid-signup signup=signup currentAccount=currentAccount seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
+          {{raid-signup signup=signup currentAccount=currentAccount selected=(eq selectedSignup signup) click=(action "selectSignup" signup) seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
           {{/each}}
         {{/each}}
       </div>
@@ -53,7 +58,7 @@
             </small>
           </h3>
           {{#each seatedRole.signups as |signup|}}
-          {{raid-signup signup=signup currentAccount=currentAccount seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
+          {{raid-signup signup=signup currentAccount=currentAccount selected=(eq selectedSignup signup) select=(action "selectSignup" signup) seat=(action "seat") unseat=(action "unseat") unsignup=(action "unsignup")}}
           {{/each}}
         </div>
       {{/each}}
