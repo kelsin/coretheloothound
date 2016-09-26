@@ -30,7 +30,7 @@
     {{#if model.note}}<p><i class="fa fa-file-text-o fa-fw"></i> {{model.note}}</p>{{/if}}
       {{#if selectedSignup}}
         {{#character-display character=selectedSignup.character}}
-          <p>{{selectedSignup.note}}</p>
+          <p class="note"><span>Note:</span> {{selectedSignup.note}}</p>
         {{/character-display}}
       {{/if}}
     {{character-select characters=characters action="signup"}}
