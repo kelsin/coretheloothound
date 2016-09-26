@@ -1,11 +1,11 @@
 import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+// import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('character-display', 'Integration | Component | character display', {
   integration: true
 });
 
-test('it renders', function(assert) {
+test('it renders', function() {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
