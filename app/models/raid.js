@@ -118,11 +118,13 @@ export default Permissioned.extend({
       var roleSlug = signup.get('role.slug');
       var ilvl = signup.get('character.item_level');
 
-      counts.total = (counts.total || 0) + 1;
-      counts[roleSlug] = (counts[roleSlug] || 0) + 1;
+      if (ilvl > 0) {
+        counts.total = (counts.total || 0) + 1;
+        counts[roleSlug] = (counts[roleSlug] || 0) + 1;
 
-      sums.total = (sums.total || 0) + ilvl;
-      sums[roleSlug] = (sums[roleSlug] || 0) + ilvl;
+        sums.total = (sums.total || 0) + ilvl;
+        sums[roleSlug] = (sums[roleSlug] || 0) + ilvl;
+      }
     });
 
     Object.keys(sums).forEach(function(slug) {
