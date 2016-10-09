@@ -2,20 +2,24 @@ import Ember from 'ember';
 
 /* global moment */
 export default Ember.Component.extend({
-  picktime: Ember.computed('date', 'pickdate', function(key, value) {
-    if (arguments.length > 1) {
+  picktime: Ember.computed('date', 'pickdate', {
+    get(key) {
+      return moment(this.get('date')).format('h:mm A');
+    },
+    set(key, value) {
       this.set('date', moment(this.get('pickdate') + ' ' + value, 'D MMMM, YYYY h:mm A').toDate());
+      return moment(this.get('date')).format('h:mm A');
     }
-
-    return moment(this.get('date')).format('h:mm A');
   }),
 
-  pickdate: Ember.computed('date', 'picktime', function(key, value) {
-    if (arguments.length > 1) {
+  pickdate: Ember.computed('date', 'picktime', {
+    get(key) {
+      return moment(this.get('date')).format('D MMMM, YYYY');
+    },
+    set(key, value) {
       this.set('date', moment(value + ' ' + this.get('picktime'), 'D MMMM, YYYY h:mm A').toDate());
+      return moment(this.get('date')).format('D MMMM, YYYY');
     }
-
-    return moment(this.get('date')).format('D MMMM, YYYY');
   }),
 
   dateAgo: Ember.computed('date', function() {
