@@ -38,7 +38,11 @@ export default Permissioned.extend({
   }),
 
   dateCalendar: Ember.computed('date', function() {
-    return moment(this.get('date')).calendar();
+    return moment(this.get('date')).format('ddd MMM Do');
+  }),
+
+  dateTime: Ember.computed('date', function() {
+    return moment(this.get('date')).format('h:mm a');
   }),
 
   accountSignups: Ember.computed('signups.[].character', function() {
