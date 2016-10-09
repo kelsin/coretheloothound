@@ -5,11 +5,15 @@ export default Ember.Component.extend({
   adminPermissions: Ember.computed.filterBy('raid.permissions', 'level', 'admin'),
   memberPermissions: Ember.computed.filterBy('raid.permissions', 'level', 'member'),
 
-  init() {
-    this._super(...arguments);
+  loadPermissions() {
     var storedPermissions = this.get('storage').getValue('permissions') || '{}';
     var allPermissions = JSON.parse(storedPermissions);
     this.set('permissionSets', Object.keys(allPermissions));
+  },
+
+  init() {
+    this._super(...arguments);
+    this.loadPermissions();
   },
 
   actions: {
@@ -18,14 +22,19 @@ export default Ember.Component.extend({
       var storedPermissions = this.get('storage').getValue('permissions') || '{}';
       var permissions = JSON.parse(storedPermissions);
 
-      var newPermission = this.get('memberPermissions').map(function(record) {
+      var newMemberPermissions = this.get('memberPermissions').map(function(record) {
         return record.toJSON();
       });
+      var newAdminPermissions = this.get('adminPermissions').map(function(record) {
+        return record.toJSON();
+      });
+      var newPermissions = newMemberPermissions.concat(newAdminPermissions);
 
-      permissions[name] = newPermission;
+      permissions[name] = newPermissions;
 
       this.get('storage').setValue('permissions', JSON.stringify(permissions));
       this.set('layoutName', undefined);
+      this.loadPermissions();
     },
 
     applyPermissions(name) {
@@ -47,6 +56,7 @@ export default Ember.Component.extend({
       var permissions = JSON.parse(storedPermissions);
       delete permissions[name];
       this.get('storage').setValue('permissions', JSON.stringify(permissions));
+      this.loadPermissions();
     },
 
     newAdminPermission() {

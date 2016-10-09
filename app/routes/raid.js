@@ -70,13 +70,15 @@ export default Ember.Route.extend({
     newPermission(level, key) {
       var raid = this.currentModel;
 
-      var permission = this.store.createRecord('permission', {
-        level: level,
-        key: key,
-        permissioned: raid
-      });
+      if(!raid.hasPermission(level, key)) {
+        var permission = this.store.createRecord('permission', {
+          level: level,
+          key: key,
+          permissioned: raid
+        });
 
-      permission.save();
+        permission.save();
+      }
     },
 
     deletePermission(permission) {
