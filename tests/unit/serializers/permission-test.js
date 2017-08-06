@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('permission', 'Unit | Serializer | permission', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:permission']
+  needs: ['model:permissioned', 'serializer:permission']
 });
 
 // Replace this with your real tests.
