@@ -7,13 +7,13 @@ moduleForComponent('character-select', 'Integration | Component | character sele
 
 var CharactersStub = [];
 
-test('it renders', function() {
+test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
   this.set('characters', CharactersStub);
 
   this.render(hbs`{{character-select characters=characters}}`);
 
-  expect(0);
+  assert.expect(0);
   // assert.equal(this.$().text().trim(), '');
 });
