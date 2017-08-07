@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'coretheloothound',
     environment: environment,
     rootURL: '/',
+    locationType: 'auto',
 
     contentSecurityPolicy: {
       'connect-src': "'self' https://staging.byfirebepurged.com https://api.byfirebepurged.com ws://localhost:35729 ws://0.0.0.0:35729",
