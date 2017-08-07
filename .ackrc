@@ -3,3 +3,4 @@
 --ignore-dir=doc
 --ignore-dir=tmp
 --ignore-dir=vendor
+--ignore-file=is:yarn.lock

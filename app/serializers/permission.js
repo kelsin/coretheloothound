@@ -13,7 +13,6 @@ export default ApplicationSerializer.extend({
     return Ember.String.underscore(key) + '_type';
   },
   payloadTypeFromModelName: function(modelName) {
-    console.log(modelName);
     return Ember.String.classify(modelName);
   },
   serializePolymorphicType(snapshot, json, relationship) {

@@ -4,8 +4,7 @@ import {
 } from 'ember-qunit';
 
 moduleFor('controller:auth', 'AuthController', {
-  // Specify the other units that are required for this test.
-  needs: ['controller:application']
+  needs: ['controller:application', 'service:session']
 });
 
 // Replace this with your real tests.

@@ -15,6 +15,7 @@
 /coverage/*
 /libpeerconnection.log
 npm-debug.log*
+yarn-error.log
 testem.log
 
 # editors
@@ -24,3 +25,8 @@ testem.log
 GTAGS
 GPATH
 GRTAGS
+
+# ember-try
+.node_modules.ember-try/
+.bower_components.ember-try/
+package.json.ember-try
