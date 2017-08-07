@@ -1,6 +1,6 @@
 {
   "name": "coretheloothound",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Ember.js front end to the By Fire Be Purged raiding API",
   "license": "MIT",
   "author": "Christopher Giroir <kelsin@valefor.com>",
