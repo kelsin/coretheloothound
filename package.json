@@ -13,7 +13,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember test",
-    "deploy": "ember build --environment production && gulp deploy doc:deploy"
+    "deploy": "ember build -e production && groc -o dist/doc app/**/* README.md"
   },
   "devDependencies": {
     "bootstrap": "^3.3.7",
