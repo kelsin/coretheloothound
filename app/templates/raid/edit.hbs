@@ -17,6 +17,7 @@
     {{#if model.note}}<p><i class="fa fa-file-text-o fa-fw"></i> {{model.note}}</p>{{/if}}
   </section>
   <section class="signups">
+    {{raid-attributes raid=model account=model.account editRaidName="editRaidName"}}
     {{raid-permissions raid=model account=model.account newPermission="newPermission" deletePermission="deletePermission"}}
   </section>
 </div>

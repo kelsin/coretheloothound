@@ -1,0 +1,19 @@
+{{#if raid.admin}}
+  <h2>Raid Attributes</h2>
+  <h3>Edit Raid Name</h3>
+  <form class="form">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              {{input class="form-control" placeholder=raid.name value=newRaidName}}
+            </div>
+            <button class="btn btn-primary" {{action 'editRaidName'}}>Save New Raid Name</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </form>
+{{/if}}

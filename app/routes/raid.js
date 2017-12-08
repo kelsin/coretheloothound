@@ -36,6 +36,12 @@ export default Ember.Route.extend({
       raid.save();
     },
 
+    editRaidName(name) {
+      var raid = this.currentModel;
+      raid.set('name', name);
+      raid.save();
+    },
+
     delete() {
       var _this = this;
       var raid = this.currentModel;
