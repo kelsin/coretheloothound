@@ -10,6 +10,8 @@ export function characterRace(race_id) {
     case 11:
     case 22:
     case 25:
+    case 29:
+    case 30:
       return 'alliance';
     case 2:
     case 5:
@@ -18,6 +20,8 @@ export function characterRace(race_id) {
     case 9:
     case 10:
     case 26:
+    case 27:
+    case 28:
       return 'horde';
     case 24:
       return 'neutral';
@@ -41,7 +45,11 @@ export function characterRace(race_id) {
     22: 'Worgen',
     24: 'Pandaren',
     25: 'Pandaren',
-    26: 'Pandaren'
+    26: 'Pandaren',
+    27: 'Nightborne',
+    28: 'Highmountain Tauren',
+    29: 'Void Elf',
+    30: 'Lightforged Draenei'
   };
 
   return new Ember.String.htmlSafe('<span class="race_' + race_id + ' ' + faction(race_id) + '">' + races[race_id] + '</span>');
