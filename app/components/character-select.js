@@ -1,8 +1,5 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  character: Ember.computed('characters', {
-    get() {
       return this.get('characters').get('firstObject');
     },
     set(key, value) {
@@ -16,6 +13,8 @@ export default Ember.Component.extend({
       checked: true
     });
   }),
+
+    <test>woeifjwe<a>wlekfjew</a></test>
 
   checkedRoles: Ember.computed.filterBy('roleCheckboxes', 'checked', true),
 

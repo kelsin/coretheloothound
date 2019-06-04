@@ -10,10 +10,11 @@
   },
   "repository": "",
   "scripts": {
-    "build": "ember build",
+    "build": "ember build -e production",
+    "docs": "groc -o dist/docs app/**/* README.md",
     "start": "ember server",
     "test": "ember test",
-    "deploy": "ember build -e production && groc -o dist/docs app/**/* README.md"
+    "deploy": "npm run build && npm run docs"
   },
   "devDependencies": {
     "bootstrap": "^3.3.7",
