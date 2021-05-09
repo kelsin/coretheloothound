@@ -46,7 +46,7 @@
     "gulp-gh-pages": "^0.4.0",
     "liquid-fire": "^0.27.3",
     "loader.js": "^4.2.3",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "moment": "^2.18.1",
     "octicons": "^5.0.1",
     "pickadate": "^3.5.6"
