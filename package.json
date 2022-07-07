@@ -47,7 +47,7 @@
     "liquid-fire": "^0.27.3",
     "loader.js": "^4.2.3",
     "lodash": "^4.17.4",
-    "moment": "^2.18.1",
+    "moment": "^2.29.4",
     "octicons": "^5.0.1",
     "pickadate": "^3.5.6"
   },
